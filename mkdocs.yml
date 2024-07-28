@@ -38,7 +38,7 @@ markdown_extensions:
 
 # Pages and main contents
 nav:
-  - Home: '0-introducing-xdn.md'
+  - Home: 'index.md'
   - Getting Started: '1-getting-started.md'
   - Consistency: '3-flexible-consistency.md'
   - Service Properties: '5-service-properties.md'
