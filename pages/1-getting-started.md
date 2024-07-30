@@ -27,7 +27,7 @@ Finally, launch a blackbox stateful service on XDN. Let's use `bookcatalog` as t
 xdn launch bookcatalog \
    --image=fadhilkurnia/xdn-bookcatalog \ 
    --port=80 \
-   --consistency=linearizable \
+   --consistency=linearizability \
    --deterministic=true \
    --state=/app/data/
 ```
@@ -37,7 +37,7 @@ http://bookcatalog.xdnapp.com/.
    Launching bookcatalog service with the following configuration:
      docker image  : fadhilkurnia/xdn-bookcatalog
      http port     : 80
-     consistency   : linearizable
+     consistency   : linearizability
      deterministic : true
      state dir     : /app/data/
    
@@ -63,7 +63,7 @@ Let's dechiper what just happened when we deploy a stateful service with the com
   than determinism, XDN allows developer to specify other properties of the service and its requests so XDN can use an
   optimized replication protocol, depending on the service's properties.
 - **Consistency Model.** The `--consistency` option specifies the consistency model the developer wants for the
-  replicated service. The default value is `linearizable`. Check out [this page](3-flexible-consistency.md) to see how
+  replicated service. The default value is `linearizability`. Check out [this page](3-flexible-consistency.md) to see how
   to use different consistency model.
 - **State Directory.** The `--state` option specifies the directory where the web service stores its state. For example,
   it is commonly `/var/lib/mysql` in MySQL and `/var/lib/pgsql/data` in PostgreSQL. When not specified, XDN will 
@@ -210,7 +210,7 @@ If successful, you wil see the following output.
 Launching bookcatalog service with the following configuration:
   docker image  : wordpress:6.5.4-fpm-alpine,mysql:8.4.0
   http port     : 80
-  consistency   : linearizable
+  consistency   : linearizability
   deterministic : false
   state dir     : database:/var/lib/mysql/
 
