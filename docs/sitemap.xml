@@ -1,3 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://xdn.cs.umass.edu/</loc>
+         <lastmod>2024-07-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://xdn.cs.umass.edu/1-getting-started/</loc>
+         <lastmod>2024-07-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://xdn.cs.umass.edu/2-become-operator/</loc>
+         <lastmod>2024-07-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://xdn.cs.umass.edu/3-flexible-consistency/</loc>
+         <lastmod>2024-07-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://xdn.cs.umass.edu/4-how-xdn-work/</loc>
+         <lastmod>2024-07-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://xdn.cs.umass.edu/5-service-properties/</loc>
+         <lastmod>2024-07-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
 </urlset>
