@@ -997,13 +997,13 @@ your OS and architecture, verifies its SHA-256 checksum, and installs it to
 <code>~/.local/bin</code>:</p>
 <div class="language-sh highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://xdn.cs.umass.edu/install<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
 </span></code></pre></div>
-<div class="admonition tip">
-<p class="admonition-title">Other ways to get it</p>
+<details class="tip">
+<summary>Other ways to get it</summary>
 <p>Inspect the script first with <code>curl -fsSL https://xdn.cs.umass.edu/install | less</code>,
 grab a binary directly from the <a href="https://github.com/fadhilkurnia/xdn/releases">releases page</a>,
 or build from source:
 <code>git clone https://github.com/fadhilkurnia/xdn &amp;&amp; cd xdn &amp;&amp; ./bin/build_xdn_cli.sh</code>.</p>
-</div>
+</details>
 <p>Check that it runs:</p>
 <div class="language-sh highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>xdn<span class="w"> </span>--help
 </span></code></pre></div>
@@ -1021,11 +1021,6 @@ locations:</p>
   }
 </style>
 
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>We use x86 Linux machine by default. 
-For ARM64 machine, such as MacBook with Apple Silicon, go to <code>xdn/bin/arm64</code> directory instead.</p>
-</div>
 <p>Finally, launch a blackbox stateful service on XDN. Let's use <code>bookcatalog</code> as the service name.
 <div class="language-sh highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>xdn<span class="w"> </span>launch<span class="w"> </span>bookcatalog<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">   </span>--image<span class="o">=</span>fadhilkurnia/xdn-bookcatalog<span class="w"> </span><span class="se">\ </span>
