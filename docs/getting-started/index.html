@@ -563,10 +563,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#deploy-using-a-service-file" class="md-nav__link">
+  <a href="#deploy-using-a-service-declaration-file" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Deploy using a service file
+        Deploy using a service declaration file
       
     </span>
   </a>
@@ -1037,10 +1037,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#deploy-using-a-service-file" class="md-nav__link">
+  <a href="#deploy-using-a-service-declaration-file" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Deploy using a service file
+        Deploy using a service declaration file
       
     </span>
   </a>
@@ -1157,29 +1157,28 @@ http://bookcatalog.xdnapp.com/.
   Provider using <code>--control-plane=&lt;control_plane_url&gt;</code> option. Alternatively, you can be your own XDN Provider! check
   out <a href="../become-operator/">this page</a>.</li>
 </ul>
-<h2 id="deploy-using-a-service-file">Deploy using a service file</h2>
+<h2 id="deploy-using-a-service-declaration-file">Deploy using a service declaration file</h2>
 <p>Instead of passing each property as a separate CLI flag, you can declare the whole
-service in a YAML file and launch it with <code>--file</code>. This keeps the service
-definition versionable, and it is the same format used for
-<a href="../multi-container/">multi-container services</a>. Here is the <code>bookcatalog</code> service
+service in a YAML file and launch it with <code>--file</code>, which keeps the service
+definition versionable. A single-component service does not need the <code>components</code>
+section — its properties sit at the top level. Here is the <code>bookcatalog</code> service
 from above, written as <code>bookcatalog.yaml</code>:</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># bookcatalog.yaml</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nn">---</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bookcatalog</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nt">components</span><span class="p">:</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">bookcatalog</span><span class="p">:</span>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fadhilkurnia/xdn-bookcatalog</span>
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">        </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
-</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">        </span><span class="nt">entry</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">        </span><span class="nt">stateful</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="nt">deterministic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bookcatalog:/app/data/</span>
-</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="nt">consistency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">linearizability</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fadhilkurnia/xdn-bookcatalog</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nt">consistency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">linearizability</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="nt">deterministic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/app/data/</span>
 </span></code></pre></div>
 <p>Then launch it with:
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>xdn<span class="w"> </span>launch<span class="w"> </span>bookcatalog<span class="w"> </span>--file<span class="o">=</span>bookcatalog.yaml
 </span></code></pre></div></p>
 <p>This is equivalent to the <code>xdn launch bookcatalog --image=… --state=…</code> command shown earlier.</p>
+<p>A declaration file really shines when a service is made of several containers — a
+frontend, a backend, and a database, for example. See
+<a href="../multi-container/">Deploy a multi-container service</a> for how to declare and launch one.</p>
 <h2 id="other-example-services">Other example services</h2>
 <p>Other than the <code>fadhilkurnia/xdn-bookcatalog</code> Docker image that we use previously, we have prepared Docker images for
 other stateful services, as can be seen below.</p>
