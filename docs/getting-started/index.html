@@ -1160,9 +1160,8 @@ http://bookcatalog.xdnapp.com/.
 <h2 id="deploy-using-a-service-declaration-file">Deploy using a service declaration file</h2>
 <p>Instead of passing each property as a separate CLI flag, you can declare the whole
 service in a YAML file and launch it with <code>--file</code>, which keeps the service
-definition versionable. A single-component service does not need the <code>components</code>
-section — its properties sit at the top level. Here is the <code>bookcatalog</code> service
-from above, written as <code>bookcatalog.yaml</code>:</p>
+definition versionable. Here is the <code>bookcatalog</code> service from above, written as
+<code>bookcatalog.yaml</code>:</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># bookcatalog.yaml</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nn">---</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bookcatalog</span>
@@ -1180,7 +1179,9 @@ from above, written as <code>bookcatalog.yaml</code>:</p>
 frontend, a backend, and a database, for example. See
 <a href="../multi-container/">Deploy a multi-container service</a> for how to declare and launch one.</p>
 <h2 id="other-example-services">Other example services</h2>
-<p>Other than the <code>fadhilkurnia/xdn-bookcatalog</code> Docker image that we use previously, we have prepared Docker images for
+<p>XDN can replicate <em>any</em> stateful service, as long as it exposes a request-response
+HTTP interface and keeps its safety-critical state on disk. Other than the
+<code>fadhilkurnia/xdn-bookcatalog</code> Docker image that we use previously, we have prepared Docker images for
 other stateful services, as can be seen below.</p>
 <table>
 <tr>
