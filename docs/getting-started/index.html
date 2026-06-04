@@ -18,7 +18,7 @@
         <link rel="prev" href="..">
       
       
-        <link rel="next" href="../flexible-consistency/">
+        <link rel="next" href="../multi-container/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>Quick Start - XDN</title>
+        <title>Getting started - XDN</title>
       
     
     
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Quick Start
+              Getting started
             
           </span>
         </div>
@@ -212,17 +212,18 @@
     
   
   
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="./" class="md-tabs__link">
-        
-  
-  
     
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
   
   Quick Start
 
-      </a>
-    </li>
+        </a>
+      </li>
+    
   
 
       
@@ -426,6 +427,61 @@
   
   
   
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Quick Start
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
     <li class="md-nav__item md-nav__item--active">
       
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
@@ -441,7 +497,7 @@
   <span class="md-ellipsis">
     
   
-    Quick Start
+    Getting started
   
 
     
@@ -459,7 +515,7 @@
   <span class="md-ellipsis">
     
   
-    Quick Start
+    Getting started
   
 
     
@@ -507,6 +563,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#deploy-using-a-service-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deploy using a service file
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#other-example-services" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -517,20 +584,45 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#deploy-a-multi-container-service" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Deploy a multi-container service
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multi-container/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multi-container services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -945,10 +1037,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#other-example-services" class="md-nav__link">
+  <a href="#deploy-using-a-service-file" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Other example services
+        Deploy using a service file
       
     </span>
   </a>
@@ -956,10 +1048,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#deploy-a-multi-container-service" class="md-nav__link">
+  <a href="#other-example-services" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Deploy a multi-container service
+        Other example services
       
     </span>
   </a>
@@ -987,26 +1079,23 @@
 
 
 <h1 id="getting-started-with-xdn">Getting started with XDN</h1>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
 <p>This page explains how to deploy a blackbox stateful service on an existing XDN provider.</p>
-</div>
 <h2 id="install-the-cli">Install the CLI</h2>
 <p>Install the <code>xdn</code> CLI with a single command — it downloads the right binary for
 your OS and architecture, verifies its SHA-256 checksum, and installs it to
 <code>~/.local/bin</code>:</p>
 <div class="language-sh highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://xdn.cs.umass.edu/install<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
 </span></code></pre></div>
-<details class="tip">
+<p>Check that it runs:</p>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>xdn<span class="w"> </span>--help
+</span></code></pre></div>
+<details class="quote">
 <summary>Other ways to get it</summary>
 <p>Inspect the script first with <code>curl -fsSL https://xdn.cs.umass.edu/install | less</code>,
 grab a binary directly from the <a href="https://github.com/fadhilkurnia/xdn/releases">releases page</a>,
 or build from source:
 <code>git clone https://github.com/fadhilkurnia/xdn &amp;&amp; cd xdn &amp;&amp; ./bin/build_xdn_cli.sh</code>.</p>
 </details>
-<p>Check that it runs:</p>
-<div class="language-sh highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>xdn<span class="w"> </span>--help
-</span></code></pre></div>
 <h2 id="deploy-a-blackbox-service">Deploy a blackbox service</h2>
 <p>XDN places your service's replicas at edge locations close to your users —
 across AWS Regions and Local Zones worldwide. Here are the available edge
@@ -1068,6 +1157,29 @@ http://bookcatalog.xdnapp.com/.
   Provider using <code>--control-plane=&lt;control_plane_url&gt;</code> option. Alternatively, you can be your own XDN Provider! check
   out <a href="../become-operator/">this page</a>.</li>
 </ul>
+<h2 id="deploy-using-a-service-file">Deploy using a service file</h2>
+<p>Instead of passing each property as a separate CLI flag, you can declare the whole
+service in a YAML file and launch it with <code>--file</code>. This keeps the service
+definition versionable, and it is the same format used for
+<a href="../multi-container/">multi-container services</a>. Here is the <code>bookcatalog</code> service
+from above, written as <code>bookcatalog.yaml</code>:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># bookcatalog.yaml</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nn">---</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bookcatalog</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nt">components</span><span class="p">:</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">bookcatalog</span><span class="p">:</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fadhilkurnia/xdn-bookcatalog</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">        </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">        </span><span class="nt">entry</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">        </span><span class="nt">stateful</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="nt">deterministic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bookcatalog:/app/data/</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="nt">consistency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">linearizability</span>
+</span></code></pre></div>
+<p>Then launch it with:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>xdn<span class="w"> </span>launch<span class="w"> </span>bookcatalog<span class="w"> </span>--file<span class="o">=</span>bookcatalog.yaml
+</span></code></pre></div></p>
+<p>This is equivalent to the <code>xdn launch bookcatalog --image=… --state=…</code> command shown earlier.</p>
 <h2 id="other-example-services">Other example services</h2>
 <p>Other than the <code>fadhilkurnia/xdn-bookcatalog</code> Docker image that we use previously, we have prepared Docker images for
 other stateful services, as can be seen below.</p>
@@ -1081,10 +1193,10 @@ other stateful services, as can be seen below.</p>
     <td>fadhilkurnia/xdn-bookcatalog</td>
     <td>Book catalog web app, storing updatable list of books. <br>Tech: Go, SQLite.</td>
     <td>
-      <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>xdn<span class="w"> </span>launch<span class="w"> </span>alice-catalog<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">     </span>--image<span class="o">=</span>fadhilkurnia/xdn-bookcatalog<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">     </span>--state<span class="o">=</span>/data/<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">     </span>--deterministic
+      <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>xdn<span class="w"> </span>launch<span class="w"> </span>alice-catalog<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">     </span>--image<span class="o">=</span>fadhilkurnia/xdn-bookcatalog<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">     </span>--state<span class="o">=</span>/data/<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">     </span>--deterministic
 </span></code></pre></div>
     </td>
 </tr>
@@ -1092,9 +1204,9 @@ other stateful services, as can be seen below.</p>
     <td>fadhilkurnia/xdn-bookcatalog-nd</td>
     <td>Book catalog web app that is non-deterministic because it stores the update timestamp. <br>Tech: Go, SQLite.</td>
     <td>
-      <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>xdn<span class="w"> </span>launch<span class="w"> </span>bob-catalog<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span>--image<span class="o">=</span>fadhilkurnia/xdn-bookcatalog-nd<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span>--state<span class="o">=</span>/data/
+      <div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>xdn<span class="w"> </span>launch<span class="w"> </span>bob-catalog<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span>--image<span class="o">=</span>fadhilkurnia/xdn-bookcatalog-nd<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span>--state<span class="o">=</span>/data/
 </span></code></pre></div>
     </td>
 </tr>
@@ -1102,9 +1214,9 @@ other stateful services, as can be seen below.</p>
     <td>fadhilkurnia/xdn-tpcc</td>
     <td>App for a wholesale parts supplier that owns multiple warehouse, implementing <br>the TPC-C benchmark. <br>Tech: Python, SQLite.</td>
     <td>
-      <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>xdn<span class="w"> </span>launch<span class="w"> </span>charlie-tpcc<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span>--image<span class="o">=</span>fadhilkurnia/xdn-tpcc<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span>--state<span class="o">=</span>/app/data/
+      <div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>xdn<span class="w"> </span>launch<span class="w"> </span>charlie-tpcc<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span>--image<span class="o">=</span>fadhilkurnia/xdn-tpcc<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span>--state<span class="o">=</span>/app/data/
 </span></code></pre></div>
     </td>
 </tr>
@@ -1112,9 +1224,9 @@ other stateful services, as can be seen below.</p>
     <td>fadhilkurnia/xdn-todo</td>
     <td>Todo application, enabling users to list and modify <br>their todo items. <br>Tech: NodeJS, SQLite.</td>
     <td>
-      <div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>xdn<span class="w"> </span>launch<span class="w"> </span>charlie-tpcc<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span>--image<span class="o">=</span>fadhilkurnia/xdn-todo<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span>--state<span class="o">=</span>/home/node/app/var/db
+      <div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>xdn<span class="w"> </span>launch<span class="w"> </span>charlie-tpcc<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span>--image<span class="o">=</span>fadhilkurnia/xdn-todo<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span>--state<span class="o">=</span>/home/node/app/var/db
 </span></code></pre></div>
     </td>
 </tr>
@@ -1160,63 +1272,6 @@ other stateful services, as can be seen below.</p>
 </tr>
 
 </table>
-
-<h2 id="deploy-a-multi-container-service">Deploy a multi-container service</h2>
-<p>Some stateful service have multiple containers, typically having frontend, backend, and database in their own container.</p>
-<p>XDN supports deployment of stateful service with multiple containers. Developers need to specify the properties of
-the service, including the containers of that service. 
-An example of that service properties declaration is shown below, in <code>wordpress.yaml</code> file.
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># wordpress.yaml</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nn">---</span>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myblog</span>
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="nt">components</span><span class="p">:</span>
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">wordpress</span><span class="p">:</span>
-</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress:6.5.4-fpm-alpine</span>
-</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">        </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
-</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">        </span><span class="nt">entry</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">        </span><span class="nt">environments</span><span class="p">:</span>
-</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">           </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">WORDPRESS_CONFIG_EXTRA</span><span class="p">:</span>
-</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">                </span><span class="l l-Scalar l-Scalar-Plain">define(&#39;FORCE_SSL_ADMIN&#39;, false);</span>
-</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="w">                </span><span class="l l-Scalar l-Scalar-Plain">define(&#39;FORCE_SSL_LOGIN&#39;, false);</span>
-</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">database</span><span class="p">:</span>
-</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysql:8.4.0</span>
-</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="w">        </span><span class="nt">expose</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3306</span>
-</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="w">        </span><span class="nt">stateful</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-</span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="w">        </span><span class="nt">environments</span><span class="p">:</span>
-</span><span id="__span-8-18"><a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="w">           </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">MYSQL_ROOT_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">supersecret</span>
-</span><span id="__span-8-19"><a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a><span class="nt">deterministic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-</span><span id="__span-8-20"><a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">database:/var/lib/mysql/</span>
-</span><span id="__span-8-21"><a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a><span class="nt">consistency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">linearizability</span>
-</span></code></pre></div></p>
-<p>Then, to deploy that multi-container service, use the following command:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>xdn<span class="w"> </span>launch<span class="w"> </span>myblog<span class="w"> </span>--file<span class="o">=</span>wordpress.yaml
-</span></code></pre></div>
-If successful, you wil see the following output.
-<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>Launching bookcatalog service with the following configuration:
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>  docker image  : wordpress:6.5.4-fpm-alpine,mysql:8.4.0
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>  http port     : 80
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>  consistency   : linearizable
-</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>  deterministic : false
-</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>  state dir     : database:/var/lib/mysql/
-</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>
-</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>The service is successfully launched 🎉🚀
-</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>Access your service at the following permanent URL:
-</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>  &gt; http://myblog.xdnapp.com/
-</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>
-</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>
-</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>Retrieve the service&#39;s replica locations with this command:
-</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>  xdn service info myblog
-</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>Destroy the replicated service with this command:
-</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>  xdn service destroy myblog
-</span></code></pre></div></p>
-<p>Limitations:</p>
-<ul>
-<li>XDN only supports at most one stateful container. Multiple stateful container requires snapshot transaction support,
-  currently unimplemented.</li>
-<li>XDN only supports at most one entry container. Supporting multiple entry containers require developer to declare the
-  ports of all those entry containers, making the specification more complex. Currently, this feature is not a priority
-  for XDN.</li>
-</ul>
 
 
 
@@ -1269,13 +1324,13 @@ If successful, you wil see the following output.
         
         
           
-          <a href="../flexible-consistency/" class="md-footer__link md-footer__link--next" aria-label="Next: Consistency">
+          <a href="../multi-container/" class="md-footer__link md-footer__link--next" aria-label="Next: Multi-container services">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Consistency
+                Multi-container services
               </div>
             </div>
             <div class="md-footer__button md-icon">

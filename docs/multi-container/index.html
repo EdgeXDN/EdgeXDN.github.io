@@ -12,11 +12,13 @@
         <meta name="author" content="Fadhil I. Kurnia">
       
       
-        <link rel="canonical" href="https://xdn.cs.umass.edu/dashboard/">
+        <link rel="canonical" href="https://xdn.cs.umass.edu/multi-container/">
       
       
-        <link rel="prev" href="../reference/wordpress-pb-investigation/">
+        <link rel="prev" href="../getting-started/">
       
+      
+        <link rel="next" href="../flexible-consistency/">
       
       
         
@@ -27,7 +29,7 @@
     
     
       
-        <title>Dashboard - XDN</title>
+        <title>Multi-container services - XDN</title>
       
     
     
@@ -76,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#dashboard" class="md-skip">
+        <a href="#deploy-a-multi-container-service" class="md-skip">
           Skip to content
         </a>
       
@@ -111,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Dashboard
+              Multi-container services
             
           </span>
         </div>
@@ -207,10 +209,12 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../getting-started/" class="md-tabs__link">
           
   
@@ -323,11 +327,9 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="./" class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../dashboard/" class="md-tabs__link">
         
   
   
@@ -357,9 +359,7 @@
           
             
               
-                
-              
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -423,24 +423,29 @@
       
   
   
+    
   
   
+  
     
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   
@@ -458,7 +463,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -501,10 +506,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../multi-container/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -520,6 +534,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -869,19 +884,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../dashboard/" class="md-nav__link">
         
   
   
@@ -897,7 +903,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -910,9 +915,7 @@
             
             
               
-                
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -936,46 +939,77 @@
               <article class="md-content__inner md-typeset">
                 
                   
-  
-
-
-
-  
-  
-
-
-<h1 id="dashboard">Dashboard</h1>
-<p>Operate and observe an XDN control plane from the browser — deploy/destroy
-services, see replica placement, the geo-demand heatmap, and the full cluster
-topology. Point it at your control plane with the in-frame <strong>Connect</strong> field (or
-<a href="app/">open it full-screen</a>).</p>
-<style>
-  /* Embed the dashboard SPA full-width under the site's header/footer/tabs. */
-  .xdn-dash-frame {
-    width: 100%;
-    height: calc(100vh - 11rem);
-    min-height: 720px;
-    border: 1px solid var(--md-default-fg-color--lightest);
-    border-radius: 6px;
-  }
-</style>
-
-<iframe class="xdn-dash-frame" src="app/?embed=1" title="XDN dashboard"
-        loading="lazy" referrerpolicy="no-referrer"></iframe>
-
-
-
-
-
 
 
   
   
 
 
+<h1 id="deploy-a-multi-container-service">Deploy a multi-container service</h1>
+<p>Some stateful service have multiple containers, typically having frontend, backend, and database in their own container.</p>
+<p>XDN supports deployment of stateful service with multiple containers. Developers need to specify the properties of
+the service, including the containers of that service. 
+An example of that service properties declaration is shown below, in <code>wordpress.yaml</code> file.
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># wordpress.yaml</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nn">---</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myblog</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nt">components</span><span class="p">:</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">wordpress</span><span class="p">:</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress:6.5.4-fpm-alpine</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">        </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">        </span><span class="nt">entry</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">        </span><span class="nt">environments</span><span class="p">:</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">           </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">WORDPRESS_CONFIG_EXTRA</span><span class="p">:</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">                </span><span class="l l-Scalar l-Scalar-Plain">define(&#39;FORCE_SSL_ADMIN&#39;, false);</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">                </span><span class="l l-Scalar l-Scalar-Plain">define(&#39;FORCE_SSL_LOGIN&#39;, false);</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">database</span><span class="p">:</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysql:8.4.0</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">        </span><span class="nt">expose</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3306</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">        </span><span class="nt">stateful</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">        </span><span class="nt">environments</span><span class="p">:</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">           </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">MYSQL_ROOT_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">supersecret</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="nt">deterministic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">database:/var/lib/mysql/</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="nt">consistency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">linearizability</span>
+</span></code></pre></div></p>
+<p>Then, to deploy that multi-container service, use the following command:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>xdn<span class="w"> </span>launch<span class="w"> </span>myblog<span class="w"> </span>--file<span class="o">=</span>wordpress.yaml
+</span></code></pre></div>
+If successful, you wil see the following output.
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Launching bookcatalog service with the following configuration:
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>  docker image  : wordpress:6.5.4-fpm-alpine,mysql:8.4.0
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>  http port     : 80
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>  consistency   : linearizable
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>  deterministic : false
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>  state dir     : database:/var/lib/mysql/
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>The service is successfully launched 🎉🚀
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>Access your service at the following permanent URL:
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>  &gt; http://myblog.xdnapp.com/
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>Retrieve the service&#39;s replica locations with this command:
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>  xdn service info myblog
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>Destroy the replicated service with this command:
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>  xdn service destroy myblog
+</span></code></pre></div></p>
+<p>Limitations:</p>
+<ul>
+<li>XDN only supports at most one stateful container. Multiple stateful container requires snapshot transaction support,
+  currently unimplemented.</li>
+<li>XDN only supports at most one entry container. Supporting multiple entry containers require developer to declare the
+  ports of all those entry containers, making the specification more complex. Currently, this feature is not a priority
+  for XDN.</li>
+</ul>
 
 
-  
+
+
+
+
+
+
+
 
 
 
@@ -999,12 +1033,10 @@ topology. Point it at your control plane with the in-frame <strong>Connect</stro
   
     
       
-        
-      
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../reference/wordpress-pb-investigation/" class="md-footer__link md-footer__link--prev" aria-label="Previous: WordPress primary-backup investigation">
+          <a href="../getting-started/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Getting started">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1014,11 +1046,27 @@ topology. Point it at your control plane with the in-frame <strong>Connect</stro
                 Previous
               </span>
               <div class="md-ellipsis">
-                WordPress primary-backup investigation
+                Getting started
               </div>
             </div>
           </a>
         
+        
+          
+          <a href="../flexible-consistency/" class="md-footer__link md-footer__link--next" aria-label="Next: Consistency">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Consistency
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
         
       </nav>
     
