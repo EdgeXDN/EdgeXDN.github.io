@@ -12,13 +12,13 @@
         <meta name="author" content="Fadhil I. Kurnia">
       
       
-        <link rel="canonical" href="https://xdn.cs.umass.edu/reference/HTTP-API/">
+        <link rel="canonical" href="https://xdn.cs.umass.edu/reference/service-name-inference/">
       
       
-        <link rel="prev" href="../../how-xdn-work/">
+        <link rel="prev" href="../request-flow/">
       
       
-        <link rel="next" href="../cli/">
+        <link rel="next" href="../geo-demand/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>Control-plane API - XDN</title>
+        <title>Service name inference - XDN</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#control-plane-http-api" class="md-skip">
+        <a href="#service-name-inference" class="md-skip">
           Skip to content
         </a>
       
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Control-plane API
+              Service name inference
             
           </span>
         </div>
@@ -311,7 +311,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+        <a href="../HTTP-API/" class="md-tabs__link">
           
   
   
@@ -699,37 +699,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Control-plane API
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../HTTP-API/" class="md-nav__link">
         
   
   
@@ -745,92 +718,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#service-lifecycle" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Service lifecycle
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#placement-coordinator-demand" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Placement, coordinator &amp; demand
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cluster-nodes-elasticity" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cluster nodes (elasticity)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#per-replica-info-activereplica" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Per-replica info (ActiveReplica)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#status-codes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Status codes
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#deprecated-legacy-get-type" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Deprecated: legacy GET /?type=…
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -896,10 +783,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../service-name-inference/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Service name inference
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -915,6 +829,70 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#where-the-name-can-come-from" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where the name can come from
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cookie-convenience-for-browsers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cookie convenience for browsers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#normalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Normalization
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-this-lives-in-the-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where this lives in the code
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1121,10 +1099,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#service-lifecycle" class="md-nav__link">
+  <a href="#where-the-name-can-come-from" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Service lifecycle
+        Where the name can come from
       
     </span>
   </a>
@@ -1132,10 +1110,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#placement-coordinator-demand" class="md-nav__link">
+  <a href="#cookie-convenience-for-browsers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Placement, coordinator &amp; demand
+        Cookie convenience for browsers
       
     </span>
   </a>
@@ -1143,10 +1121,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#cluster-nodes-elasticity" class="md-nav__link">
+  <a href="#normalization" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Cluster nodes (elasticity)
+        Normalization
       
     </span>
   </a>
@@ -1154,32 +1132,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#per-replica-info-activereplica" class="md-nav__link">
+  <a href="#where-this-lives-in-the-code" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Per-replica info (ActiveReplica)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#status-codes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Status codes
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#deprecated-legacy-get-type" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Deprecated: legacy GET /?type=…
+        Where this lives in the code
       
     </span>
   </a>
@@ -1206,144 +1162,66 @@
   
 
 
-<h1 id="control-plane-http-api">Control-plane HTTP API</h1>
-<p>The XDN control plane (the Reconfigurator) exposes a small JSON HTTP API for
-deploying, inspecting, and reconfiguring services. The dashboard and the <code>xdn</code>
-CLI are both thin clients of this API; you can also call it directly.</p>
+<h1 id="service-name-inference">Service Name Inference</h1>
+<p>An ActiveReplica's HTTP frontend hosts many services at once, but an incoming
+HTTP request is just a normal web request — it has no XDN-specific field. So
+before the request can be routed to the right service (and coordinated), the
+ActiveReplica must figure out <strong>which service it is for</strong>. This page describes
+how that name is inferred.</p>
+<h2 id="where-the-name-can-come-from">Where the name can come from</h2>
+<p>For each request the ActiveReplica looks in four places, in priority order, and
+takes the first one that yields a non-empty name:</p>
+<ol>
+<li><strong><code>_xdnsvc</code> query parameter</strong> — e.g. <code>http://host:port/path?_xdnsvc=my-service</code>.
+   Useful for direct links and testing, where you can't control the Host header.</li>
+<li><strong><code>XDN</code> header</strong> — e.g. <code>XDN: my-service</code>. Explicit and unambiguous; this is
+   what clients and tools (e.g. the CLI) set.</li>
+<li><strong><code>XDN</code> cookie</strong> — <code>Cookie: XDN=my-service</code>. Lets a browser keep talking to the
+   same service across navigation without re-specifying it (see below).</li>
+<li><strong>Host subdomain</strong> — the left-most label of the hostname, e.g.
+   <code>my-service.xdnapp.com</code> → <code>my-service</code>. This is the normal production path:
+   each service gets its own subdomain, so an ordinary browser request to the
+   service's URL just works.</li>
+</ol>
+<p>If none of these yields a name, the request is rejected (the frontend can't know
+where to route it).</p>
+<h2 id="cookie-convenience-for-browsers">Cookie convenience for browsers</h2>
+<p>When a request names the service via <code>_xdnsvc</code>, the ActiveReplica responds with
+<code>Set-Cookie: XDN=&lt;service&gt;</code>. Subsequent requests from that browser then carry the
+service name automatically via the cookie (priority 3), so links and relative
+asset paths keep working without the query parameter.</p>
+<h2 id="normalization">Normalization</h2>
+<p>Once the name is inferred, the ActiveReplica:</p>
 <ul>
-<li><strong>Base URL</strong> — <code>http(s)://&lt;control-plane-host&gt;:&lt;port&gt;</code>. The CLI talks to the
-  clear-HTTP port (<code>:3300</code>); the browser dashboard uses the TLS port (<code>:3400</code>).</li>
-<li><strong>Format</strong> — requests and responses are JSON; any origin is allowed (CORS).</li>
-<li>All endpoints live under the <code>/api/v2</code> prefix.</li>
+<li>copies it into the <strong><code>XDN</code> header</strong>, so the service name survives when the
+  request is serialized and replicated to other replicas (e.g. Paxos followers),
+  which re-run inference on the deserialized form; and</li>
+<li><strong>strips</strong> the <code>_xdnsvc</code> query parameter from the URI, so the containerized
+  service never sees XDN's routing internals.</li>
 </ul>
-<h2 id="service-lifecycle">Service lifecycle</h2>
+<h2 id="where-this-lives-in-the-code">Where this lives in the code</h2>
 <table>
 <thead>
 <tr>
-<th>Method</th>
-<th>Path</th>
-<th>Purpose</th>
-<th>Success</th>
+<th>Concern</th>
+<th>Location</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>POST</code></td>
-<td><code>/api/v2/services/{name}</code></td>
-<td>Create (launch) a service. Body: <code>{"initial_state": "xdn:init:…"}</code> (the encoded service config).</td>
-<td><code>201</code></td>
+<td>Inference order + Host parsing</td>
+<td><code>XdnHttpRequest.inferServiceName</code></td>
 </tr>
 <tr>
-<td><code>GET</code></td>
-<td><code>/api/v2/services/{name}</code></td>
-<td>Get a service (its active replicas).</td>
-<td><code>200</code></td>
+<td>Param / cookie names</td>
+<td><code>XdnHttpRequest.XDN_SVC_QUERY_PARAM</code>, <code>XDN</code> header/cookie</td>
 </tr>
 <tr>
-<td><code>DELETE</code></td>
-<td><code>/api/v2/services/{name}</code></td>
-<td>Destroy a service.</td>
-<td><code>200</code></td>
+<td>Cookie + header normalization</td>
+<td><code>XdnHttpRequest</code> (constructor / response path)</td>
 </tr>
 </tbody>
 </table>
-<h2 id="placement-coordinator-demand">Placement, coordinator &amp; demand</h2>
-<table>
-<thead>
-<tr>
-<th>Method</th>
-<th>Path</th>
-<th>Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>GET</code></td>
-<td><code>/api/v2/services/{name}/placement</code></td>
-<td>Current placement: per-replica id, role, address, geolocation.</td>
-</tr>
-<tr>
-<td><code>PUT</code></td>
-<td><code>/api/v2/services/{name}/placement</code></td>
-<td>Set the replica set (and optionally coordinator). Body: <code>{"NODES":[…],"COORDINATOR":"…"}</code>.</td>
-</tr>
-<tr>
-<td><code>PUT</code></td>
-<td><code>/api/v2/services/{name}/coordinator</code></td>
-<td>Change the coordinator/leader. Body: <code>{"newCoordinatorNodeId":"…"}</code>.</td>
-</tr>
-<tr>
-<td><code>GET</code></td>
-<td><code>/api/v2/services/{name}/demand</code></td>
-<td>Geo-demand heatmap cells: <code>[{"lat","lon","count"}]</code> (see <a href="../geo-demand/">Geo-distributed demand</a>).</td>
-</tr>
-</tbody>
-</table>
-<h2 id="cluster-nodes-elasticity">Cluster nodes (elasticity)</h2>
-<table>
-<thead>
-<tr>
-<th>Method</th>
-<th>Path</th>
-<th>Purpose</th>
-<th>Success</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>GET</code></td>
-<td><code>/api/v2/nodes</code></td>
-<td>List node locations: candidates + active replicas (<code>[{"id","lat","lon","active"}]</code>).</td>
-<td><code>200</code></td>
-</tr>
-<tr>
-<td><code>POST</code></td>
-<td><code>/api/v2/nodes</code></td>
-<td>Add an active replica. Body: <code>{"id","host","port"}</code>.</td>
-<td><code>202</code></td>
-</tr>
-<tr>
-<td><code>DELETE</code></td>
-<td><code>/api/v2/nodes/{id}</code></td>
-<td>Remove an active replica.</td>
-<td><code>202</code></td>
-</tr>
-</tbody>
-</table>
-<p>Node config changes are applied asynchronously (the cluster reconfigures and
-transfers state); <code>202 Accepted</code> means the change was queued. Poll
-<code>/api/v2/nodes</code> or a service's <code>/placement</code> for the result.</p>
-<h2 id="per-replica-info-activereplica">Per-replica info (ActiveReplica)</h2>
-<p>Each ActiveReplica also serves its own live detail — queried directly from the
-replica, not the control plane:</p>
-<table>
-<thead>
-<tr>
-<th>Method</th>
-<th>Path</th>
-<th>Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>GET</code></td>
-<td><code>/api/v2/services/{name}/replica/info</code></td>
-<td>This replica's role, protocol, epoch, consistency, and container status.</td>
-</tr>
-</tbody>
-</table>
-<p>The replica must know which service the request targets; pass <code>?_xdnsvc={name}</code>
-or an <code>XDN: {name}</code> header (see <a href="../service-name-inference/">Service name inference</a>).</p>
-<h2 id="status-codes">Status codes</h2>
-<p><code>2xx</code> on success (<code>201</code> create, <code>202</code> async node change, <code>200</code> otherwise);
-<code>400</code> malformed request; <code>404</code> unknown service; <code>409</code> create conflict; <code>5xx</code>
-server error. Error responses carry a JSON body with a <code>RESPONSE_MESSAGE</code>.</p>
-<h2 id="deprecated-legacy-get-type">Deprecated: legacy <code>GET /?type=…</code></h2>
-<p>Earlier versions did everything over <code>GET</code> with a query string —
-<code>/?type=CREATE&amp;name=…&amp;initial_state=…</code>, <code>/?type=DELETE&amp;name=…</code>,
-<code>/?type=CHANGE_ACTIVES&amp;…</code>. These still work for backward compatibility but are
-<strong>deprecated</strong> (the server logs a warning) and will be removed; use the RESTful
-endpoints above instead.</p>
 
 
 
@@ -1379,7 +1257,7 @@ endpoints above instead.</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../../how-xdn-work/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Architecture">
+          <a href="../request-flow/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Request flow">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1389,20 +1267,20 @@ endpoints above instead.</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                Architecture
+                Request flow
               </div>
             </div>
           </a>
         
         
           
-          <a href="../cli/" class="md-footer__link md-footer__link--next" aria-label="Next: Command-line (xdn)">
+          <a href="../geo-demand/" class="md-footer__link md-footer__link--next" aria-label="Next: Geo-distributed demand">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Command-line (xdn)
+                Geo-distributed demand
               </div>
             </div>
             <div class="md-footer__button md-icon">

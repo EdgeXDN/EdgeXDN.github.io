@@ -12,13 +12,13 @@
         <meta name="author" content="Fadhil I. Kurnia">
       
       
-        <link rel="canonical" href="https://xdn.cs.umass.edu/reference/HTTP-API/">
+        <link rel="canonical" href="https://xdn.cs.umass.edu/reference/cli/">
       
       
-        <link rel="prev" href="../../how-xdn-work/">
+        <link rel="prev" href="../HTTP-API/">
       
       
-        <link rel="next" href="../cli/">
+        <link rel="next" href="../request-flow/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>Control-plane API - XDN</title>
+        <title>Command-line (xdn) - XDN</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#control-plane-http-api" class="md-skip">
+        <a href="#command-line-xdn" class="md-skip">
           Skip to content
         </a>
       
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Control-plane API
+              Command-line (xdn)
             
           </span>
         </div>
@@ -311,7 +311,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+        <a href="../HTTP-API/" class="md-tabs__link">
           
   
   
@@ -699,6 +699,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTTP-API/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Control-plane API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -718,7 +746,7 @@
   <span class="md-ellipsis">
     
   
-    Control-plane API
+    Command-line (xdn)
   
 
     
@@ -736,7 +764,7 @@
   <span class="md-ellipsis">
     
   
-    Control-plane API
+    Command-line (xdn)
   
 
     
@@ -762,10 +790,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#service-lifecycle" class="md-nav__link">
+  <a href="#pointing-at-a-control-plane" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Service lifecycle
+        Pointing at a control plane
       
     </span>
   </a>
@@ -773,10 +801,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#placement-coordinator-demand" class="md-nav__link">
+  <a href="#commands" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Placement, coordinator &amp; demand
+        Commands
       
     </span>
   </a>
@@ -784,43 +812,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#cluster-nodes-elasticity" class="md-nav__link">
+  <a href="#example" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Cluster nodes (elasticity)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#per-replica-info-activereplica" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Per-replica info (ActiveReplica)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#status-codes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Status codes
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#deprecated-legacy-get-type" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Deprecated: legacy GET /?type=…
+        Example
       
     </span>
   </a>
@@ -831,34 +826,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../cli/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Command-line (xdn)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -1121,10 +1088,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#service-lifecycle" class="md-nav__link">
+  <a href="#pointing-at-a-control-plane" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Service lifecycle
+        Pointing at a control plane
       
     </span>
   </a>
@@ -1132,10 +1099,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#placement-coordinator-demand" class="md-nav__link">
+  <a href="#commands" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Placement, coordinator &amp; demand
+        Commands
       
     </span>
   </a>
@@ -1143,43 +1110,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#cluster-nodes-elasticity" class="md-nav__link">
+  <a href="#example" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Cluster nodes (elasticity)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#per-replica-info-activereplica" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Per-replica info (ActiveReplica)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#status-codes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Status codes
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#deprecated-legacy-get-type" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Deprecated: legacy GET /?type=…
+        Example
       
     </span>
   </a>
@@ -1206,144 +1140,72 @@
   
 
 
-<h1 id="control-plane-http-api">Control-plane HTTP API</h1>
-<p>The XDN control plane (the Reconfigurator) exposes a small JSON HTTP API for
-deploying, inspecting, and reconfiguring services. The dashboard and the <code>xdn</code>
-CLI are both thin clients of this API; you can also call it directly.</p>
-<ul>
-<li><strong>Base URL</strong> — <code>http(s)://&lt;control-plane-host&gt;:&lt;port&gt;</code>. The CLI talks to the
-  clear-HTTP port (<code>:3300</code>); the browser dashboard uses the TLS port (<code>:3400</code>).</li>
-<li><strong>Format</strong> — requests and responses are JSON; any origin is allowed (CORS).</li>
-<li>All endpoints live under the <code>/api/v2</code> prefix.</li>
-</ul>
-<h2 id="service-lifecycle">Service lifecycle</h2>
+<h1 id="command-line-xdn">Command-line (<code>xdn</code>)</h1>
+<p><code>xdn</code> is the command-line client for deploying and managing replicated stateful
+services. It is a thin wrapper over the <a href="../HTTP-API/">Control-plane HTTP API</a>.</p>
+<h2 id="pointing-at-a-control-plane">Pointing at a control plane</h2>
+<p>Commands talk to the control plane named by <code>XDN_CONTROL_PLANE</code> (default
+<code>localhost</code>, port <code>3300</code>):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">XDN_CONTROL_PLANE</span><span class="o">=</span>cp.xdnapp.com
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>xdn<span class="w"> </span>check<span class="w">          </span><span class="c1"># verify the control plane is reachable</span>
+</span></code></pre></div>
+<h2 id="commands">Commands</h2>
 <table>
 <thead>
 <tr>
-<th>Method</th>
-<th>Path</th>
-<th>Purpose</th>
-<th>Success</th>
+<th>Command</th>
+<th>Does</th>
+<th>API call</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>POST</code></td>
-<td><code>/api/v2/services/{name}</code></td>
-<td>Create (launch) a service. Body: <code>{"initial_state": "xdn:init:…"}</code> (the encoded service config).</td>
-<td><code>201</code></td>
+<td><code>xdn launch &lt;name&gt;</code></td>
+<td>Launch a service from a service config (Docker image, port, state dir, consistency).</td>
+<td><code>POST /api/v2/services/{name}</code></td>
 </tr>
 <tr>
-<td><code>GET</code></td>
-<td><code>/api/v2/services/{name}</code></td>
-<td>Get a service (its active replicas).</td>
-<td><code>200</code></td>
+<td><code>xdn service info &lt;name&gt;</code></td>
+<td>Show deployment info: replicas, roles, live status, geolocations.</td>
+<td><code>GET …/placement</code> + each replica's <code>…/replica/info</code></td>
 </tr>
 <tr>
-<td><code>DELETE</code></td>
-<td><code>/api/v2/services/{name}</code></td>
-<td>Destroy a service.</td>
-<td><code>200</code></td>
+<td><code>xdn service destroy &lt;name&gt;</code></td>
+<td>Permanently remove a service from the edge servers.</td>
+<td><code>DELETE /api/v2/services/{name}</code></td>
+</tr>
+<tr>
+<td><code>xdn service move &lt;name&gt;</code></td>
+<td>Relocate a service's active replicas to a given set of nodes.</td>
+<td><code>PUT …/placement</code></td>
+</tr>
+<tr>
+<td><code>xdn service leader &lt;name&gt; &lt;node-id&gt;</code></td>
+<td>Set the coordinator/leader for the service's current epoch.</td>
+<td><code>PUT …/coordinator</code></td>
+</tr>
+<tr>
+<td><code>xdn status</code></td>
+<td>Show the status of deployed services.</td>
+<td><code>GET …/placement</code></td>
+</tr>
+<tr>
+<td><code>xdn check</code></td>
+<td>Check connectivity / cloud-provider credentials.</td>
+<td>—</td>
 </tr>
 </tbody>
 </table>
-<h2 id="placement-coordinator-demand">Placement, coordinator &amp; demand</h2>
-<table>
-<thead>
-<tr>
-<th>Method</th>
-<th>Path</th>
-<th>Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>GET</code></td>
-<td><code>/api/v2/services/{name}/placement</code></td>
-<td>Current placement: per-replica id, role, address, geolocation.</td>
-</tr>
-<tr>
-<td><code>PUT</code></td>
-<td><code>/api/v2/services/{name}/placement</code></td>
-<td>Set the replica set (and optionally coordinator). Body: <code>{"NODES":[…],"COORDINATOR":"…"}</code>.</td>
-</tr>
-<tr>
-<td><code>PUT</code></td>
-<td><code>/api/v2/services/{name}/coordinator</code></td>
-<td>Change the coordinator/leader. Body: <code>{"newCoordinatorNodeId":"…"}</code>.</td>
-</tr>
-<tr>
-<td><code>GET</code></td>
-<td><code>/api/v2/services/{name}/demand</code></td>
-<td>Geo-demand heatmap cells: <code>[{"lat","lon","count"}]</code> (see <a href="../geo-demand/">Geo-distributed demand</a>).</td>
-</tr>
-</tbody>
-</table>
-<h2 id="cluster-nodes-elasticity">Cluster nodes (elasticity)</h2>
-<table>
-<thead>
-<tr>
-<th>Method</th>
-<th>Path</th>
-<th>Purpose</th>
-<th>Success</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>GET</code></td>
-<td><code>/api/v2/nodes</code></td>
-<td>List node locations: candidates + active replicas (<code>[{"id","lat","lon","active"}]</code>).</td>
-<td><code>200</code></td>
-</tr>
-<tr>
-<td><code>POST</code></td>
-<td><code>/api/v2/nodes</code></td>
-<td>Add an active replica. Body: <code>{"id","host","port"}</code>.</td>
-<td><code>202</code></td>
-</tr>
-<tr>
-<td><code>DELETE</code></td>
-<td><code>/api/v2/nodes/{id}</code></td>
-<td>Remove an active replica.</td>
-<td><code>202</code></td>
-</tr>
-</tbody>
-</table>
-<p>Node config changes are applied asynchronously (the cluster reconfigures and
-transfers state); <code>202 Accepted</code> means the change was queued. Poll
-<code>/api/v2/nodes</code> or a service's <code>/placement</code> for the result.</p>
-<h2 id="per-replica-info-activereplica">Per-replica info (ActiveReplica)</h2>
-<p>Each ActiveReplica also serves its own live detail — queried directly from the
-replica, not the control plane:</p>
-<table>
-<thead>
-<tr>
-<th>Method</th>
-<th>Path</th>
-<th>Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>GET</code></td>
-<td><code>/api/v2/services/{name}/replica/info</code></td>
-<td>This replica's role, protocol, epoch, consistency, and container status.</td>
-</tr>
-</tbody>
-</table>
-<p>The replica must know which service the request targets; pass <code>?_xdnsvc={name}</code>
-or an <code>XDN: {name}</code> header (see <a href="../service-name-inference/">Service name inference</a>).</p>
-<h2 id="status-codes">Status codes</h2>
-<p><code>2xx</code> on success (<code>201</code> create, <code>202</code> async node change, <code>200</code> otherwise);
-<code>400</code> malformed request; <code>404</code> unknown service; <code>409</code> create conflict; <code>5xx</code>
-server error. Error responses carry a JSON body with a <code>RESPONSE_MESSAGE</code>.</p>
-<h2 id="deprecated-legacy-get-type">Deprecated: legacy <code>GET /?type=…</code></h2>
-<p>Earlier versions did everything over <code>GET</code> with a query string —
-<code>/?type=CREATE&amp;name=…&amp;initial_state=…</code>, <code>/?type=DELETE&amp;name=…</code>,
-<code>/?type=CHANGE_ACTIVES&amp;…</code>. These still work for backward compatibility but are
-<strong>deprecated</strong> (the server logs a warning) and will be removed; use the RESTful
-endpoints above instead.</p>
+<h2 id="example">Example</h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">XDN_CONTROL_PLANE</span><span class="o">=</span>cp.xdnapp.com
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1"># launch, inspect, then tear down</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>xdn<span class="w"> </span>launch<span class="w"> </span>my-service<span class="w">          </span><span class="c1"># reads the service config (see Quick Start)</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>xdn<span class="w"> </span>service<span class="w"> </span>info<span class="w"> </span>my-service
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>xdn<span class="w"> </span>service<span class="w"> </span>destroy<span class="w"> </span>my-service
+</span></code></pre></div>
+<p><code>xdn service info</code> queries each replica directly for its live role and container
+status, so a replica that is unreachable is shown as such rather than omitted.</p>
 
 
 
@@ -1379,7 +1241,7 @@ endpoints above instead.</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../../how-xdn-work/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Architecture">
+          <a href="../HTTP-API/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Control-plane API">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1389,20 +1251,20 @@ endpoints above instead.</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                Architecture
+                Control-plane API
               </div>
             </div>
           </a>
         
         
           
-          <a href="../cli/" class="md-footer__link md-footer__link--next" aria-label="Next: Command-line (xdn)">
+          <a href="../request-flow/" class="md-footer__link md-footer__link--next" aria-label="Next: Request flow">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Command-line (xdn)
+                Request flow
               </div>
             </div>
             <div class="md-footer__button md-icon">
