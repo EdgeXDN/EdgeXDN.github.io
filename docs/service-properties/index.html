@@ -12,13 +12,13 @@
         <meta name="author" content="Fadhil I. Kurnia">
       
       
-        <link rel="canonical" href="https://xdn.cs.umass.edu/4-how-xdn-work/">
+        <link rel="canonical" href="https://xdn.cs.umass.edu/service-properties/">
       
       
-        <link rel="prev" href="../2-become-operator/">
+        <link rel="prev" href="../flexible-consistency/">
       
       
-        <link rel="next" href="../reference/HTTP-API/">
+        <link rel="next" href="../become-operator/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>Architecture - XDN</title>
+        <title>Service Properties - XDN</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#the-architecture-of-xdn" class="md-skip">
+        <a href="#declaring-service-properties-for-xdn" class="md-skip">
           Skip to content
         </a>
       
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Architecture
+              Service Properties
             
           </span>
         </div>
@@ -211,7 +211,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../1-getting-started/" class="md-tabs__link">
+      <a href="../getting-started/" class="md-tabs__link">
         
   
   
@@ -230,7 +230,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../3-flexible-consistency/" class="md-tabs__link">
+      <a href="../flexible-consistency/" class="md-tabs__link">
         
   
   
@@ -247,9 +247,11 @@
   
   
   
+    
   
-    <li class="md-tabs__item">
-      <a href="../5-service-properties/" class="md-tabs__link">
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
         
   
   
@@ -268,7 +270,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../2-become-operator/" class="md-tabs__link">
+      <a href="../become-operator/" class="md-tabs__link">
         
   
   
@@ -285,11 +287,9 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="./" class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../how-xdn-work/" class="md-tabs__link">
         
   
   
@@ -425,7 +425,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../1-getting-started/" class="md-nav__link">
+      <a href="../getting-started/" class="md-nav__link">
         
   
   
@@ -452,7 +452,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../3-flexible-consistency/" class="md-nav__link">
+      <a href="../flexible-consistency/" class="md-nav__link">
         
   
   
@@ -460,60 +460,6 @@
     
   
     Consistency
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../5-service-properties/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Service Properties
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../2-become-operator/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Deployment
   
 
     
@@ -542,7 +488,143 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Service Properties
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Service Properties
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#determinism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Determinism
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nil-external-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nil-external operations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commutative-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Commutative operations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monotonic-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Monotonic operations
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../become-operator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-xdn-work/" class="md-nav__link">
         
   
   
@@ -558,7 +640,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -835,6 +916,58 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#determinism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Determinism
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nil-external-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nil-external operations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commutative-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Commutative operations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monotonic-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Monotonic operations
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -853,7 +986,18 @@
   
 
 
-<h1 id="the-architecture-of-xdn">The architecture of XDN</h1>
+<h1 id="declaring-service-properties-for-xdn">Declaring service properties for XDN</h1>
+<div class="admonition tip">
+<p class="admonition-title">Declarative Replication</p>
+<p>XDN embraces declarative replication, relieving the app developers to know in detail <strong>how</strong> the replication happen.
+Developers only need to declare the <strong>what</strong>, specifically the service and its operations properties: whether it is
+deterministic or not, set of commutative operations, nil-external operations, read-only operations etc; and the 
+intended consistency model.</p>
+</div>
+<h2 id="determinism">Determinism</h2>
+<h2 id="nil-external-operations">Nil-external operations</h2>
+<h2 id="commutative-operations">Commutative operations</h2>
+<h2 id="monotonic-operations">Monotonic operations</h2>
 
 
 
@@ -889,7 +1033,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../2-become-operator/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Deployment">
+          <a href="../flexible-consistency/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Consistency">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -899,20 +1043,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Deployment
+                Consistency
               </div>
             </div>
           </a>
         
         
           
-          <a href="../reference/HTTP-API/" class="md-footer__link md-footer__link--next" aria-label="Next: HTTP API">
+          <a href="../become-operator/" class="md-footer__link md-footer__link--next" aria-label="Next: Deployment">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                HTTP API
+                Deployment
               </div>
             </div>
             <div class="md-footer__button md-icon">

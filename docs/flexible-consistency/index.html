@@ -12,13 +12,13 @@
         <meta name="author" content="Fadhil I. Kurnia">
       
       
-        <link rel="canonical" href="https://xdn.cs.umass.edu/2-become-operator/">
+        <link rel="canonical" href="https://xdn.cs.umass.edu/flexible-consistency/">
       
       
-        <link rel="prev" href="../5-service-properties/">
+        <link rel="prev" href="../getting-started/">
       
       
-        <link rel="next" href="../4-how-xdn-work/">
+        <link rel="next" href="../service-properties/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>Deployment - XDN</title>
+        <title>Consistency - XDN</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#deploying-your-own-xdn-cluster" class="md-skip">
+        <a href="#flexible-consistency-in-xdn" class="md-skip">
           Skip to content
         </a>
       
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Deployment
+              Consistency
             
           </span>
         </div>
@@ -211,51 +211,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="../1-getting-started/" class="md-tabs__link">
+      <a href="../getting-started/" class="md-tabs__link">
         
   
   
     
   
   Getting Started
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../3-flexible-consistency/" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Consistency
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../5-service-properties/" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Service Properties
 
       </a>
     </li>
@@ -276,6 +238,44 @@
   
     
   
+  Consistency
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../service-properties/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Service Properties
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../become-operator/" class="md-tabs__link">
+        
+  
+  
+    
+  
   Deployment
 
       </a>
@@ -289,7 +289,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../4-how-xdn-work/" class="md-tabs__link">
+      <a href="../how-xdn-work/" class="md-tabs__link">
         
   
   
@@ -425,7 +425,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../1-getting-started/" class="md-nav__link">
+      <a href="../getting-started/" class="md-nav__link">
         
   
   
@@ -433,60 +433,6 @@
     
   
     Getting Started
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../3-flexible-consistency/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Consistency
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../5-service-properties/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Service Properties
   
 
     
@@ -522,7 +468,7 @@
   <span class="md-ellipsis">
     
   
-    Deployment
+    Consistency
   
 
     
@@ -540,7 +486,7 @@
   <span class="md-ellipsis">
     
   
-    Deployment
+    Consistency
   
 
     
@@ -566,22 +512,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#single-machine-deployment" class="md-nav__link">
+  <a href="#predefined-consistency-models" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Single machine deployment
+        Predefined consistency models
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Single machine deployment">
+    <nav class="md-nav" aria-label="Predefined consistency models">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#installing-dependencies" class="md-nav__link">
+  <a href="#linearizable" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installing dependencies
+        Linearizable
       
     </span>
   </a>
@@ -589,10 +535,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#editing-the-config" class="md-nav__link">
+  <a href="#sequential" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Editing the config
+        Sequential
       
     </span>
   </a>
@@ -600,10 +546,76 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#starting-the-cluster" class="md-nav__link">
+  <a href="#causal" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Starting the cluster
+        Causal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eventual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Eventual
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PRAM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read-your-writes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Read your writes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writes-follow-reads" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Writes follow reads
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monotonic-reads" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Monotonic reads
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monotonic-writes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Monotonic writes
       
     </span>
   </a>
@@ -616,41 +628,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#distributed-deployment" class="md-nav__link">
+  <a href="#custom-replication-protocol" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Distributed deployment
+        Custom replication protocol
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Distributed deployment">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#using-an-existing-xdn-provider" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Using an existing XDN Provider
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#becoming-an-xdn-provider" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Becoming an XDN Provider
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -669,7 +653,61 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-how-xdn-work/" class="md-nav__link">
+      <a href="../service-properties/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Service Properties
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../become-operator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-xdn-work/" class="md-nav__link">
         
   
   
@@ -968,22 +1006,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#single-machine-deployment" class="md-nav__link">
+  <a href="#predefined-consistency-models" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Single machine deployment
+        Predefined consistency models
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Single machine deployment">
+    <nav class="md-nav" aria-label="Predefined consistency models">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#installing-dependencies" class="md-nav__link">
+  <a href="#linearizable" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installing dependencies
+        Linearizable
       
     </span>
   </a>
@@ -991,10 +1029,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#editing-the-config" class="md-nav__link">
+  <a href="#sequential" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Editing the config
+        Sequential
       
     </span>
   </a>
@@ -1002,10 +1040,76 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#starting-the-cluster" class="md-nav__link">
+  <a href="#causal" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Starting the cluster
+        Causal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eventual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Eventual
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PRAM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read-your-writes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Read your writes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writes-follow-reads" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Writes follow reads
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monotonic-reads" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Monotonic reads
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monotonic-writes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Monotonic writes
       
     </span>
   </a>
@@ -1018,41 +1122,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#distributed-deployment" class="md-nav__link">
+  <a href="#custom-replication-protocol" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Distributed deployment
+        Custom replication protocol
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Distributed deployment">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#using-an-existing-xdn-provider" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Using an existing XDN Provider
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#becoming-an-xdn-provider" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Becoming an XDN Provider
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1076,27 +1152,44 @@
   
 
 
-<h1 id="deploying-your-own-xdn-cluster">Deploying your own XDN cluster</h1>
-<h2 id="single-machine-deployment">Single machine deployment</h2>
-<h3 id="installing-dependencies">Installing dependencies</h3>
-<h3 id="editing-the-config">Editing the config</h3>
-<h3 id="starting-the-cluster">Starting the cluster</h3>
-<h2 id="distributed-deployment">Distributed deployment</h2>
-<h3 id="using-an-existing-xdn-provider">Using an existing XDN Provider</h3>
-<h3 id="becoming-an-xdn-provider">Becoming an XDN Provider</h3>
-<h1 id="replicate-blackbox-service-with-existing-xdn-provider">Replicate Blackbox Service with Existing XDN Provider</h1>
-<p>We have prepared an XDN Provider with deployed Control Plane and Replication
-Plane using machines on CloudLab.</p>
-<ol>
-<li>Get the xdn command-line tool (<code>xdn</code>), for deploying the blackbox service.<ul>
-<li>From pre-compiled binaries</li>
-<li>Compile from source code</li>
-</ul>
-</li>
-<li>Make sure</li>
-</ol>
-<h1 id="distributed-deployment_1">Distributed deployment</h1>
-<h1 id="_1"></h1>
+<h1 id="flexible-consistency-in-xdn">Flexible consistency in XDN</h1>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Developer can specify the intended consistency model, or even implement custom replication protocol with the
+provided API.</p>
+</div>
+<h2 id="predefined-consistency-models">Predefined consistency models</h2>
+<h3 id="linearizable">Linearizable</h3>
+<p>TBD</p>
+<h3 id="sequential">Sequential</h3>
+<p>TBD</p>
+<h3 id="causal">Causal</h3>
+<p>TBD</p>
+<h3 id="eventual">Eventual</h3>
+<p>TBD</p>
+<h3 id="pram">PRAM</h3>
+<p>TBD</p>
+<h3 id="read-your-writes">Read your writes</h3>
+<p>TBD</p>
+<h3 id="writes-follow-reads">Writes follow reads</h3>
+<p>TBD</p>
+<h3 id="monotonic-reads">Monotonic reads</h3>
+<p>TBD</p>
+<h3 id="monotonic-writes">Monotonic writes</h3>
+<p>TBD</p>
+<h2 id="custom-replication-protocol">Custom replication protocol</h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Informally, a <strong>consistency model</strong> provides gurantees on what are valid values observable from the read requests. 
+<strong>Replication protocol</strong> is the one that ensures the guarantee is satisfied and never broken by
+preventing invalid observations (i.e., upholding the safety property).</p>
+</div>
+<p>TBD</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Replication protocol is commonly also referred as Coordination or Synchronization protocol. It is a class of 
+Distributed Protocol that manage the state in all the replicas, ensuring convergence.   </p>
+</div>
 
 
 
@@ -1132,7 +1225,7 @@ Plane using machines on CloudLab.</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../5-service-properties/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Service Properties">
+          <a href="../getting-started/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Getting Started">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1142,20 +1235,20 @@ Plane using machines on CloudLab.</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                Service Properties
+                Getting Started
               </div>
             </div>
           </a>
         
         
           
-          <a href="../4-how-xdn-work/" class="md-footer__link md-footer__link--next" aria-label="Next: Architecture">
+          <a href="../service-properties/" class="md-footer__link md-footer__link--next" aria-label="Next: Service Properties">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Architecture
+                Service Properties
               </div>
             </div>
             <div class="md-footer__button md-icon">
