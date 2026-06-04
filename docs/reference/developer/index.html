@@ -12,31 +12,31 @@
         <meta name="author" content="Fadhil I. Kurnia">
       
       
-        <link rel="canonical" href="https://xdn.cs.umass.edu/3-flexible-consistency/">
+        <link rel="canonical" href="https://xdn.cs.umass.edu/reference/developer/">
       
       
-        <link rel="prev" href="../1-getting-started/">
+        <link rel="prev" href="../request-flow/">
       
       
-        <link rel="next" href="../5-service-properties/">
+        <link rel="next" href="../paxos-reconfiguration/">
       
       
         
       
       
-      <link rel="icon" href="../images/icons8-octopus-100.png">
+      <link rel="icon" href="../../images/icons8-octopus-100.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Consistency - XDN</title>
+        <title>Developer guide - XDN</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -55,7 +55,7 @@
       
     
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#flexible-consistency-in-xdn" class="md-skip">
+        <a href="#intro-document-for-xdn-developers" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +96,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="https://xdn.cs.umass.edu/" title="XDN" class="md-header__button md-logo" aria-label="XDN" data-md-component="logo">
       
-  <img src="../images/icons8-octopus-100.png" alt="logo">
+  <img src="../../images/icons8-octopus-100.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Consistency
+              Developer guide
             
           </span>
         </div>
@@ -192,7 +192,7 @@
   
   
     <li class="md-tabs__item">
-      <a href=".." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
   
@@ -211,7 +211,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../1-getting-started/" class="md-tabs__link">
+      <a href="../../1-getting-started/" class="md-tabs__link">
         
   
   
@@ -228,11 +228,9 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="./" class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../../3-flexible-consistency/" class="md-tabs__link">
         
   
   
@@ -251,7 +249,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../5-service-properties/" class="md-tabs__link">
+      <a href="../../5-service-properties/" class="md-tabs__link">
         
   
   
@@ -270,7 +268,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../2-become-operator/" class="md-tabs__link">
+      <a href="../../2-become-operator/" class="md-tabs__link">
         
   
   
@@ -289,7 +287,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../4-how-xdn-work/" class="md-tabs__link">
+      <a href="../../4-how-xdn-work/" class="md-tabs__link">
         
   
   
@@ -306,11 +304,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../reference/HTTP-API/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../HTTP-API/" class="md-tabs__link">
           
   
   
@@ -328,7 +328,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../dashboard/" class="md-tabs__link">
+      <a href="../../dashboard/" class="md-tabs__link">
         
   
   
@@ -371,7 +371,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="https://xdn.cs.umass.edu/" title="XDN" class="md-nav__button md-logo" aria-label="XDN" data-md-component="logo">
       
-  <img src="../images/icons8-octopus-100.png" alt="logo">
+  <img src="../../images/icons8-octopus-100.png" alt="logo">
 
     </a>
     XDN
@@ -398,7 +398,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -425,7 +425,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../1-getting-started/" class="md-nav__link">
+      <a href="../../1-getting-started/" class="md-nav__link">
         
   
   
@@ -449,37 +449,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Consistency
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../3-flexible-consistency/" class="md-nav__link">
         
   
   
@@ -495,153 +468,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#predefined-consistency-models" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Predefined consistency models
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Predefined consistency models">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#linearizable" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Linearizable
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sequential" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Sequential
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#causal" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Causal
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#eventual" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Eventual
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pram" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        PRAM
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#read-your-writes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Read your writes
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#writes-follow-reads" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Writes follow reads
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#monotonic-reads" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Monotonic reads
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#monotonic-writes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Monotonic writes
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#custom-replication-protocol" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Custom replication protocol
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -653,7 +479,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../5-service-properties/" class="md-nav__link">
+      <a href="../../5-service-properties/" class="md-nav__link">
         
   
   
@@ -680,7 +506,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2-become-operator/" class="md-nav__link">
+      <a href="../../2-become-operator/" class="md-nav__link">
         
   
   
@@ -707,7 +533,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-how-xdn-work/" class="md-nav__link">
+      <a href="../../4-how-xdn-work/" class="md-nav__link">
         
   
   
@@ -731,24 +557,29 @@
       
   
   
+    
   
   
+  
     
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
             
   
   
@@ -766,7 +597,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
@@ -784,7 +615,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/HTTP-API/" class="md-nav__link">
+      <a href="../HTTP-API/" class="md-nav__link">
         
   
   
@@ -812,7 +643,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/request-flow/" class="md-nav__link">
+      <a href="../request-flow/" class="md-nav__link">
         
   
   
@@ -837,10 +668,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../reference/developer/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Developer guide
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -856,6 +714,103 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#formatting-xdn-java-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Formatting XDN Java code
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running test
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-a-specific-test-from-the-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running a specific test from the CLI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-all-unit-tests-from-the-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running all unit tests from the CLI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-xdn-scripted-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running XDN scripted tests
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logging-or-why-we-should-not-use-printf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Logging, or why we should not use printf()
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#todo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TODO
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -868,7 +823,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/paxos-reconfiguration/" class="md-nav__link">
+      <a href="../paxos-reconfiguration/" class="md-nav__link">
         
   
   
@@ -896,7 +851,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/paxos-compaction/" class="md-nav__link">
+      <a href="../paxos-compaction/" class="md-nav__link">
         
   
   
@@ -924,7 +879,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/wordpress-pb-investigation/" class="md-nav__link">
+      <a href="../wordpress-pb-investigation/" class="md-nav__link">
         
   
   
@@ -959,7 +914,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dashboard/" class="md-nav__link">
+      <a href="../../dashboard/" class="md-nav__link">
         
   
   
@@ -1006,126 +961,76 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#predefined-consistency-models" class="md-nav__link">
+  <a href="#formatting-xdn-java-code" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Predefined consistency models
+        Formatting XDN Java code
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Predefined consistency models">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#linearizable" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Linearizable
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sequential" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Sequential
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#causal" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Causal
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#eventual" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Eventual
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pram" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        PRAM
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#read-your-writes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Read your writes
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#writes-follow-reads" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Writes follow reads
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#monotonic-reads" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Monotonic reads
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#monotonic-writes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Monotonic writes
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#custom-replication-protocol" class="md-nav__link">
+  <a href="#running-test" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Custom replication protocol
+        Running test
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-a-specific-test-from-the-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running a specific test from the CLI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-all-unit-tests-from-the-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running all unit tests from the CLI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-xdn-scripted-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running XDN scripted tests
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logging-or-why-we-should-not-use-printf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Logging, or why we should not use printf()
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#todo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TODO
       
     </span>
   </a>
@@ -1152,44 +1057,82 @@
   
 
 
-<h1 id="flexible-consistency-in-xdn">Flexible consistency in XDN</h1>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Developer can specify the intended consistency model, or even implement custom replication protocol with the
-provided API.</p>
-</div>
-<h2 id="predefined-consistency-models">Predefined consistency models</h2>
-<h3 id="linearizable">Linearizable</h3>
-<p>TBD</p>
-<h3 id="sequential">Sequential</h3>
-<p>TBD</p>
-<h3 id="causal">Causal</h3>
-<p>TBD</p>
-<h3 id="eventual">Eventual</h3>
-<p>TBD</p>
-<h3 id="pram">PRAM</h3>
-<p>TBD</p>
-<h3 id="read-your-writes">Read your writes</h3>
-<p>TBD</p>
-<h3 id="writes-follow-reads">Writes follow reads</h3>
-<p>TBD</p>
-<h3 id="monotonic-reads">Monotonic reads</h3>
-<p>TBD</p>
-<h3 id="monotonic-writes">Monotonic writes</h3>
-<p>TBD</p>
-<h2 id="custom-replication-protocol">Custom replication protocol</h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Informally, a <strong>consistency model</strong> provides gurantees on what are valid values observable from the read requests. 
-<strong>Replication protocol</strong> is the one that ensures the guarantee is satisfied and never broken by
-preventing invalid observations (i.e., upholding the safety property).</p>
-</div>
-<p>TBD</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Replication protocol is commonly also referred as Coordination or Synchronization protocol. It is a class of 
-Distributed Protocol that manage the state in all the replicas, ensuring convergence.   </p>
-</div>
+<h1 id="intro-document-for-xdn-developers">Intro Document for XDN Developers</h1>
+<h2 id="formatting-xdn-java-code">Formatting XDN Java code</h2>
+<p>We enforce Google Java Style for everything under <code>src/edu/umass/cs/xdn</code> and <code>test</code>, and CI will block pushes that are not formatted.</p>
+<ul>
+<li>Run <code>bin/run_java_formatter.sh</code> to format the XDN Java sources and tests in-place. The helper downloads <code>google-java-format</code> 1.17.0 into <code>jars/</code> on first use.</li>
+<li>Run <code>bin/run_java_formatter.sh --check</code> to verify formatting without changing files (same command used in <code>.github/workflows/google-java-format.yml</code>).</li>
+<li>Requirements: <code>bash</code>, <code>curl</code>, and <code>java</code> on your PATH. Override the formatter version by exporting <code>GOOGLE_JAVA_FORMAT_VERSION</code> before running the script.</li>
+</ul>
+<h2 id="running-test">Running test</h2>
+<p>The simplest way to run a single unit test is by using IDE, such as IntelliJ, our recommended IDE.
+There, ensure to register all the <code>*.jar</code> inside the <code>lib</code> directory into the Project's Library.
+To do so, go to "File" -&gt; "Project Structure", then choose "Libraries" 
+in the "Project Settings" sidebar.</p>
+<p>We use <code>ant</code> to build and run all of our unit test, use the following command to run all the unit tests:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ant jar
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>ant xdn-unit-test-console
+</span></code></pre></div></p>
+<h2 id="running-a-specific-test-from-the-cli">Running a specific test from the CLI</h2>
+<p>Use the JUnit ConsoleLauncher shipped in <code>lib/</code> so the same classpath is used as our Ant targets.</p>
+<ol>
+<li>Clean and compile the project and tests:<br />
+<code>ant clean jar xdn-compile-tests</code></li>
+<li>Run a single test method via the <code>execute</code> subcommand (example for <code>testGetReplicaInfoSingleService</code>):<br />
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>java<span class="w"> </span>-cp<span class="w"> </span><span class="s2">&quot;lib/junit-platform-console-standalone-1.11.1.jar:build/classes:build/test-classes:lib/*&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span>org.junit.platform.console.ConsoleLauncher<span class="w"> </span>execute<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span>--select-method<span class="w"> </span>edu.umass.cs.xdn.XdnGetReplicaInfoTest#testGetReplicaInfoSingleService<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span>--details<span class="o">=</span>verbose
+</span></code></pre></div>
+   Another example for <code>testTwoPaxosBasedServices</code> that runs two deterministic services:
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>java<span class="w"> </span>-cp<span class="w"> </span><span class="s2">&quot;lib/junit-platform-console-standalone-1.11.1.jar:build/classes:build/test-classes:lib/*&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span>org.junit.platform.console.ConsoleLauncher<span class="w"> </span>execute<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span>--select-method<span class="w"> </span>edu.umass.cs.xdn.XdnMultiServiceTest#testTwoPaxosBasedServices<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span>--details<span class="o">=</span>verbose
+</span></code></pre></div></li>
+</ol>
+<p>Example output (truncated):
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Test plan execution started. Number of static tests: 1
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>├─ JUnit Jupiter
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>│  └─ XdnGetReplicaInfoTest
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>│     └─ testGetReplicaInfoSingleService() ✔
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>Test run finished after 0.5s
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>[ 1 tests found     ]
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>[ 1 tests successful]
+</span></code></pre></div></p>
+<h2 id="running-all-unit-tests-from-the-cli">Running all unit tests from the CLI</h2>
+<p>Use the same ConsoleLauncher to scan the compiled test classes:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Compile app + tests</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>ant<span class="w"> </span>clean<span class="w"> </span>jar<span class="w"> </span>xdn-compile-tests
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># Run everything under test/edu/umass/cs</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>java<span class="w"> </span>-cp<span class="w"> </span><span class="s2">&quot;lib/junit-platform-console-standalone-1.11.1.jar:build/classes:build/test-classes:lib/*&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">  </span>org.junit.platform.console.ConsoleLauncher<span class="w"> </span>execute<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">  </span>--scan-class-path<span class="w"> </span>build/test-classes<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">  </span>--include-package<span class="w"> </span>edu.umass.cs<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">  </span>--include-classname<span class="w"> </span><span class="s1">&#39;.*Test&#39;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">  </span>--details<span class="o">=</span>summary
+</span></code></pre></div>
+<h2 id="running-xdn-scripted-tests">Running XDN scripted tests</h2>
+<p>Some Xdn*Test classes require per-method JVM isolation. Use <code>bin/run_xdn_tests.sh</code> (or <code>ant xdn-unit-tests-script</code>) to execute them. Example:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>bin/run_xdn_tests.sh<span class="w"> </span>XdnGetReplicaInfoTest
+</span></code></pre></div></p>
+<h2 id="logging-or-why-we-should-not-use-printf">Logging, or why we should not use printf()</h2>
+<p>To printout logging for specific classes, you can specify those classes 
+in the <code>./conf/logging.properties</code> file. For example
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>...
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>edu.umass.cs.xdn.XdnGeoDemandProfiler.level=FINEST
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>edu.umass.cs.xdn.XdnReplicaCoordinator.level=FINEST
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>edu.umass.cs.reconfiguration.http.HttpActiveReplica.level=FINE
+</span></code></pre></div></p>
+<h2 id="todo">TODO</h2>
+<ul>
+<li>[ ] Architecture documentation.</li>
+<li>[ ] Consistency model documentation.</li>
+<li>[ ] Replica coordinator documentation.</li>
+<li>[ ] StateDiff capture documentation.</li>
+</ul>
 
 
 
@@ -1225,7 +1168,7 @@ Distributed Protocol that manage the state in all the replicas, ensuring converg
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../1-getting-started/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Getting Started">
+          <a href="../request-flow/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Request flow">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1235,20 +1178,20 @@ Distributed Protocol that manage the state in all the replicas, ensuring converg
                 Previous
               </span>
               <div class="md-ellipsis">
-                Getting Started
+                Request flow
               </div>
             </div>
           </a>
         
         
           
-          <a href="../5-service-properties/" class="md-footer__link md-footer__link--next" aria-label="Next: Service Properties">
+          <a href="../paxos-reconfiguration/" class="md-footer__link md-footer__link--next" aria-label="Next: GigaPaxos — reconfiguration">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Service Properties
+                GigaPaxos — reconfiguration
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1289,10 +1232,10 @@ Distributed Protocol that manage the state in all the replicas, ensuring converg
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.footer"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>

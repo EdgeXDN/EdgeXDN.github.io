@@ -2,32 +2,54 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://xdn.cs.umass.edu/</loc>
-         <lastmod>2024-07-30</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-06-04</lastmod>
     </url>
     <url>
          <loc>https://xdn.cs.umass.edu/1-getting-started/</loc>
-         <lastmod>2024-07-30</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-06-04</lastmod>
     </url>
     <url>
          <loc>https://xdn.cs.umass.edu/2-become-operator/</loc>
-         <lastmod>2024-07-30</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-06-04</lastmod>
     </url>
     <url>
          <loc>https://xdn.cs.umass.edu/3-flexible-consistency/</loc>
-         <lastmod>2024-07-30</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-06-04</lastmod>
     </url>
     <url>
          <loc>https://xdn.cs.umass.edu/4-how-xdn-work/</loc>
-         <lastmod>2024-07-30</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-06-04</lastmod>
     </url>
     <url>
          <loc>https://xdn.cs.umass.edu/5-service-properties/</loc>
-         <lastmod>2024-07-30</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-06-04</lastmod>
+    </url>
+    <url>
+         <loc>https://xdn.cs.umass.edu/dashboard/</loc>
+         <lastmod>2026-06-04</lastmod>
+    </url>
+    <url>
+         <loc>https://xdn.cs.umass.edu/reference/HTTP-API/</loc>
+         <lastmod>2026-06-04</lastmod>
+    </url>
+    <url>
+         <loc>https://xdn.cs.umass.edu/reference/developer/</loc>
+         <lastmod>2026-06-04</lastmod>
+    </url>
+    <url>
+         <loc>https://xdn.cs.umass.edu/reference/paxos-compaction/</loc>
+         <lastmod>2026-06-04</lastmod>
+    </url>
+    <url>
+         <loc>https://xdn.cs.umass.edu/reference/paxos-reconfiguration/</loc>
+         <lastmod>2026-06-04</lastmod>
+    </url>
+    <url>
+         <loc>https://xdn.cs.umass.edu/reference/request-flow/</loc>
+         <lastmod>2026-06-04</lastmod>
+    </url>
+    <url>
+         <loc>https://xdn.cs.umass.edu/reference/wordpress-pb-investigation/</loc>
+         <lastmod>2026-06-04</lastmod>
     </url>
 </urlset>
