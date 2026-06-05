@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#replica-group-reconfiguration-with-stopable-paxos" class="md-skip">
+        <a href="#replica-group-reconfiguration-state-transfer" class="md-skip">
           Skip to content
         </a>
       
@@ -879,6 +879,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GigaPaxos — reconfiguration
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -895,6 +913,113 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#epochs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Epochs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Actors
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sequence-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sequence diagram
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-by-step" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step-by-step
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#packet-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Packet reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-state-is-and-how-it-moves" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What "state" is, and how it moves
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#it-does-not-use-the-checkpoint-restore-round-trip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        It does not use the checkpoint() / restore() round-trip
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-this-lives-in-the-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where this lives in the code
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1011,6 +1136,102 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#epochs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Epochs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Actors
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sequence-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sequence diagram
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-by-step" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step-by-step
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#packet-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Packet reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-state-is-and-how-it-moves" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What "state" is, and how it moves
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#it-does-not-use-the-checkpoint-restore-round-trip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        It does not use the checkpoint() / restore() round-trip
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-this-lives-in-the-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where this lives in the code
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1029,9 +1250,259 @@
   
 
 
-<h1 id="replica-group-reconfiguration-with-stopable-paxos">Replica Group Reconfiguration with Stopable Paxos</h1>
-<p>TODO:
-- checkpoint() vs getFinalState()</p>
+<h1 id="replica-group-reconfiguration-state-transfer">Replica-group reconfiguration &amp; state transfer</h1>
+<p>A service's <em>placement</em> — the set of ActiveReplicas (ARs) that host it — is not
+fixed. XDN's demand policy (<a href="../geo-demand/">Geo-distributed demand</a>) periodically
+recomputes where the replicas should live, and when the chosen set changes the
+control plane <strong>reconfigures</strong> the service: it stops the current replica group,
+moves the service's state to the new replicas, and starts the new group — all
+without losing linearizability or dropping the service.</p>
+<p>This page walks through one reconfiguration end-to-end: the steps, the packets on
+the wire, and (importantly) how the service's <em>state</em> is carried from the old
+epoch to the new one.</p>
+<h2 id="epochs">Epochs</h2>
+<p>Every placement of a service is stamped with a monotonically increasing <strong>epoch</strong>
+number. A reconfiguration advances the service from epoch <code>e</code> (active set <code>Aₑ</code>) to
+epoch <code>e+1</code> (active set <code>Aₑ₊₁</code>). Epochs make the move atomic and idempotent: the
+old epoch is <em>stopped</em> (no more writes), its final state is <em>sealed</em>, and the new
+epoch is <em>started</em> from that state. A replica that appears in both <code>Aₑ</code> and <code>Aₑ₊₁</code>
+still tears down its epoch-<code>e</code> instance and re-creates a fresh epoch-<code>e+1</code> instance
+from the transferred state — there is no in-place "stay" fast-path.</p>
+<h2 id="actors">Actors</h2>
+<table>
+<thead>
+<tr>
+<th>Actor</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RC</strong> (<code>cp0</code>)</td>
+<td>The Reconfigurator. Receives demand, decides the new placement, and drives the three-phase protocol.</td>
+</tr>
+<tr>
+<td><strong>Old actives</strong> <code>Aₑ</code></td>
+<td>The ARs hosting the service in epoch <code>e</code>. They seal the final state and then drop the old epoch.</td>
+</tr>
+<tr>
+<td><strong>New actives</strong> <code>Aₑ₊₁</code></td>
+<td>The ARs that will host epoch <code>e+1</code>. They fetch the previous epoch's final state and start fresh containers from it.</td>
+</tr>
+</tbody>
+</table>
+<p>The RC orchestrates the move with three chained barrier tasks —
+<code>WaitAckStopEpoch</code> → <code>WaitAckStartEpoch</code> → <code>WaitAckDropEpoch</code>. The actual <strong>state
+bytes travel out-of-band, AR→AR</strong>, not through the RC.</p>
+<h2 id="sequence-diagram">Sequence diagram</h2>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a> Client traffic          Reconfigurator           Old actives Aₑ          New actives Aₑ₊₁
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a> (X-Client-Location)        (cp0)                   {a, b, c}                {a, b, d}
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>        │                     │                         │                        │
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>        │  HTTP request       │                         │                        │
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>        ├──────────────────────────────────────────────▶│ served; demand sampled │
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        │                     │                         │ (per grid cell)        │
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>        │                     │   DemandReport(grid)     │                        │
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>        │                     │◀────────────────────────┤  (throttled: ≤1 / 10s) │
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>        │                     │                          │                        │
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>        │   policy: weighted demand centroid → 3 closest actives → Aₑ₊₁={a,b,d}   │
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>        │                     │                          │                        │
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>        │                     │ RCRecordRequest(INTENT)  │   [paxos-logged among RCs]
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>        │                     ├──┐                       │                        │
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>        │                     │◀─┘                       │                        │
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a> ═══════╪═════════════════════╪═══ ① STOP  (WaitAckStopEpoch) ═════════════════════╪═══════
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>        │                     │      StopEpoch(e)        │                        │
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>        │                     ├─────────────────────────▶│                        │
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>        │                     │           exec XdnStopRequest through paxos:      │
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>        │                     │           • captureFinalState(e)  → state.tar     │
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>        │                     │           • stop the container                    │
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>        │                     │      AckStopEpoch        │                        │
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>        │                     │◀─────────────────────────┤  (no state in this ack)│
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a> ═══════╪═════════════════════╪═══ ② START (WaitAckStartEpoch) ════════════════════╪═══════
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>        │                     │            StartEpoch(e+1)                         │
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>        │                     ├───────────────────────────────────────────────────▶│
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>        │                     │                          │ RequestEpochFinalState(e)│
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>        │                     │                          │◀───────────────────────┤
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>        │                     │                          │ EpochFinalState(e, TAR) │  ◀── state transfer
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>        │                     │                          ├────────────────────────▶│
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>        │                     │                          │   restore(&quot;xdn:final:…&quot;)│
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>        │                     │                          │   → revive container    │
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>        │                     │            AckStartEpoch │                        │
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>        │                     │◀──────────────────────────────────────────────────┤
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a> ═══════╪═════════════════════╪═══ ③ COMPLETE / DROP (WaitAckDropEpoch) ═══════════╪═══════
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>        │                     ├──┐ RCRecordRequest(COMPLETE) [paxos-logged]        │
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>        │                     │◀─┘                       │                        │
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>        │                     │   DropEpochFinalState(e)  │                        │
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>        │                     ├─────────────────────────▶│                        │
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>        │                     │   AckDropEpochFinalState  │                        │
+</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>        │                     │◀─────────────────────────┤  (epoch e garbage-coll.)│
+</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>        │                     │                          │                        │
+</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>        ▼  traffic now routed to Aₑ₊₁={a,b,d} at epoch e+1                          ▼
+</span></code></pre></div>
+<h2 id="step-by-step">Step-by-step</h2>
+<p><strong>Trigger.</strong> Each AR samples client demand per request (the <code>X-Client-Location</code>
+header, else the client IP via GeoIP) and reports an aggregated grid to the RC at
+most once every 10 s (<code>XdnGeoDemandProfiler</code>). On each report the RC runs the
+placement policy: it computes the demand-weighted <strong>centroid</strong> of all cells and
+picks the <code>N</code> ARs closest to it (<code>N</code> = the current group size). If that set differs
+from the current one, it reconfigures.</p>
+<p><strong>0 — Intent.</strong> The RC records a <code>RECONFIGURATION_INTENT</code> for the service in its own
+(paxos-replicated) reconfigurator group, so the decision survives an RC failure,
+then spawns the stop task.</p>
+<p><strong>① STOP</strong> (<code>WaitAckStopEpoch</code>)
+- RC → old actives: <strong><code>StopEpoch(e)</code></strong>.
+- Each old AR coordinates a <strong>stop request</strong> through the service's paxos group so
+  every replica stops at the <em>same</em> request slot (safety). Executing that stop runs
+  XDN's <code>XdnStopRequest</code>, which <strong>captures the epoch's final state</strong> (tars the
+  container's bind-mounted state directory) and then stops the container.
+- Old AR → RC: <strong><code>AckStopEpoch</code></strong>. For a normal reconfiguration this ack carries
+  <strong>no</strong> state (it only would for merge/split operations).</p>
+<p><strong>② START</strong> (<code>WaitAckStartEpoch</code>)
+- RC → new actives: <strong><code>StartEpoch(e+1)</code></strong>. This packet names the previous epoch's
+  group but does <strong>not</strong> contain the state.
+- Because a previous epoch exists, each new AR spawns <code>WaitEpochFinalState</code> and
+  pulls the state itself: new AR → an old AR <strong><code>RequestEpochFinalState(e)</code></strong>.
+- Old AR → new AR: <strong><code>EpochFinalState(e, &lt;bytes&gt;)</code></strong> — <strong>this is the state
+  transfer.</strong> The payload is the tar produced at stop time.
+- The new AR <strong>restores</strong> that state (creating a fresh epoch-<code>e+1</code> container from
+  it) and registers the new paxos instance.
+- New AR → RC: <strong><code>AckStartEpoch</code></strong>.</p>
+<p><strong>③ COMPLETE / DROP</strong> (<code>WaitAckDropEpoch</code>)
+- RC records <code>RECONFIGURATION_COMPLETE</code> (paxos-logged) — the move is now durable.
+- RC → old actives: <strong><code>DropEpochFinalState(e)</code></strong>; old ARs garbage-collect the old
+  epoch and reply <strong><code>AckDropEpochFinalState</code></strong>.</p>
+<p>Each phase is idempotent and retried until a threshold of acks arrives, so the
+protocol tolerates message loss and AR/RC restarts mid-reconfiguration.</p>
+<h2 id="packet-reference">Packet reference</h2>
+<table>
+<thead>
+<tr>
+<th>Packet</th>
+<th>From → To</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DemandReport</code></td>
+<td>AR → RC</td>
+<td>Aggregated geo-demand grid (drives the policy).</td>
+</tr>
+<tr>
+<td><code>RCRecordRequest(INTENT / COMPLETE)</code></td>
+<td>RC → RC group</td>
+<td>Durably record the decision / completion.</td>
+</tr>
+<tr>
+<td><code>StopEpoch(e)</code></td>
+<td>RC → old ARs</td>
+<td>Stop epoch <code>e</code>; seal its final state.</td>
+</tr>
+<tr>
+<td><code>AckStopEpoch</code></td>
+<td>old AR → RC</td>
+<td>Epoch <code>e</code> stopped (no state for plain reconfig).</td>
+</tr>
+<tr>
+<td><code>StartEpoch(e+1)</code></td>
+<td>RC → new ARs</td>
+<td>Start epoch <code>e+1</code> (no state inside).</td>
+</tr>
+<tr>
+<td><code>RequestEpochFinalState(e)</code></td>
+<td>new AR → old AR</td>
+<td>Ask for epoch <code>e</code>'s sealed state.</td>
+</tr>
+<tr>
+<td><code>EpochFinalState(e, bytes)</code></td>
+<td>old AR → new AR</td>
+<td><strong>The state transfer.</strong></td>
+</tr>
+<tr>
+<td><code>DropEpochFinalState(e)</code></td>
+<td>RC → old ARs</td>
+<td>GC the old epoch.</td>
+</tr>
+<tr>
+<td><code>AckDropEpochFinalState</code></td>
+<td>old AR → RC</td>
+<td>Old epoch dropped.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="what-state-is-and-how-it-moves">What "state" is, and how it moves</h2>
+<p>For an XDN service the state is the contents of the declared <strong>state directory</strong>
+(e.g. <code>/app/data/</code>), which is bind-mounted from the host into the container. State
+transfer is a <strong>directory snapshot</strong>, carried as a string:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>xdn:final:&lt;epoch&gt;::&lt;serviceProperty&gt;::&lt;base64 tar of the state dir&gt;
+</span></code></pre></div>
+<ul>
+<li><strong>Seal (old AR).</strong> <code>XdnGigapaxosApp.getFinalState(name, e)</code> tars the epoch's host
+  mount directory and returns the <code>xdn:final:…</code> string (large snapshots are passed
+  by URL instead of inline).</li>
+<li><strong>Apply (new AR).</strong> <code>XdnGigapaxosApp.restore(name, "xdn:final:…")</code> decodes the
+  tar and unpacks it into the new epoch's mount directory, then starts the
+  container — which therefore boots with the previous epoch's data intact.</li>
+</ul>
+<h2 id="it-does-not-use-the-checkpoint-restore-round-trip">It does <strong>not</strong> use the <code>checkpoint()</code> / <code>restore()</code> round-trip</h2>
+<p>GigaPaxos's generic <code>Replicable</code> contract transfers state with a
+<strong><code>checkpoint(name)</code> → state → <code>restore(name, state)</code></strong> round-trip: paxos snapshots
+an app via <code>checkpoint()</code> and re-installs it elsewhere via <code>restore()</code>. <strong>XDN's
+reconfiguration deliberately bypasses <code>checkpoint()</code>.</strong></p>
+<ul>
+<li><code>XdnGigapaxosApp.checkpoint()</code> is intentionally <strong>not</strong> the state-transfer path —
+  it returns a placeholder string and never snapshots the container volume.</li>
+<li>Instead, the <strong><code>Reconfigurable.getFinalState()</code></strong> method (the <code>xdn:final:</code> tar
+  above) produces the state, and <code>restore()</code> consumes <em>that</em> payload — not a
+  <code>checkpoint()</code> output.</li>
+</ul>
+<p>Why does the framework take <code>getFinalState()</code> rather than the paxos checkpoint?
+When an old AR serves <code>RequestEpochFinalState</code>, <code>ActiveReplica.getFinalStateContainer()</code>
+returns paxos's internal checkpoint <strong>only if</strong> the app's coordinator is a
+<code>PaxosReplicaCoordinator</code>. XDN's coordinator is <strong><code>XdnReplicaCoordinator</code></strong> (it
+<em>wraps</em> paxos but is not a <code>PaxosReplicaCoordinator</code>), so the framework falls
+through to <strong><code>appCoordinator.getFinalState()</code> → <code>XdnGigapaxosApp.getFinalState()</code></strong>
+— the tar snapshot. So:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>reconfiguration state transfer  =  getFinalState()  →  restore(&quot;xdn:final:…&quot;)
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>paxos checkpoint (checkpoint())  =  used only for paxos log truncation / recovery
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Implication for crash recovery</p>
+<p>Because the paxos-level <code>checkpoint()</code> is a placeholder, <strong>single-node crash
+recovery</strong> from a paxos checkpoint is a separate path from reconfiguration and
+is not equivalent to it. Reconfiguration (group move) relies entirely on the
+<code>getFinalState()</code>/<code>restore()</code> tar mechanism described above.</p>
+</div>
+<h2 id="where-this-lives-in-the-code">Where this lives in the code</h2>
+<table>
+<thead>
+<tr>
+<th>Concern</th>
+<th>Class / method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Demand → new placement</td>
+<td><code>XdnGeoDemandProfiler.reconfigure</code> / <code>getNewActivesPlacement</code></td>
+</tr>
+<tr>
+<td>Three-phase orchestration</td>
+<td><code>Reconfigurator</code> + <code>WaitAckStopEpoch</code> → <code>WaitAckStartEpoch</code> → <code>WaitAckDropEpoch</code></td>
+</tr>
+<tr>
+<td>Stop + seal final state</td>
+<td><code>ActiveReplica.handleStopEpoch</code>; <code>XdnGigapaxosApp</code> <code>XdnStopRequest</code> → <code>captureContainerizedServiceFinalState</code></td>
+</tr>
+<tr>
+<td>Serve final state</td>
+<td><code>ActiveReplica.handleRequestEpochFinalState</code> → <code>getFinalStateContainer</code> → <code>XdnGigapaxosApp.getFinalState</code></td>
+</tr>
+<tr>
+<td>Fetch + apply on new AR</td>
+<td><code>ActiveReplica.handleStartEpoch</code> → <code>WaitEpochFinalState</code> → <code>XdnGigapaxosApp.restore</code> (<code>reviveContainerizedService</code>)</td>
+</tr>
+</tbody>
+</table>
 
 
 
