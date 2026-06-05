@@ -12,13 +12,9 @@
         <meta name="author" content="Fadhil I. Kurnia">
       
       
-        <link rel="canonical" href="https://xdn.cs.umass.edu/reference/service-name-inference/">
+        <link rel="canonical" href="https://xdn.cs.umass.edu/reference/rocksdb-vs-sqlite/">
       
       
-        <link rel="prev" href="../request-flow/">
-      
-      
-        <link rel="next" href="../geo-demand/">
       
       
         
@@ -29,7 +25,7 @@
     
     
       
-        <title>Service name inference - XDN</title>
+        <title>RocksDB vs SQLite for a small-memory, durable paxos RC - XDN</title>
       
     
     
@@ -78,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#service-name-inference" class="md-skip">
+        <a href="#rocksdb-vs-sqlite-for-a-small-memory-durable-paxos-rc" class="md-skip">
           Skip to content
         </a>
       
@@ -113,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Service name inference
+              RocksDB vs SQLite for a small-memory, durable paxos RC
             
           </span>
         </div>
@@ -305,12 +301,10 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
+      <li class="md-tabs__item">
         <a href="../HTTP-API/" class="md-tabs__link">
           
   
@@ -644,29 +638,24 @@
       
   
   
-    
   
   
-  
     
     
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
         
           
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
             
   
   
@@ -684,7 +673,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
@@ -709,35 +698,7 @@
   <span class="md-ellipsis">
     
   
-    Control-plane API
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../cli/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Command-line (xdn)
+    HTTP API
   
 
     
@@ -766,153 +727,6 @@
     
   
     Request flow
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Service name inference
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Service name inference
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#where-the-name-can-come-from" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Where the name can come from
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cookie-convenience-for-browsers" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cookie convenience for browsers
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#normalization" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Normalization
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#where-this-lives-in-the-code" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Where this lives in the code
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../geo-demand/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Geo-distributed demand
   
 
     
@@ -1099,10 +913,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#where-the-name-can-come-from" class="md-nav__link">
+  <a href="#summary-recommendation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Where the name can come from
+        Summary / recommendation
       
     </span>
   </a>
@@ -1110,10 +924,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#cookie-convenience-for-browsers" class="md-nav__link">
+  <a href="#memory-single-rc-node-xmx128m-rocksdb-tuned-for-low-memory" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Cookie convenience for browsers
+        Memory (single RC node, -Xmx128m, RocksDB tuned for low memory)
       
     </span>
   </a>
@@ -1121,10 +935,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#normalization" class="md-nav__link">
+  <a href="#latency-durable-db-layer-writes-8-threads-1-kb-full-fsync" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Normalization
+        Latency — durable DB-layer writes (8 threads, 1 KB, full fsync)
       
     </span>
   </a>
@@ -1132,10 +946,54 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#where-this-lives-in-the-code" class="md-nav__link">
+  <a href="#latency-end-to-end-reconfiguration-full-durability" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Where this lives in the code
+        Latency — end-to-end reconfiguration (full durability)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-rocksdb-stalls-on-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why RocksDB stalls on recovery
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-each-is-good-at" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What each is good at
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-configs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended configs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-work-to-make-rocksdb-the-better-durable-choice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Future work (to make RocksDB the better durable choice)
       
     </span>
   </a>
@@ -1162,66 +1020,213 @@
   
 
 
-<h1 id="service-name-inference">Service Name Inference</h1>
-<p>An ActiveReplica's HTTP frontend hosts many services at once, but an incoming
-HTTP request is just a normal web request — it has no XDN-specific field. So
-before the request can be routed to the right service (and coordinated), the
-ActiveReplica must figure out <strong>which service it is for</strong>. This page describes
-how that name is inferred.</p>
-<h2 id="where-the-name-can-come-from">Where the name can come from</h2>
-<p>For each request the ActiveReplica looks in four places, in priority order, and
-takes the first one that yields a non-empty name:</p>
-<ol>
-<li><strong><code>_xdnsvc</code> query parameter</strong> — e.g. <code>http://host:port/path?_xdnsvc=my-service</code>.
-   Useful for direct links and testing, where you can't control the Host header.</li>
-<li><strong><code>XDN</code> header</strong> — e.g. <code>XDN: my-service</code>. Explicit and unambiguous; this is
-   what clients and tools (e.g. the CLI) set.</li>
-<li><strong><code>XDN</code> cookie</strong> — <code>Cookie: XDN=my-service</code>. Lets a browser keep talking to the
-   same service across navigation without re-specifying it (see below).</li>
-<li><strong>Host subdomain</strong> — the left-most label of the hostname, e.g.
-   <code>my-service.xdnapp.com</code> → <code>my-service</code>. This is the normal production path:
-   each service gets its own subdomain, so an ordinary browser request to the
-   service's URL just works.</li>
-</ol>
-<p>If none of these yields a name, the request is rejected (the frontend can't know
-where to route it).</p>
-<h2 id="cookie-convenience-for-browsers">Cookie convenience for browsers</h2>
-<p>When a request names the service via <code>_xdnsvc</code>, the ActiveReplica responds with
-<code>Set-Cookie: XDN=&lt;service&gt;</code>. Subsequent requests from that browser then carry the
-service name automatically via the cookie (priority 3), so links and relative
-asset paths keep working without the query parameter.</p>
-<h2 id="normalization">Normalization</h2>
-<p>Once the name is inferred, the ActiveReplica:</p>
+<h1 id="rocksdb-vs-sqlite-for-a-small-memory-durable-paxos-rc">RocksDB vs SQLite for a small-memory, durable paxos RC</h1>
+<p>gigapaxos is a paxos-based system, so <strong>durability is a safety requirement</strong>: a
+node that acknowledges (promises/accepts) a value must not forget it after a
+crash, or paxos safety can be violated. The relevant comparison is therefore at
+<strong>equal, full fsync durability</strong> — survives an OS/power crash, not just a process
+crash.</p>
 <ul>
-<li>copies it into the <strong><code>XDN</code> header</strong>, so the service name survives when the
-  request is serialized and replicated to other replicas (e.g. Paxos followers),
-  which re-run inference on the deserialized form; and</li>
-<li><strong>strips</strong> the <code>_xdnsvc</code> query parameter from the URI, so the containerized
-  service never sees XDN's routing internals.</li>
+<li>SQLite full durability: <code>SQLITE_SYNCHRONOUS=FULL</code> (WAL fsync on every commit).</li>
+<li>RocksDB full durability: <code>ROCKSDB_SYNC_WRITES=true</code> (WAL fsync on every write).</li>
 </ul>
-<h2 id="where-this-lives-in-the-code">Where this lives in the code</h2>
+<p>All numbers below are on the same machine/disk (OpenJDK 21, local disk). The
+relaxed-durability numbers (SQLite <code>NORMAL</code>, RocksDB <code>sync=false</code>) are included
+only for reference — they keep data only across a <em>process</em> crash, with a loss
+window on an OS/power crash, so they are <strong>not</strong> safe for strict paxos durability.</p>
+<h2 id="summary-recommendation">Summary / recommendation</h2>
+<p>For a durability-critical RC on a 0.5&ndash;1 GB machine <strong>today, SQLite
+(<code>synchronous=FULL</code>) is the better-balanced choice</strong>: it is as light as RocksDB,
+has predictable durable-write latency, and completes recovery-heavy workloads.
+RocksDB ties on memory and is competitive (or better) on <em>batched</em> durable-write
+latency, but has two issues at full durability: (1) very expensive <em>unbatched</em>
+single durable writes, and (2) slow recovery reads. RocksDB becomes the stronger
+choice if/when the logger's recovery-read path is optimized (see Future work),
+and it is the clear winner if relaxed durability is ever acceptable.</p>
+<h2 id="memory-single-rc-node-xmx128m-rocksdb-tuned-for-low-memory">Memory (single RC node, <code>-Xmx128m</code>, RocksDB tuned for low memory)</h2>
 <table>
 <thead>
 <tr>
-<th>Concern</th>
-<th>Location</th>
+<th>Backend</th>
+<th style="text-align: right;">RSS</th>
+<th style="text-align: right;">Min heap it runs at</th>
+<th style="text-align: right;">Threads</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Inference order + Host parsing</td>
-<td><code>XdnHttpRequest.inferServiceName</code></td>
+<td>Derby (default)</td>
+<td style="text-align: right;">191 MB</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">65</td>
 </tr>
 <tr>
-<td>Param / cookie names</td>
-<td><code>XdnHttpRequest.XDN_SVC_QUERY_PARAM</code>, <code>XDN</code> header/cookie</td>
+<td>SQLite</td>
+<td style="text-align: right;">125 MB</td>
+<td style="text-align: right;">~48 MB</td>
+<td style="text-align: right;">56</td>
 </tr>
 <tr>
-<td>Cookie + header normalization</td>
-<td><code>XdnHttpRequest</code> (constructor / response path)</td>
+<td>RocksDB</td>
+<td style="text-align: right;">124 MB</td>
+<td style="text-align: right;">~48 MB</td>
+<td style="text-align: right;">56</td>
 </tr>
 </tbody>
 </table>
+<p><strong>Tie.</strong> Both fit 0.5 GB with ~390 MB headroom. RocksDB's native memory is
+bounded by a shared block cache + WriteBufferManager (<code>ROCKSDB_BLOCK_CACHE_MB</code>,
+<code>ROCKSDB_MEMTABLE_BUDGET_MB</code>); SQLite is non-pooled (no C3P0 threads). Both are
+~35% lighter than the Derby default.</p>
+<h2 id="latency-durable-db-layer-writes-8-threads-1-kb-full-fsync">Latency — durable DB-layer writes (8 threads, 1 KB, full fsync)</h2>
+<p>Microbenchmark of <strong>single</strong> durable read-modify-write ops (no batching):</p>
+<table>
+<thead>
+<tr>
+<th>Backend (full durability)</th>
+<th style="text-align: right;">Throughput</th>
+<th style="text-align: right;">p50</th>
+<th style="text-align: right;">p99</th>
+<th style="text-align: right;">p99.9</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SQLite <code>FULL</code> (single-writer)</td>
+<td style="text-align: right;">2941 ops/s</td>
+<td style="text-align: right;">0.54 ms</td>
+<td style="text-align: right;">77.6 ms</td>
+<td style="text-align: right;">165 ms</td>
+</tr>
+<tr>
+<td>SQLite <code>FULL</code> (IMMEDIATE)</td>
+<td style="text-align: right;">2672 ops/s</td>
+<td style="text-align: right;">0.06 ms</td>
+<td style="text-align: right;">22.8 ms</td>
+<td style="text-align: right;">231 ms</td>
+</tr>
+<tr>
+<td><strong>RocksDB <code>sync=true</code></strong></td>
+<td style="text-align: right;"><strong>66 ops/s</strong></td>
+<td style="text-align: right;"><strong>83 ms</strong></td>
+<td style="text-align: right;">598 ms</td>
+<td style="text-align: right;">1066 ms</td>
+</tr>
+<tr>
+<td>RocksDB <code>sync=false</code> <em>(relaxed, ref only)</em></td>
+<td style="text-align: right;">74190 ops/s</td>
+<td style="text-align: right;">0.08 ms</td>
+<td style="text-align: right;">0.89 ms</td>
+<td style="text-align: right;">1.96 ms</td>
+</tr>
+</tbody>
+</table>
+<p>For <strong>single, unbatched</strong> durable writes RocksDB is dramatically slower — every
+<code>put</code> triggers a full WAL fsync, and the per-op fsync cost dominates (~83 ms p50).
+SQLite's WAL commit fsync is far cheaper here. (Relaxed RocksDB is the fastest of
+all, but is not power-loss safe.)</p>
+<h2 id="latency-end-to-end-reconfiguration-full-durability">Latency — end-to-end reconfiguration (full durability)</h2>
+<p>The real paxos logger <strong>batches</strong> log writes (<code>logBatch</code> = one fsync per batch),
+which is RocksDB's better case:</p>
+<table>
+<thead>
+<tr>
+<th>Backend (full durability)</th>
+<th style="text-align: right;">test04 create latency</th>
+<th>18-test suite</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SQLite <code>FULL</code></td>
+<td style="text-align: right;">982 ms</td>
+<td><strong>18/18 pass, 109 s</strong></td>
+</tr>
+<tr>
+<td>RocksDB <code>sync=true</code></td>
+<td style="text-align: right;"><strong>566 ms</strong></td>
+<td>13/18, 0 failures, <strong>timed out at 501 s</strong></td>
+</tr>
+</tbody>
+</table>
+<p>End-to-end, RocksDB's batched create latency is <em>lower</em> (566 vs 982 ms), but the
+suite <strong>does not finish</strong>: it stalls in the recovery-heavy dynamic-membership
+tests (active/RC add/delete), which repeatedly stop/start/recover many paxos
+groups. SQLite finishes all 18 in 109 s. (Caveat: the RocksDB reconfigurator DB
+writes async since it is paxos-backed, whereas SQLite <code>FULL</code> applies to both the
+logger and the RC DB, so this end-to-end comparison slightly favors RocksDB.)</p>
+<h2 id="why-rocksdb-stalls-on-recovery">Why RocksDB stalls on recovery</h2>
+<p>The RocksDB logger has no journal/log-index; recovery reads (<code>getLoggedMessages</code>,
+one-pass <code>readNextMessage</code>, <code>getLoggedAccepts/Decisions</code>) prefix-scan and
+deserialize the <code>messages</code> column family. Under the membership tests — which
+recover many groups repeatedly — these scans dominate. This is a performance
+characteristic, not a correctness bug (zero failures in every run).</p>
+<h2 id="what-each-is-good-at">What each is good at</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>SQLite (<code>FULL</code>)</th>
+<th>RocksDB (<code>sync=true</code>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Memory</td>
+<td>~125 MB</td>
+<td>~125 MB</td>
+</tr>
+<tr>
+<td>Single durable write</td>
+<td><strong>fast</strong> (2941 ops/s)</td>
+<td>slow (66 ops/s)</td>
+</tr>
+<tr>
+<td>Batched paxos log write</td>
+<td>good</td>
+<td><strong>good/better</strong></td>
+</tr>
+<tr>
+<td>Recovery-heavy workload</td>
+<td><strong>completes (109 s)</strong></td>
+<td>stalls</td>
+</tr>
+<tr>
+<td>Relaxed-durability speed</td>
+<td>fast</td>
+<td><strong>fastest</strong> (74k ops/s)</td>
+</tr>
+<tr>
+<td>Concurrency model</td>
+<td>single writer (handled)</td>
+<td>concurrent writers</td>
+</tr>
+</tbody>
+</table>
+<h2 id="recommended-configs">Recommended configs</h2>
+<p>Durable RC, today (recommended):
+<div class="language-properties highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="na">SQL_TYPE</span><span class="o">=</span><span class="s">EMBEDDED_SQLITE</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="na">CONNECTION_POOLING</span><span class="o">=</span><span class="s">false</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="na">SQLITE_SYNCHRONOUS</span><span class="o">=</span><span class="s">FULL          # power-loss durable</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># -Xmx96m   -&gt;  ~125 MB RSS, fits 0.5 GB</span>
+</span></code></pre></div></p>
+<p>RocksDB, durable (competitive on batched writes; recovery-read optimization
+pending):
+<div class="language-properties highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="na">PAXOS_LOGGER</span><span class="o">=</span><span class="s">ROCKSDB</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="na">RECONFIGURATOR_DB</span><span class="o">=</span><span class="s">ROCKSDB</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="na">ROCKSDB_SYNC_WRITES</span><span class="o">=</span><span class="s">true          # power-loss durable</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="na">ROCKSDB_BLOCK_CACHE_MB</span><span class="o">=</span><span class="s">16</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="na">ROCKSDB_MEMTABLE_BUDGET_MB</span><span class="o">=</span><span class="s">8</span>
+</span></code></pre></div></p>
+<h2 id="future-work-to-make-rocksdb-the-better-durable-choice">Future work (to make RocksDB the better durable choice)</h2>
+<ol>
+<li><strong>Optimize logger recovery reads</strong> — cache per-paxosID message lists, or keep
+   a compact in-memory log index so recovery does not re-scan/deserialize the
+   <code>messages</code> CF. This is the main blocker.</li>
+<li><strong>Group-commit unbatched writes</strong> — coalesce single <code>log()</code>/checkpoint fsyncs
+   so the per-write fsync cost is amortized (RocksDB supports group commit; the
+   gigapaxos call pattern currently does not exploit it for single writes).</li>
+</ol>
 
 
 
@@ -1252,44 +1257,6 @@ asset paths keep working without the query parameter.</p>
       
         <footer class="md-footer">
   
-    
-      
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
-        
-          
-          <a href="../request-flow/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Request flow">
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
-            </div>
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              <div class="md-ellipsis">
-                Request flow
-              </div>
-            </div>
-          </a>
-        
-        
-          
-          <a href="../geo-demand/" class="md-footer__link md-footer__link--next" aria-label="Next: Geo-distributed demand">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                Geo-distributed demand
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
     
   
   <div class="md-footer-meta md-typeset">

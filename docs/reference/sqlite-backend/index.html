@@ -1,0 +1,1494 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="XDN - replicating service at the edge">
+      
+      
+        <meta name="author" content="Fadhil I. Kurnia">
+      
+      
+        <link rel="canonical" href="https://xdn.cs.umass.edu/reference/sqlite-backend/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../images/icons8-octopus-100.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Embedded SQLite backend for gigapaxos - XDN</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#embedded-sqlite-backend-for-gigapaxos" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="https://xdn.cs.umass.edu/" title="XDN" class="md-header__button md-logo" aria-label="XDN" data-md-component="logo">
+      
+  <img src="../../images/icons8-octopus-100.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            XDN
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Embedded SQLite backend for gigapaxos
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/fadhilkurnia/xdn" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    fadhilkurnia/xdn
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../getting-started/" class="md-tabs__link">
+          
+  
+  
+  Quick Start
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../flexible-consistency/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Consistency
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../service-properties/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Service Properties
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../become-operator/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Deployment
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../how-xdn-work/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Architecture
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../HTTP-API/" class="md-tabs__link">
+          
+  
+  
+  Developer
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../dashboard/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Dashboard
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://xdn.cs.umass.edu/" title="XDN" class="md-nav__button md-logo" aria-label="XDN" data-md-component="logo">
+      
+  <img src="../../images/icons8-octopus-100.png" alt="logo">
+
+    </a>
+    XDN
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/fadhilkurnia/xdn" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    fadhilkurnia/xdn
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Quick Start
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../multi-container/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multi-container services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../flexible-consistency/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Consistency
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../service-properties/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Service Properties
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../become-operator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-xdn-work/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Developer
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Developer
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTTP-API/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HTTP API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../request-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Request flow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Developer guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../paxos-reconfiguration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GigaPaxos — reconfiguration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../paxos-compaction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GigaPaxos — log compaction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wordpress-pb-investigation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WordPress primary-backup investigation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dashboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tldr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TL;DR
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-changed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What changed
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-sqlite-needs-special-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why SQLite needs special handling
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#durability-and-concurrency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Durability and Concurrency
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Durability and Concurrency">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#durability-synchronous" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Durability (synchronous)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concurrency-sqlite_busy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concurrency: SQLITE_BUSY
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#single-writer-why-a-hard-connection-cap-does-not-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Single-writer: why a hard connection cap does NOT work
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#benchmark-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Benchmark data
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Benchmark data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memory-13-node-cluster-in-one-jvm-xmx512m-idle-baseline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Memory (13-node cluster in one JVM, -Xmx512m, idle baseline)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#write-latency-8-threads-2000-read-modify-write-txns-200-rows-1-kb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Write latency (8 threads × 2000 read-modify-write txns, 200 rows, 1 KB)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integration-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integration tests
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running it
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#known-limitations-future-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known limitations / future work
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="embedded-sqlite-backend-for-gigapaxos">Embedded SQLite backend for gigapaxos</h1>
+<p>gigapaxos persists paxos logs (<code>SQLPaxosLogger</code>) and reconfiguration state
+(<code>SQLReconfiguratorDB</code>) through a JDBC abstraction (<code>paxosutil.SQL</code>) that already
+supported Embedded Derby, MySQL, and Embedded H2. This adds <strong>Embedded SQLite</strong>
+as a fourth backend, plus a lightweight non-pooling data source, aimed at
+running a <strong>lighter reconfigurator (RC) on small machines</strong>.</p>
+<h2 id="tldr">TL;DR</h2>
+<p>Recommended config for a small-footprint RC:</p>
+<div class="language-properties highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="na">SQL_TYPE</span><span class="o">=</span><span class="s">EMBEDDED_SQLITE</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="na">CONNECTION_POOLING</span><span class="o">=</span><span class="s">false</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># DB_MAX_CONNECTIONS must stay 0 (unbounded). See &quot;Single-writer: why a hard</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># connection cap does NOT work&quot; below — gigapaxos re-enters the logger while</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1"># holding a connection, so any finite cap self-deadlocks.</span>
+</span></code></pre></div>
+<p>Versus the default (Embedded Derby + C3P0 pool), measured on this codebase:</p>
+<ul>
+<li><strong>~25% lower process RSS</strong> and <strong>72 fewer JVM threads</strong> (no C3P0 helper threads).</li>
+<li><strong>~40× lower median DB write latency</strong> (p50 ~0.5 ms vs ~25 ms) and ~10–35×
+  higher write throughput depending on the durability setting.</li>
+<li>Passes the full 18-test reconfiguration integration suite, with only rare
+  transient <code>SQLITE_BUSY_SNAPSHOT</code> events that the paxos layer retries.</li>
+</ul>
+<p>Trade-off: SQLite is single-writer, so node-local DB writes serialize at the
+engine level (WAL + <code>busy_timeout</code>). For an RC this is acceptable; for a
+write-throughput-bound active replica it may not be. Note that a <em>hard</em>
+application-level single connection (<code>DB_MAX_CONNECTIONS=1</code>) is <strong>not</strong> usable
+here — see below.</p>
+<h2 id="what-changed">What changed</h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>paxosutil/SQL.java</code></td>
+<td>New <code>EMBEDDED_SQLITE</code> enum value + driver/URL/blob/schema/varchar methods. New vendor-aware exception classifiers <code>isDuplicateKeyException</code> / <code>isDuplicateTableException</code> / <code>isNonexistentTableException</code> (SQLite reports a null SQLState and numeric vendor codes, not Derby SQLState strings).</td>
+</tr>
+<tr>
+<td><code>paxosutil/SimpleDataSource.java</code></td>
+<td><strong>New.</strong> A dependency-free <code>DataSource</code>: a small bounded pool of reused connections via a close-intercepting proxy. No background/helper threads. Supports <code>maxIdle</code> (idle retention) and <code>maxTotal</code> (concurrency cap; <code>1</code> = single serialized writer).</td>
+</tr>
+<tr>
+<td><code>SQLPaxosLogger.java</code>, <code>SQLReconfiguratorDB.java</code></td>
+<td><code>dataSource</code> field retyped to <code>javax.sql.DataSource</code>. C3P0 vs <code>SimpleDataSource</code> selected by config. SQLite URL handling (plain file path, no <code>;create=true</code>), WAL/<code>busy_timeout</code>/<code>IMMEDIATE</code> pragmas, and vendor-aware blob/clob access (sqlite-jdbc does <strong>not</strong> implement <code>createBlob</code>/<code>setBlob</code>/<code>getBlob</code>/<code>setClob</code>; we route through <code>setBytes</code>/<code>getBytes</code>/<code>setString</code>).</td>
+</tr>
+<tr>
+<td><code>PaxosConfig.java</code>, <code>ReconfigurationConfig.java</code></td>
+<td>New <code>CONNECTION_POOLING</code> and <code>DB_MAX_CONNECTIONS</code> config keys.</td>
+</tr>
+<tr>
+<td><code>build.xml</code>, <code>lib/</code></td>
+<td>Added <code>sqlite-jdbc-3.46.1.3.jar</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>The abstraction is preserved: Derby/MySQL/H2 paths are unchanged and the full
+reconfiguration integration suite still passes 18/18 on Derby (no regression).</p>
+<h2 id="configuration-reference">Configuration reference</h2>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SQL_TYPE</code></td>
+<td><code>EMBEDDED_DERBY</code></td>
+<td>One of <code>EMBEDDED_DERBY</code>, <code>MYSQL</code>, <code>EMBEDDED_H2</code>, <code>EMBEDDED_SQLITE</code>. Shared by paxos and reconfiguration.</td>
+</tr>
+<tr>
+<td><code>CONNECTION_POOLING</code></td>
+<td><code>true</code></td>
+<td><code>true</code> → C3P0 pool. <code>false</code> → <code>SimpleDataSource</code> (no pool threads). Forced <code>false</code> internally for SQLite.</td>
+</tr>
+<tr>
+<td><code>DB_MAX_CONNECTIONS</code></td>
+<td><code>0</code></td>
+<td>Non-pooling path only. Bounds concurrently outstanding connections (<code>SimpleDataSource</code> semaphore). <strong>Must be <code>0</code> (unbounded) for gigapaxos</strong> — any finite value deadlocks (see below). The plumbing exists for other embedders/uses.</td>
+</tr>
+</tbody>
+</table>
+<p>SQLite connections are opened with <code>journal_mode=WAL</code>, <code>synchronous=NORMAL</code>, and
+<code>busy_timeout=30000</code> (see Durability and Concurrency below).</p>
+<h2 id="why-sqlite-needs-special-handling">Why SQLite needs special handling</h2>
+<ol>
+<li>
+<p><strong>No JDBC LOB support.</strong> The xerial <code>sqlite-jdbc</code> driver throws
+   <code>SQLFeatureNotSupportedException</code> for <code>Connection.createBlob</code>,
+   <code>PreparedStatement.setBlob</code>/<code>setClob</code>, and <code>ResultSet.getBlob</code>. We use the
+   byte/String accessors (<code>setBytes</code>/<code>getBytes</code>/<code>setString</code>) for SQLite, which
+   round-trip the exact same bytes. (Centralized in <code>SQLPaxosLogger</code>'s
+   <code>setBlobBytes</code>/<code>lobToBytes</code>/<code>getColumnBytes</code> and <code>SQLReconfiguratorDB</code>'s
+   <code>setClobString</code>.)</p>
+</li>
+<li>
+<p><strong>Different error reporting.</strong> SQLite reports <code>getSQLState() == null</code> and a
+   numeric <code>getErrorCode()</code> (e.g. 19 = constraint). The new classifiers in
+   <code>SQL.java</code> handle both styles so the catch blocks stay vendor-agnostic.</p>
+</li>
+<li>
+<p><strong>Single writer.</strong> Only one connection may write at a time. See below.</p>
+</li>
+</ol>
+<h2 id="durability-and-concurrency">Durability and Concurrency</h2>
+<h3 id="durability-synchronous">Durability (<code>synchronous</code>)</h3>
+<ul>
+<li><code>synchronous=NORMAL</code> (our default, WAL mode): fsync only at WAL checkpoint.
+  <strong>Durable across a process crash; may lose the last few commits on an OS/power
+  crash.</strong> Fast.</li>
+<li><code>synchronous=FULL</code>: fsync every commit (equivalent to Derby's default
+  durability). Slower tail, fully crash-safe.</li>
+</ul>
+<h3 id="concurrency-sqlite_busy">Concurrency: <code>SQLITE_BUSY</code></h3>
+<p>Under concurrent read-then-write transactions on multiple connections, WAL mode
+can occasionally raise <code>SQLITE_BUSY</code> / <code>SQLITE_BUSY_SNAPSHOT</code>, and <code>busy_timeout</code>
+does <strong>not</strong> cover <code>BUSY_SNAPSHOT</code>. In the integration suite this happens rarely
+(single-digit events across a full run) and is absorbed by the paxos layer's
+write retries, so the suite passes. This is the proven, recommended setup.</p>
+<p>Two "fixes" were evaluated and <strong>rejected</strong> for gigapaxos (both work in the
+isolated benchmark but break the real cluster):</p>
+<ul>
+<li><code>transaction_mode=IMMEDIATE</code> (take the write lock at <code>BEGIN</code>). Eliminates
+  <code>BUSY_SNAPSHOT</code> in the benchmark, but gigapaxos borrows a connection and
+  re-enters the logger on the same thread (e.g. <code>putCheckpointState</code> →
+  <code>getSetGCAndGetMinLogfile</code> → <code>unpauseLogIndex</code>). Holding the write lock across
+  such a nested write risks a write-lock self-deadlock.</li>
+<li><code>DB_MAX_CONNECTIONS=1</code> (single connection). See the next section.</li>
+</ul>
+<h3 id="single-writer-why-a-hard-connection-cap-does-not-work">Single-writer: why a hard connection cap does NOT work</h3>
+<p>A natural idea for SQLite is to serialize all DB access through one connection.
+We implemented this (<code>SimpleDataSource</code> with a <code>maxTotal=1</code> semaphore) and it is
+clean and fast <em>in isolation</em> (0 errors, tightest tail in the benchmark). But it
+<strong>deadlocks the real cluster at startup</strong>, because gigapaxos acquires a
+connection and then, while still holding it, re-enters the logger and acquires a
+<em>second</em> connection on the same thread:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>SQLPaxosLogger.putCheckpointState   // holds connection #1 (permit taken)
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>  -&gt; getSetGCAndGetMinLogfile
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    -&gt; MessageLogDiskMap.restore
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>      -&gt; unpauseLogIndex
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>        -&gt; getDefaultConn()          // wants connection #2 -&gt; blocks on the
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>                                     //   permit the same thread already holds
+</span></code></pre></div>
+<p>With one permit, the nested borrow waits forever. Any finite cap below the
+maximum re-entrancy depth × concurrency has the same failure, so in practice the
+cap must be unbounded (<code>0</code>). A genuinely safe single-writer would require a
+reentrancy-aware connection design (e.g. a thread-local connection reused for
+nested borrows) — and would still need care around the explicit-transaction
+paths (<code>setAutoCommit(false)</code> batches) so a nested op cannot commit an outer
+transaction early. That is a larger change, left as future work.</p>
+<h2 id="benchmark-data">Benchmark data</h2>
+<p>All numbers measured on this machine (8 cores, Linux, OpenJDK 21, local disk).</p>
+<h3 id="memory-13-node-cluster-in-one-jvm-xmx512m-idle-baseline">Memory (13-node cluster in one JVM, <code>-Xmx512m</code>, idle baseline)</h3>
+<table>
+<thead>
+<tr>
+<th>Config</th>
+<th style="text-align: right;">RSS</th>
+<th style="text-align: right;">C3P0/mchange threads</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Derby + C3P0 pool</td>
+<td style="text-align: right;">758 MB</td>
+<td style="text-align: right;">72</td>
+</tr>
+<tr>
+<td>Derby + SimpleDataSource</td>
+<td style="text-align: right;">724 MB</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>SQLite + SimpleDataSource</td>
+<td style="text-align: right;">567 MB</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Dropping C3P0 (engine held constant): −34 MB RSS, −72 threads.</li>
+<li>Derby → SQLite engine swap: −157 MB RSS.</li>
+<li>Combined: <strong>−191 MB (~25%) RSS, 72 fewer threads.</strong></li>
+<li>Java <em>heap</em> used is similar across all three (~424–450 MB); the savings are in
+  RSS / native memory / thread stacks, not heap.</li>
+</ul>
+<h3 id="write-latency-8-threads-2000-read-modify-write-txns-200-rows-1-kb">Write latency (8 threads × 2000 read-modify-write txns, 200 rows, 1 KB)</h3>
+<p><code>BEGIN; SELECT; UPDATE; COMMIT</code> per op. <code>DBLatencyBench</code> reproduces the
+gigapaxos write shape; see <code>src/edu/umass/cs/gigapaxos/paxosutil/DBLatencyBench.java</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th style="text-align: right;">Throughput</th>
+<th style="text-align: right;">p50</th>
+<th style="text-align: right;">p99</th>
+<th style="text-align: right;">p99.9</th>
+<th style="text-align: right;">max</th>
+<th style="text-align: right;">Failed txns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Derby + C3P0 (full durable)</td>
+<td style="text-align: right;">272 /s</td>
+<td style="text-align: right;">25.2 ms</td>
+<td style="text-align: right;">170 ms</td>
+<td style="text-align: right;">260 ms</td>
+<td style="text-align: right;">776 ms</td>
+<td style="text-align: right;">0%</td>
+</tr>
+<tr>
+<td>SQLite multi-conn pool <em>(naive — do not use)</em></td>
+<td style="text-align: right;">28,342 /s</td>
+<td style="text-align: right;">0.06 ms</td>
+<td style="text-align: right;">5.3 ms</td>
+<td style="text-align: right;">9.7 ms</td>
+<td style="text-align: right;">134 ms</td>
+<td style="text-align: right;"><strong>34.5%</strong></td>
+</tr>
+<tr>
+<td>SQLite <code>IMMEDIATE</code>, WAL/NORMAL</td>
+<td style="text-align: right;">11,573 /s</td>
+<td style="text-align: right;">0.06 ms</td>
+<td style="text-align: right;">1.2 ms</td>
+<td style="text-align: right;">104 ms</td>
+<td style="text-align: right;">631 ms</td>
+<td style="text-align: right;">0%</td>
+</tr>
+<tr>
+<td><strong>SQLite single-writer, WAL/NORMAL</strong></td>
+<td style="text-align: right;">9,481 /s</td>
+<td style="text-align: right;">0.59 ms</td>
+<td style="text-align: right;">2.9 ms</td>
+<td style="text-align: right;"><strong>4.9 ms</strong></td>
+<td style="text-align: right;">227 ms</td>
+<td style="text-align: right;">0%</td>
+</tr>
+<tr>
+<td>SQLite <code>IMMEDIATE</code>, FULL durable</td>
+<td style="text-align: right;">2,672 /s</td>
+<td style="text-align: right;">0.06 ms</td>
+<td style="text-align: right;">22.8 ms</td>
+<td style="text-align: right;">231 ms</td>
+<td style="text-align: right;">4535 ms</td>
+<td style="text-align: right;">0%</td>
+</tr>
+<tr>
+<td>SQLite single-writer, FULL durable</td>
+<td style="text-align: right;">2,941 /s</td>
+<td style="text-align: right;">0.54 ms</td>
+<td style="text-align: right;">77.6 ms</td>
+<td style="text-align: right;">165 ms</td>
+<td style="text-align: right;">280 ms</td>
+<td style="text-align: right;">0%</td>
+</tr>
+</tbody>
+</table>
+<p>This is a deliberately adversarial microbenchmark (8 threads hammering 200 rows
+with read-modify-write), so the BUSY rate is a worst case, not what the cluster
+sees (the real suite saw single-digit BUSY events per run). Takeaways:</p>
+<ul>
+<li>SQLite beats Derby on median latency by ~40× and on throughput by ~10× even at
+  equal (FULL) durability; the larger gaps come partly from WAL/NORMAL durability.</li>
+<li>The multi-connection pool's BUSY rate spikes under sustained contention; the
+  <code>IMMEDIATE</code> and single-writer columns show it <em>can</em> be driven to zero in
+  isolation — but neither is usable in gigapaxos (see Concurrency above). The
+  shipped config is the multi-connection pool with paxos-layer retries.</li>
+</ul>
+<h3 id="integration-tests">Integration tests</h3>
+<p><code>TESTReconfigurationClient</code> (5 RC + 8 AR cluster, 18 tests):</p>
+<ul>
+<li>Derby + C3P0: 18/18, ~430 s.</li>
+<li>SQLite (<code>CONNECTION_POOLING=false</code>, <code>DB_MAX_CONNECTIONS=0</code>): 18/18 across
+  multiple runs (~125–329 s wall — the throughput test is variance-prone), with
+  a handful (≈1–3) of transient <code>BUSY</code>/<code>BUSY_SNAPSHOT</code> events per run absorbed by
+  paxos retries.</li>
+<li>SQLite with <code>DB_MAX_CONNECTIONS=1</code>: <strong>deadlocks at startup</strong> (re-entrant DB
+  access — see Concurrency above). Do not use.</li>
+</ul>
+<h2 id="running-it">Running it</h2>
+<p>Build (the sqlite-jdbc jar is picked up from <code>lib/</code>):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ant<span class="w"> </span>compile
+</span></code></pre></div>
+<p>Run the reconfiguration integration suite against SQLite (single-writer). Note
+the harness configures nodes programmatically and forbids a <code>gigapaxosConfig</code>
+file, so config overrides are injected via <code>ConfiguredTestRunner</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nv">CP</span><span class="o">=</span><span class="s2">&quot;build/classes:build/test/classes:</span><span class="k">$(</span>ls<span class="w"> </span>lib/*.jar<span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span><span class="s1">&#39;\n&#39;</span><span class="w"> </span><span class="s1">&#39;:&#39;</span><span class="k">)</span><span class="s2">&quot;</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>java<span class="w"> </span>-ea<span class="w"> </span>-cp<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CP</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span>-Djavax.net.ssl.trustStore<span class="o">=</span>conf/keyStore/node100.jks<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span>-Djavax.net.ssl.trustStorePassword<span class="o">=</span>qwerty<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span>-Djavax.net.ssl.keyStore<span class="o">=</span>conf/keyStore/node100.jks<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span>-Djavax.net.ssl.keyStorePassword<span class="o">=</span>qwerty<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span>edu.umass.cs.reconfiguration.testing.ConfiguredTestRunner<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">  </span>edu.umass.cs.reconfiguration.testing.TESTReconfigurationClient<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">  </span><span class="nv">SQL_TYPE</span><span class="o">=</span>EMBEDDED_SQLITE<span class="w"> </span><span class="nv">CONNECTION_POOLING</span><span class="o">=</span><span class="nb">false</span>
+</span></code></pre></div>
+<p>Run the DB write-latency benchmark:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nv">CP</span><span class="o">=</span><span class="s2">&quot;build/classes:</span><span class="k">$(</span>ls<span class="w"> </span>lib/*.jar<span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span><span class="s1">&#39;\n&#39;</span><span class="w"> </span><span class="s1">&#39;:&#39;</span><span class="k">)</span><span class="s2">&quot;</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1"># mode in: derby-c3p0 derby-simple sqlite-pool sqlite-immediate sqlite-single</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1">#          (+ &quot;-full&quot; suffix on sqlite modes for synchronous=FULL)</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>java<span class="w"> </span>-cp<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CP</span><span class="s2">&quot;</span><span class="w"> </span>edu.umass.cs.gigapaxos.paxosutil.DBLatencyBench<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span>sqlite-single<span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">2000</span><span class="w"> </span><span class="m">200</span><span class="w"> </span><span class="m">1024</span><span class="w">   </span><span class="c1"># mode threads opsPerThread rows payloadBytes</span>
+</span></code></pre></div>
+<h2 id="known-limitations-future-work">Known limitations / future work</h2>
+<ul>
+<li><strong>Column-type migration (<code>reconcileTable</code> / <code>getAlterString</code>) is unsupported on
+  SQLite</strong> (SQLite cannot ALTER a column's type). In practice it is not
+  exercised because SQLite stores declared types verbatim, so reconcile finds no
+  mismatch; a genuine schema migration would fail loudly.</li>
+<li><code>EMBEDDED_H2</code> remains in the abstraction but is untested here (no H2 jar in
+  <code>lib/</code>).</li>
+<li><strong>True single-writer is not available</strong> as a config flag (see Concurrency).
+  Achieving it safely needs a reentrancy-aware connection design plus handling
+  of the explicit-transaction paths — a worthwhile follow-up if the occasional
+  <code>BUSY_SNAPSHOT</code> retry proves to be a problem in production.</li>
+<li>The <code>connectDB()</code> connection-leak fix in <code>SQLReconfiguratorDB</code> (it discarded
+  the <code>getDefaultConn()</code> result) is included; harmless before, but it was the
+  first deadlock the single-writer experiment exposed.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Fadhil I. Kurnia - University of Massachusetts Amherst
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.footer", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
