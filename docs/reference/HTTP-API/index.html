@@ -18,7 +18,7 @@
         <link rel="prev" href="../../how-xdn-work/">
       
       
-        <link rel="next" href="../request-flow/">
+        <link rel="next" href="../cli/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>HTTP API - XDN</title>
+        <title>Control-plane API - XDN</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#tutorial-http-apis" class="md-skip">
+        <a href="#control-plane-http-api" class="md-skip">
           Skip to content
         </a>
       
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              HTTP API
+              Control-plane API
             
           </span>
         </div>
@@ -708,6 +708,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -716,7 +718,7 @@
   <span class="md-ellipsis">
     
   
-    HTTP API
+    Control-plane API
   
 
     
@@ -734,7 +736,7 @@
   <span class="md-ellipsis">
     
   
-    HTTP API
+    Control-plane API
   
 
     
@@ -750,6 +752,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -758,63 +762,68 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#tutorial-http-apis" class="md-nav__link">
+  <a href="#service-lifecycle" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Tutorial: HTTP APIs
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Tutorial: HTTP APIs">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#start-up-servers" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Start up servers
+        Service lifecycle
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#send-requests-through-http-api" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#placement-coordinator-demand" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Send requests through HTTP API
+        Placement, coordinator &amp; demand
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#create-and-delete-service-names" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#cluster-nodes-elasticity" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Create and delete service names
+        Cluster nodes (elasticity)
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#stop-servers" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#per-replica-info-activereplica" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Stop servers
+        Per-replica info (ActiveReplica)
       
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#status-codes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status codes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deprecated-legacy-get-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deprecated: legacy GET /?type=…
+      
+    </span>
+  </a>
   
 </li>
       
@@ -822,6 +831,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Command-line (xdn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -842,6 +879,62 @@
     
   
     Request flow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../service-name-inference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Service name inference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../geo-demand/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Geo-distributed demand
   
 
     
@@ -1018,6 +1111,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1026,63 +1121,68 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#tutorial-http-apis" class="md-nav__link">
+  <a href="#service-lifecycle" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Tutorial: HTTP APIs
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Tutorial: HTTP APIs">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#start-up-servers" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Start up servers
+        Service lifecycle
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#send-requests-through-http-api" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#placement-coordinator-demand" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Send requests through HTTP API
+        Placement, coordinator &amp; demand
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#create-and-delete-service-names" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#cluster-nodes-elasticity" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Create and delete service names
+        Cluster nodes (elasticity)
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#stop-servers" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#per-replica-info-activereplica" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Stop servers
+        Per-replica info (ActiveReplica)
       
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#status-codes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status codes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deprecated-legacy-get-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deprecated: legacy GET /?type=…
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1106,72 +1206,153 @@
   
 
 
-  <h1>HTTP API</h1>
+<h1 id="control-plane-http-api">Control-plane HTTP API</h1>
+<p>The XDN control plane (the Reconfigurator) exposes a small JSON HTTP API for
+deploying, inspecting, and reconfiguring services. The dashboard and the <code>xdn</code>
+CLI are both thin clients of this API; you can also call it directly.</p>
+<ul>
+<li><strong>Base URL</strong> — <code>http(s)://&lt;control-plane-host&gt;:&lt;port&gt;</code>. The CLI talks to the
+  clear-HTTP port (<code>:3300</code>); the browser dashboard uses the TLS port (<code>:3400</code>).</li>
+<li><strong>Format</strong> — requests and responses are JSON; any origin is allowed (CORS).</li>
+<li>All endpoints live under the <code>/api/v2</code> prefix.</li>
+</ul>
+<h2 id="service-lifecycle">Service lifecycle</h2>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Path</th>
+<th>Purpose</th>
+<th>Success</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><code>/api/v2/services/{name}</code></td>
+<td>Create (launch) a service. Body: <code>{"initial_state": "xdn:init:…"}</code> (the encoded service config).</td>
+<td><code>201</code></td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/v2/services/{name}</code></td>
+<td>Get a service (its active replicas).</td>
+<td><code>200</code></td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><code>/api/v2/services/{name}</code></td>
+<td>Destroy a service.</td>
+<td><code>200</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="placement-coordinator-demand">Placement, coordinator &amp; demand</h2>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Path</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/v2/services/{name}/placement</code></td>
+<td>Current placement: per-replica id, role, address, geolocation.</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><code>/api/v2/services/{name}/placement</code></td>
+<td>Set the replica set (and optionally coordinator). Body: <code>{"NODES":[…],"COORDINATOR":"…"}</code>.</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><code>/api/v2/services/{name}/coordinator</code></td>
+<td>Change the coordinator/leader. Body: <code>{"newCoordinatorNodeId":"…"}</code>.</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/v2/services/{name}/demand</code></td>
+<td>Geo-demand heatmap cells split by request kind: <code>[{"lat","lon","read","write","count"}]</code> where <code>count = read + write</code> and writes fold in read-modify-write (see <a href="../geo-demand/">Geo-distributed demand</a>).</td>
+</tr>
+</tbody>
+</table>
+<p>The demand a cell reflects is governed by the reconfigurator config <code>XDN_DEMAND_WINDOW_MINUTES</code>:
+<code>-1</code> (default) is cumulative all-time demand; a positive <code>N</code> keeps only the last <code>N</code> minutes (a
+rolling window), so both the heatmap and demand-driven placement track current load.</p>
+<h2 id="cluster-nodes-elasticity">Cluster nodes (elasticity)</h2>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Path</th>
+<th>Purpose</th>
+<th>Success</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/v2/nodes</code></td>
+<td>List node locations: candidates + active replicas (<code>[{"id","lat","lon","active"}]</code>).</td>
+<td><code>200</code></td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/api/v2/nodes</code></td>
+<td>Add an active replica. Body: <code>{"id","host","port"}</code>.</td>
+<td><code>202</code></td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><code>/api/v2/nodes/{id}</code></td>
+<td>Remove an active replica.</td>
+<td><code>202</code></td>
+</tr>
+</tbody>
+</table>
+<p>Node config changes are applied asynchronously (the cluster reconfigures and
+transfers state); <code>202 Accepted</code> means the change was queued. Poll
+<code>/api/v2/nodes</code> or a service's <code>/placement</code> for the result.</p>
+<h2 id="per-replica-info-activereplica">Per-replica info (ActiveReplica)</h2>
+<p>Each ActiveReplica also serves its own live detail — queried directly from the
+replica, not the control plane:</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Path</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/v2/services/{name}/replica/info</code></td>
+<td>This replica's role, protocol, epoch, consistency, and container status.</td>
+</tr>
+</tbody>
+</table>
+<p>The replica must know which service the request targets; pass <code>?_xdnsvc={name}</code>
+or an <code>XDN: {name}</code> header (see <a href="../service-name-inference/">Service name inference</a>).</p>
+<h2 id="status-codes">Status codes</h2>
+<p><code>2xx</code> on success (<code>201</code> create, <code>202</code> async node change, <code>200</code> otherwise);
+<code>400</code> malformed request; <code>404</code> unknown service; <code>409</code> create conflict; <code>5xx</code>
+server error. Error responses carry a JSON body with a <code>RESPONSE_MESSAGE</code>.</p>
+<h2 id="deprecated-legacy-get-type">Deprecated: legacy <code>GET /?type=…</code></h2>
+<p>Earlier versions did everything over <code>GET</code> with a query string —
+<code>/?type=CREATE&amp;name=…&amp;initial_state=…</code>, <code>/?type=DELETE&amp;name=…</code>,
+<code>/?type=CHANGE_ACTIVES&amp;…</code>. These still work for backward compatibility but are
+<strong>deprecated</strong> (the server logs a warning) and will be removed; use the RESTful
+endpoints above instead.</p>
 
-<h2 id="tutorial-http-apis">Tutorial: HTTP APIs</h2>
-<p>You can also use our HTTP APIs to interact with GigaPaxos. Checkout the most recent source code if you haven't done so:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git clone https://github.com/MobilityFirst/gigapaxos
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>cd gigapaxos
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>ant jar
-</span></code></pre></div>
-<p>This tutorial shows you how to use HTTP APIs to send a request to GigaPaxos. </p>
-<h4 id="start-up-servers">Start up servers</h4>
-<p>First start up servers with the config file <tt>conf/examples/http.properties</tt>:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>bin/gpServer.sh -DgigapaxosConfig=conf/examples/http.properties start all
-</span></code></pre></div>
-<p>The config file <tt>conf/examples/http.properties</tt> looks as</p>
-<div class="language-text highlight"><pre><span></span><code>APPLICATION=edu.umass.cs.reconfiguration.http.HttpActiveReplicaTestApp
-
-ENABLE_ACTIVE_REPLICA_HTTP=true
-
-# format: active.&lt;active_server_name&gt;=host:port
-active.AR0=127.0.0.1:2000
-
-# format: reconfigurator.&lt;active_server_name&gt;=host:port
-reconfigurator.RC0=127.0.0.1:3000
-</code></pre></div>
-<p>It enables ActiveReplica HTTP server (<a href="https://github.com/MobilityFirst/gigapaxos/blob/master/src/edu/umass/cs/reconfiguration/http/HttpActiveReplica.java">HttpActiveReplica.java</a>) by setting <tt>ENABLE_ACTIVE_REPLICA_HTTP=true</tt>. The <code>Replicable</code> app being used is <code>edu.umass.cs.reconfiguration.http.HttpActiveReplicaTestApp</code>.</p>
-<p>If the HTTP server is successfully booted up, you should see a message:</p>
-<div class="language-text highlight"><pre><span></span><code>...
-HttpActiveReplica ready on /127.0.0.1:2300
-...
-</code></pre></div>
-<p>, which means the HTTP server is running on <a href="http://127.0.0.1:2300">http://127.0.0.1:2300</a>.</p>
-<h4 id="send-requests-through-http-api">Send requests through HTTP API</h4>
-<p>You may use your browser to issue requests to GigaPaxos by embedding your request into <code>URI</code>. For example, to send a coordinated request to the default service name "HttpActiveReplicaTestApp0", open the link with your browser:
-<a href="http://127.0.0.1:2300/?name=HttpActiveReplicaTestApp0&amp;qval=abc">http://127.0.0.1:2300/?name=HttpActiveReplicaTestApp0&amp;qval=abc</a></p>
-<p>Note, you must specify the service name <code>name</code> and request value <code>qval</code> fields in the request. </p>
-<p>If the request gets executed successfully, your browser should show you a message like</p>
-<div class="language-text highlight"><pre><span></span><code>RESPONSE:
-
-{&quot;COORD&quot;:true,&quot;STOP&quot;:false,&quot;QVAL&quot;:&quot;abc&quot;,&quot;EPOCH&quot;:0,&quot;RVAL&quot;:&quot;ACK&quot;,&quot;type&quot;:400,&quot;QID&quot;:607203182,&quot;NAME&quot;:&quot;HttpActiveReplicaTestApp0&quot;}
-</code></pre></div>
-<p>By default, the request is coordinated if the field "coord" is unspecified. To send an uncoordinated request, your need to set "coord=false". Open the link with your browser to send an uncoordinated request:
-<a href="http://127.0.0.1:2300/?name=HttpActiveReplicaTestApp0&amp;qval=def&amp;coord=false">http://127.0.0.1:2300/?name=HttpActiveReplicaTestApp0&amp;qval=def&amp;coord=false</a></p>
-<h4 id="create-and-delete-service-names">Create and delete service names</h4>
-<p>GigaPaxos reconfigurators also support HTTP APIs to create or delete a service name and request active replicas of a service name.
-As you may already noticed, the HTTP server of reconfigurator RC0 is running at <a href="http:/127.0.0.1:3300">http:/127.0.0.1:3300</a>.</p>
-<p>To create a service name <i>Alice</i>, open the link below:
-<a href="http://127.0.0.1:3300/?type=CREATE&amp;name=Alice">http://127.0.0.1:3300/?type=CREATE&amp;name=Alice</a></p>
-<p>Besides <code>type=CREATE</code>, <code>type=234</code> also represents <a href="https://github.com/MobilityFirst/gigapaxos/blob/master/src/edu/umass/cs/reconfiguration/reconfigurationpackets/CreateServiceName.java">CreateServiceName</a> request.</p>
-<p>Now you can send a request against this newly created service name, e.g., open the following link to send a coordinated request to active replica AR0 to update the state associated with the service name <i>Alice</i>:
-<a href="http://localhost:2300/?name=Alice&amp;qval=abc">http://localhost:2300/?name=Alice&amp;qval=abc</a></p>
-<p>To delete this service name, open the link below:
-<a href="http://127.0.0.1:3300/?type=DELETE&amp;name=Alice">http://127.0.0.1:3300/?type=DELETE&amp;name=Alice</a></p>
-<p>Besides <code>type=DELETE</code>, <code>type=235</code> represents <a href="https://github.com/MobilityFirst/gigapaxos/blob/master/src/edu/umass/cs/reconfiguration/reconfigurationpackets/DeleteServiceName.java">DeleteServiceName</a> request.</p>
-<h4 id="stop-servers">Stop servers</h4>
-<p>To stop and cleanup the service:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>bin/gpServer.sh -DgigapaxosConfig=conf/examples/http.properties forceclear all
-</span></code></pre></div></p>
 
 
 
 
 
-
-
-  
-  
 
 
 
@@ -1218,13 +1399,13 @@ As you may already noticed, the HTTP server of reconfigurator RC0 is running at 
         
         
           
-          <a href="../request-flow/" class="md-footer__link md-footer__link--next" aria-label="Next: Request flow">
+          <a href="../cli/" class="md-footer__link md-footer__link--next" aria-label="Next: Command-line (xdn)">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Request flow
+                Command-line (xdn)
               </div>
             </div>
             <div class="md-footer__button md-icon">
