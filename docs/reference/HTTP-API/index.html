@@ -1275,10 +1275,13 @@ CLI are both thin clients of this API; you can also call it directly.</p>
 <tr>
 <td><code>GET</code></td>
 <td><code>/api/v2/services/{name}/demand</code></td>
-<td>Geo-demand heatmap cells: <code>[{"lat","lon","count"}]</code> (see <a href="../geo-demand/">Geo-distributed demand</a>).</td>
+<td>Geo-demand heatmap cells split by request kind: <code>[{"lat","lon","read","write","count"}]</code> where <code>count = read + write</code> and writes fold in read-modify-write (see <a href="../geo-demand/">Geo-distributed demand</a>).</td>
 </tr>
 </tbody>
 </table>
+<p>The demand a cell reflects is governed by the reconfigurator config <code>XDN_DEMAND_WINDOW_MINUTES</code>:
+<code>-1</code> (default) is cumulative all-time demand; a positive <code>N</code> keeps only the last <code>N</code> minutes (a
+rolling window), so both the heatmap and demand-driven placement track current load.</p>
 <h2 id="cluster-nodes-elasticity">Cluster nodes (elasticity)</h2>
 <table>
 <thead>

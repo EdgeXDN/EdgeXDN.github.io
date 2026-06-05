@@ -1208,10 +1208,14 @@ enqueues its header or its source IP, and a background worker does the
 <h2 id="the-demand-grid">The demand grid</h2>
 <p>Each AR keeps demand in a fixed <strong>1000 × 1000 latitude/longitude grid</strong> covering
 the whole Earth — about <strong>0.2° per cell (~20 km)</strong>. A client location increments
-the count of the one cell it falls in. The grid is stored sparsely, so only cells
-that have actually seen traffic cost anything.</p>
+the one cell it falls in. The grid is stored sparsely, so only cells that have
+actually seen traffic cost anything.</p>
+<p>Each cell tracks <strong>reads and writes separately</strong> — a request is classified from
+its declared behavior (<code>READ_ONLY</code> vs <code>WRITE_ONLY</code> / <code>READ_MODIFY_WRITE</code>, the
+latter folding into <em>write</em> since it mutates state). This lets the heatmap and
+analyses distinguish read-heavy from write-heavy regions.</p>
 <p>No IP addresses, identities, or per-request data are retained — only per-cell
-request counts.</p>
+read/write request counts.</p>
 <h2 id="aggregating-across-replicas">Aggregating across replicas</h2>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>client ──▶ AR (local 1000×1000 grid)
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>                  │  every ≥10s: snapshot + reset
@@ -1225,10 +1229,13 @@ request counts.</p>
 <li><strong>Per AR:</strong> roughly every 10 seconds an AR snapshots its grid into a
   <code>DemandReport</code> and <strong>resets</strong> its local grid, so each report carries only the
   demand <em>since the last report</em> (a delta). To keep reports small, only the
-  busiest cells (top ~300) are sent.</li>
-<li><strong>At the Reconfigurator:</strong> incoming reports are <strong>combined by summing counts
-  per cell</strong>, producing a single, cumulative, cluster-wide view of demand
-  geo-distribution.</li>
+  busiest cells (top ~200) are sent, with their read/write counts.</li>
+<li><strong>At the Reconfigurator:</strong> incoming reports are <strong>combined by summing the
+  read/write counts per cell</strong>, producing a cluster-wide view of demand
+  geo-distribution. The retention is governed by the config
+  <code>XDN_DEMAND_WINDOW_MINUTES</code>: <code>-1</code> (default) keeps <strong>cumulative</strong> all-time demand;
+  a positive <code>N</code> keeps only the <strong>last <code>N</code> minutes</strong> (a rolling window, so demand
+  decays), which makes both the heatmap and placement reflect <em>current</em> load.</li>
 </ul>
 <h2 id="what-the-aggregated-demand-is-used-for">What the aggregated demand is used for</h2>
 <ul>
@@ -1236,8 +1243,8 @@ request counts.</p>
   against candidate edge locations to decide where a service's replicas should
   run, moving capacity toward the regions generating load.</li>
 <li><strong>Dashboard heatmap</strong> — the same per-cell counts are exposed as
-  <code>{lat, lon, count}</code> points and rendered as the demand heatmap on the XDN
-  dashboard.</li>
+  <code>{lat, lon, read, write, count}</code> points (<code>count = read + write</code>) and rendered as
+  the demand heatmap on the XDN dashboard, with a read/write/both selector.</li>
 </ul>
 <h2 id="where-this-lives-in-the-code">Where this lives in the code</h2>
 <table>
@@ -1257,8 +1264,16 @@ request counts.</p>
 <td><code>edu.umass.cs.xdn.GeoIpResolver</code></td>
 </tr>
 <tr>
-<td>Heatmap cells (<code>{lat, lon, count}</code>)</td>
+<td>Heatmap cells (<code>{lat, lon, read, write, count}</code>)</td>
 <td><code>XdnGeoDemandProfiler#getDemandGeoCells</code></td>
+</tr>
+<tr>
+<td>Read/write classification</td>
+<td><code>XdnHttpRequest#getBehaviors</code> (<code>RequestBehaviorType</code>)</td>
+</tr>
+<tr>
+<td>Demand window config (<code>-1</code> cumulative / <code>N</code> minutes)</td>
+<td><code>ReconfigurationConfig.RC.XDN_DEMAND_WINDOW_MINUTES</code></td>
 </tr>
 </tbody>
 </table>
