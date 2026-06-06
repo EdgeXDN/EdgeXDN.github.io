@@ -2,78 +2,70 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://xdn.cs.umass.edu/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://xdn.cs.umass.edu/become-operator/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://xdn.cs.umass.edu/dashboard/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://xdn.cs.umass.edu/flexible-consistency/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://xdn.cs.umass.edu/getting-started/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://xdn.cs.umass.edu/how-xdn-work/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://xdn.cs.umass.edu/multi-container/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://xdn.cs.umass.edu/service-properties/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://xdn.cs.umass.edu/reference/HTTP-API/</loc>
-         <lastmod>2026-06-05</lastmod>
-    </url>
-    <url>
-         <loc>https://xdn.cs.umass.edu/reference/cli/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://xdn.cs.umass.edu/reference/developer/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
-         <loc>https://xdn.cs.umass.edu/reference/geo-demand/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <loc>https://xdn.cs.umass.edu/reference/gigapaxos-decoupling-plan/</loc>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://xdn.cs.umass.edu/reference/paxos-compaction/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://xdn.cs.umass.edu/reference/paxos-reconfiguration/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://xdn.cs.umass.edu/reference/request-flow/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://xdn.cs.umass.edu/reference/rocksdb-vs-sqlite/</loc>
-         <lastmod>2026-06-05</lastmod>
-    </url>
-    <url>
-         <loc>https://xdn.cs.umass.edu/reference/service-name-inference/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://xdn.cs.umass.edu/reference/sqlite-backend/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
     <url>
          <loc>https://xdn.cs.umass.edu/reference/wordpress-pb-investigation/</loc>
-         <lastmod>2026-06-05</lastmod>
+         <lastmod>2026-06-06</lastmod>
     </url>
 </urlset>

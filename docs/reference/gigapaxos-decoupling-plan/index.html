@@ -12,13 +12,9 @@
         <meta name="author" content="Fadhil I. Kurnia">
       
       
-        <link rel="canonical" href="https://xdn.cs.umass.edu/reference/service-name-inference/">
+        <link rel="canonical" href="https://xdn.cs.umass.edu/reference/gigapaxos-decoupling-plan/">
       
       
-        <link rel="prev" href="../request-flow/">
-      
-      
-        <link rel="next" href="../geo-demand/">
       
       
         
@@ -29,7 +25,7 @@
     
     
       
-        <title>Service name inference - XDN</title>
+        <title>Decoupling XDN from its in-tree gigapaxos copy - XDN</title>
       
     
     
@@ -78,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#service-name-inference" class="md-skip">
+        <a href="#decoupling-xdn-from-its-in-tree-gigapaxos-copy" class="md-skip">
           Skip to content
         </a>
       
@@ -113,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Service name inference
+              Decoupling XDN from its in-tree gigapaxos copy
             
           </span>
         </div>
@@ -305,12 +301,10 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
+      <li class="md-tabs__item">
         <a href="../HTTP-API/" class="md-tabs__link">
           
   
@@ -644,29 +638,24 @@
       
   
   
-    
   
   
-  
     
     
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
         
           
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
             
   
   
@@ -684,7 +673,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
@@ -709,35 +698,7 @@
   <span class="md-ellipsis">
     
   
-    Control-plane API
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../cli/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Command-line (xdn)
+    HTTP API
   
 
     
@@ -766,153 +727,6 @@
     
   
     Request flow
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Service name inference
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Service name inference
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#where-the-name-can-come-from" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Where the name can come from
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cookie-convenience-for-browsers" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cookie convenience for browsers
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#normalization" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Normalization
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#where-this-lives-in-the-code" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Where this lives in the code
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../geo-demand/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Geo-distributed demand
   
 
     
@@ -1099,10 +913,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#where-the-name-can-come-from" class="md-nav__link">
+  <a href="#the-problem-concretely" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Where the name can come from
+        The problem, concretely
       
     </span>
   </a>
@@ -1110,10 +924,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#cookie-convenience-for-browsers" class="md-nav__link">
+  <a href="#direction-chosen" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Cookie convenience for browsers
+        Direction chosen
       
     </span>
   </a>
@@ -1121,21 +935,93 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#normalization" class="md-nav__link">
+  <a href="#phased-roadmap" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Normalization
+        Phased roadmap
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phased roadmap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phase-0-sync-the-outstanding-upstream-commits-done-4a0c089b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 0 — Sync the outstanding upstream commits (done — 4a0c089b)
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#where-this-lives-in-the-code" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#phase-1-kill-the-formatting-tax-highest-roi" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Where this lives in the code
+        Phase 1 — Kill the formatting tax (highest ROI)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-2-establish-the-xdn-owned-gigapaxos-fork-as-upstream-of-record" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 2 — Establish the XDN-owned gigapaxos fork as upstream-of-record
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-3-draw-the-library-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 3 — Draw the library boundary
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-4-convert-the-library-tree-to-a-git-subtree" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 4 — Convert the library tree to a git subtree
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-5-steady-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 5 — Steady state
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guardrails-lessons-from-phase-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Guardrails / lessons from Phase 0
       
     </span>
   </a>
@@ -1162,66 +1048,75 @@
   
 
 
-<h1 id="service-name-inference">Service Name Inference</h1>
-<p>An ActiveReplica's HTTP frontend hosts many services at once, but an incoming
-HTTP request is just a normal web request — it has no XDN-specific field. So
-before the request can be routed to the right service (and coordinated), the
-ActiveReplica must figure out <strong>which service it is for</strong>. This page describes
-how that name is inferred.</p>
-<h2 id="where-the-name-can-come-from">Where the name can come from</h2>
-<p>For each request the ActiveReplica looks in four places, in priority order, and
-takes the first one that yields a non-empty name:</p>
+<h1 id="decoupling-xdn-from-its-in-tree-gigapaxos-copy">Decoupling XDN from its in-tree gigapaxos copy</h1>
+<p>XDN is a monorepo that vendors gigapaxos as in-tree source (<code>src/edu/umass/cs/{gigapaxos,reconfiguration,nio,protocoltask,txn,chainreplication,utils}</code>) and builds it from source rather than depending on a published jar. Over time the two have drifted far apart: measured from their common ancestor, <strong>upstream <code>origin/master</code> is 4 commits ahead while <code>fork/main</code> is 442 commits ahead</strong>. Re-syncing is now expensive and conflict-prone, and the cost grows every time either side moves.</p>
+<p>This doc records why the drift hurts, the direction we chose, and a phased plan to make future syncs cheap without giving up the monorepo developer experience.</p>
+<h2 id="the-problem-concretely">The problem, concretely</h2>
+<p>Three independent forces make each sync harder than it should be:</p>
 <ol>
-<li><strong><code>_xdnsvc</code> query parameter</strong> — e.g. <code>http://host:port/path?_xdnsvc=my-service</code>.
-   Useful for direct links and testing, where you can't control the Host header.</li>
-<li><strong><code>XDN</code> header</strong> — e.g. <code>XDN: my-service</code>. Explicit and unambiguous; this is
-   what clients and tools (e.g. the CLI) set.</li>
-<li><strong><code>XDN</code> cookie</strong> — <code>Cookie: XDN=my-service</code>. Lets a browser keep talking to the
-   same service across navigation without re-specifying it (see below).</li>
-<li><strong>Host subdomain</strong> — the left-most label of the hostname, e.g.
-   <code>my-service.xdnapp.com</code> → <code>my-service</code>. This is the normal production path:
-   each service gets its own subdomain, so an ordinary browser request to the
-   service's URL just works.</li>
+<li>
+<p><strong>Whole-file formatting drift.</strong> XDN reformatted the vendored gigapaxos files (tabs → spaces, re-wrapping). A 21-line <em>semantic</em> upstream change to <code>PaxosManager.java</code> lands inside a file git sees as almost entirely rewritten, so 3-way merge degrades to manual hunk-porting. This is the single biggest tax — it converts small upstream diffs into whole-file conflicts.</p>
+</li>
+<li>
+<p><strong>Parallel implementations of the same idea.</strong> XDN and upstream independently solved the same problem with inverse flags: XDN's <code>ENABLE_STARTUP_LEADER_ELECTION</code> vs upstream's <code>BOOTSTRAP_COORD_DETERMINISTIC</code> (see the Phase-0 merge <code>4a0c089b</code>). Neither knew about the other, so reconciliation required <em>understanding both</em> and unioning the gates rather than taking either side. This is the cost of changes that should have been upstreamed but weren't.</p>
+</li>
+<li>
+<p><strong>XDN-only subsystems woven into shared packages.</strong> XDN adds whole top-level packages that upstream does not have — <code>xdn</code>, <code>primarybackup</code>, <code>causal</code>, <code>clientcentric</code>, <code>eventual</code>, <code>pram</code>, <code>sequential</code> — and these <em>call into and are referenced by</em> the vendored gigapaxos/reconfiguration code. The boundary between "gigapaxos library" and "XDN application" is not clean, which is what makes a true library split non-trivial.</p>
+</li>
 </ol>
-<p>If none of these yields a name, the request is rejected (the frontend can't know
-where to route it).</p>
-<h2 id="cookie-convenience-for-browsers">Cookie convenience for browsers</h2>
-<p>When a request names the service via <code>_xdnsvc</code>, the ActiveReplica responds with
-<code>Set-Cookie: XDN=&lt;service&gt;</code>. Subsequent requests from that browser then carry the
-service name automatically via the cookie (priority 3), so links and relative
-asset paths keep working without the query parameter.</p>
-<h2 id="normalization">Normalization</h2>
-<p>Once the name is inferred, the ActiveReplica:</p>
+<h2 id="direction-chosen">Direction chosen</h2>
+<p>Two decisions frame the plan (made 2026-06-04):</p>
 <ul>
-<li>copies it into the <strong><code>XDN</code> header</strong>, so the service name survives when the
-  request is serialized and replicated to other replicas (e.g. Paxos followers),
-  which re-run inference on the deserialized form; and</li>
-<li><strong>strips</strong> the <code>_xdnsvc</code> query parameter from the URI, so the containerized
-  service never sees XDN's routing internals.</li>
+<li>
+<p><strong>XDN owns a gigapaxos fork.</strong> The canonical MobilityFirst/gigapaxos upstream is effectively dormant. Rather than depend on it, XDN maintains a gigapaxos repository it controls (<code>xdn-gigapaxos</code>), pushes XDN's generic improvements there, and treats <em>that</em> as the upstream of record. The dormant MobilityFirst repo becomes an occasional cherry-pick source, not a dependency.</p>
+</li>
+<li>
+<p><strong>Keep the monorepo.</strong> We are not splitting XDN into a multi-repo build today. The goal is "gigapaxos as a <em>tracked</em> library inside the monorepo" — ideally a git subtree — so the day-to-day developer experience (single <code>ant</code> build, single checkout, cross-package refactors) is preserved while syncs become a mechanical subtree pull instead of a manual merge.</p>
+</li>
 </ul>
-<h2 id="where-this-lives-in-the-code">Where this lives in the code</h2>
-<table>
-<thead>
-<tr>
-<th>Concern</th>
-<th>Location</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Inference order + Host parsing</td>
-<td><code>XdnHttpRequest.inferServiceName</code></td>
-</tr>
-<tr>
-<td>Param / cookie names</td>
-<td><code>XdnHttpRequest.XDN_SVC_QUERY_PARAM</code>, <code>XDN</code> header/cookie</td>
-</tr>
-<tr>
-<td>Cookie + header normalization</td>
-<td><code>XdnHttpRequest</code> (constructor / response path)</td>
-</tr>
-</tbody>
-</table>
+<p>The end state is: <strong>gigapaxos is a subtree-tracked library whose canonical home is XDN's own fork; XDN-specific code lives outside the subtree; generic fixes flow back to the fork.</strong></p>
+<h2 id="phased-roadmap">Phased roadmap</h2>
+<h3 id="phase-0-sync-the-outstanding-upstream-commits-done-4a0c089b">Phase 0 — Sync the outstanding upstream commits <em>(done — <code>4a0c089b</code>)</em></h3>
+<p>Port the 4 outstanding <code>origin/master</code> commits onto <code>fork/main</code> so XDN is current before any restructuring: <code>BOOTSTRAP_COORD_DETERMINISTIC</code> + <code>RUN_IF_NOT_RUN_YET</code>, <code>RESEND_HIGHER_PREPARE</code>, <code>FORWARD_PREEMPTED_REQUESTS=false</code>, <code>scheduleSinglePoke</code>, and the upstream CI workflow. The <code>notRunYet()</code> gate was reconciled as a union of XDN's and upstream's flags. Low risk, immediate value, and it establishes a clean baseline for the steps below.</p>
+<h3 id="phase-1-kill-the-formatting-tax-highest-roi">Phase 1 — Kill the formatting tax (highest ROI)</h3>
+<p>Before anything structural, eliminate force #1. Agree on <strong>one</strong> formatter for the vendored gigapaxos packages and apply it identically on both sides:</p>
+<ul>
+<li>Adopt the same <code>google-java-format</code> config XDN already runs in CI (<code>.github/workflows/google-java-format.yml</code>) for the gigapaxos source tree, and apply the <em>identical</em> formatter to the XDN-owned gigapaxos fork.</li>
+<li>Land the reformat as a single, isolated commit on both sides so future <code>git diff</code>/subtree merges compare like-for-like and surface only semantic changes.</li>
+<li>Record the formatter version/config in the repo so it can't drift again.</li>
+</ul>
+<p>This alone turns most future "whole-file conflict" syncs back into small semantic diffs.</p>
+<h3 id="phase-2-establish-the-xdn-owned-gigapaxos-fork-as-upstream-of-record">Phase 2 — Establish the XDN-owned gigapaxos fork as upstream-of-record</h3>
+<ul>
+<li>Create/confirm <code>xdn-gigapaxos</code> (the repo XDN controls) seeded from the current reconciled gigapaxos source (post-Phase-1 formatting).</li>
+<li>Mirror the dormant MobilityFirst history into it as a base so future cherry-picks from MobilityFirst remain attributable.</li>
+<li>Document the contribution rule: <strong>generic</strong> paxos/reconfiguration/nio fixes are authored against (or promptly back-ported to) <code>xdn-gigapaxos</code>, never only in XDN.</li>
+</ul>
+<h3 id="phase-3-draw-the-library-boundary">Phase 3 — Draw the library boundary</h3>
+<p>Separate "library" from "application" inside the monorepo so the subtree has a clean edge:</p>
+<ul>
+<li><strong>Library (subtree candidate):</strong> <code>gigapaxos</code>, <code>reconfiguration</code>, <code>nio</code>, <code>protocoltask</code>, <code>txn</code>, <code>chainreplication</code>, <code>utils</code> — the packages that also exist upstream.</li>
+<li><strong>XDN application (stays in XDN, outside subtree):</strong> <code>xdn</code>, <code>primarybackup</code>, <code>causal</code>, <code>clientcentric</code>, <code>eventual</code>, <code>pram</code>, <code>sequential</code>.</li>
+<li>Audit and remove inbound references from library → XDN packages (the library must not import XDN-only code). Where XDN needs to influence library behavior, do it through existing extension points (config keys, pluggable <code>*Coordinator</code>/<code>ReconfiguratorDB</code>/<code>PaxosLogger</code> interfaces) rather than edits to library internals. The SQLite/RocksDB backends merged in #53 are the model: they extend the JDBC/logger abstractions instead of forking the core.</li>
+</ul>
+<h3 id="phase-4-convert-the-library-tree-to-a-git-subtree">Phase 4 — Convert the library tree to a git subtree</h3>
+<ul>
+<li>Replace <code>src/edu/umass/cs/{library packages}</code> with a <code>git subtree</code> mapped to <code>xdn-gigapaxos</code>.</li>
+<li>Syncing upstream becomes <code>git subtree pull</code>; contributing back becomes <code>git subtree push</code> (or PR to <code>xdn-gigapaxos</code>).</li>
+<li>Keep the single-<code>ant</code> build: the subtree is still plain source on disk, so the monorepo build is unchanged.</li>
+</ul>
+<h3 id="phase-5-steady-state">Phase 5 — Steady state</h3>
+<ul>
+<li>New generic fix → land in <code>xdn-gigapaxos</code> → <code>subtree pull</code> into XDN.</li>
+<li>New XDN feature → land in XDN application packages, using library extension points.</li>
+<li>Periodically cherry-pick anything worthwhile from dormant MobilityFirst upstream into <code>xdn-gigapaxos</code>.</li>
+</ul>
+<h2 id="guardrails-lessons-from-phase-0">Guardrails / lessons from Phase 0</h2>
+<ul>
+<li><strong>Reconcile, don't pick a side, when both implemented the same feature.</strong> The <code>notRunYet()</code> union is the template: understand both flags, preserve both gates.</li>
+<li><strong>Resolve formatting once, then split semantics back out.</strong> During Phase 0 we kept XDN's formatting (<code>checkout --ours</code>) and re-applied upstream hunks on top, rather than fighting whole-file conflicts — the same instinct Phase 1 makes permanent.</li>
+<li><strong>Prefer extension points over core edits.</strong> Every time XDN edits library internals instead of extending an interface, it creates a future merge conflict. The DB-backend work (#53) is the example to follow.</li>
+</ul>
 
 
 
@@ -1252,44 +1147,6 @@ asset paths keep working without the query parameter.</p>
       
         <footer class="md-footer">
   
-    
-      
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
-        
-          
-          <a href="../request-flow/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Request flow">
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
-            </div>
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              <div class="md-ellipsis">
-                Request flow
-              </div>
-            </div>
-          </a>
-        
-        
-          
-          <a href="../geo-demand/" class="md-footer__link md-footer__link--next" aria-label="Next: Geo-distributed demand">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                Geo-distributed demand
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
     
   
   <div class="md-footer-meta md-typeset">
