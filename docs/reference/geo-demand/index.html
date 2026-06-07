@@ -12,13 +12,13 @@
         <meta name="author" content="Fadhil I. Kurnia">
       
       
-        <link rel="canonical" href="https://xdn.cs.umass.edu/reference/wordpress-pb-investigation/">
+        <link rel="canonical" href="https://xdn.cs.umass.edu/reference/geo-demand/">
       
       
-        <link rel="prev" href="../paxos-compaction/">
+        <link rel="prev" href="../service-name-inference/">
       
       
-        <link rel="next" href="../../dashboard/">
+        <link rel="next" href="../developer/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>WordPress primary-backup investigation - XDN</title>
+        <title>Geo-distributed demand - XDN</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#wordpress-primary-backup-throughput-investigation" class="md-skip">
+        <a href="#geo-distributed-demand" class="md-skip">
           Skip to content
         </a>
       
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              WordPress primary-backup investigation
+              Geo-distributed demand
             
           </span>
         </div>
@@ -811,10 +811,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../geo-demand/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Geo-distributed demand
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -830,6 +857,81 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#where-a-clients-location-comes-from" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where a client's location comes from
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-demand-grid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The demand grid
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aggregating-across-replicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aggregating across replicas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-the-aggregated-demand-is-used-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What the aggregated demand is used for
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-this-lives-in-the-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where this lives in the code
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -923,37 +1025,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    WordPress primary-backup investigation
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../wordpress-pb-investigation/" class="md-nav__link">
         
   
   
@@ -969,153 +1044,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#setup" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Setup
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#performance-baselines-cloudlab-3-way-replication-wordpress-xml-rpc-editpost" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Performance Baselines (CloudLab 3-way replication, WordPress XML-RPC editPost)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pb-request-pipeline" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        PB Request Pipeline
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#key-benchmark-scripts" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Key Benchmark Scripts
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pb-throughput-investigation-2026-03-11-resolved" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        PB Throughput Investigation (2026-03-11) — RESOLVED
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="PB Throughput Investigation (2026-03-11) — RESOLVED">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#root-cause" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Root Cause
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#working-fixes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Working Fixes
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hypotheses-eliminated-no-impact-on-throughput" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Hypotheses Eliminated (No Impact on Throughput)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#why-dde-appeared-to-work-but-didnt-on-sustained-load" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why DDE Appeared to Work (But Didn't on Sustained Load)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#debug-flags" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Debug Flags
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#code-changes-made-during-investigation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Code Changes Made During Investigation
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1182,10 +1110,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#setup" class="md-nav__link">
+  <a href="#where-a-clients-location-comes-from" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Setup
+        Where a client's location comes from
       
     </span>
   </a>
@@ -1193,10 +1121,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#performance-baselines-cloudlab-3-way-replication-wordpress-xml-rpc-editpost" class="md-nav__link">
+  <a href="#the-demand-grid" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Performance Baselines (CloudLab 3-way replication, WordPress XML-RPC editPost)
+        The demand grid
       
     </span>
   </a>
@@ -1204,10 +1132,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pb-request-pipeline" class="md-nav__link">
+  <a href="#aggregating-across-replicas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        PB Request Pipeline
+        Aggregating across replicas
       
     </span>
   </a>
@@ -1215,10 +1143,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#key-benchmark-scripts" class="md-nav__link">
+  <a href="#what-the-aggregated-demand-is-used-for" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Key Benchmark Scripts
+        What the aggregated demand is used for
       
     </span>
   </a>
@@ -1226,85 +1154,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pb-throughput-investigation-2026-03-11-resolved" class="md-nav__link">
+  <a href="#where-this-lives-in-the-code" class="md-nav__link">
     <span class="md-ellipsis">
       
-        PB Throughput Investigation (2026-03-11) — RESOLVED
+        Where this lives in the code
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="PB Throughput Investigation (2026-03-11) — RESOLVED">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#root-cause" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Root Cause
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#working-fixes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Working Fixes
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hypotheses-eliminated-no-impact-on-throughput" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Hypotheses Eliminated (No Impact on Throughput)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#why-dde-appeared-to-work-but-didnt-on-sustained-load" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why DDE Appeared to Work (But Didn't on Sustained Load)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#debug-flags" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Debug Flags
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#code-changes-made-during-investigation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Code Changes Made During Investigation
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1328,195 +1184,99 @@
   
 
 
-<h1 id="wordpress-primary-backup-throughput-investigation">WordPress Primary-Backup Throughput Investigation</h1>
-<p>This document records the full investigation into XDN Primary-Backup (PB) throughput
-with WordPress on CloudLab. CLAUDE.md keeps a condensed summary; this file holds the
-complete log (hypotheses eliminated, working fixes, and code changes).</p>
-<h2 id="setup">Setup</h2>
-<ul>
-<li>Start the XDN cluster with <code>gpServer.sh</code>, using <code>conf/gigapaxos.xdn.wordpress-pb.cloudlab.properties</code>.</li>
-<li>Always <code>forceclear</code> the cluster when encountering an error.</li>
-<li>Change the logging level in the investigated class for better clarity.</li>
-<li>Deploy the service with the <code>xdn</code> command using <code>xdn-cli/examples/wordpress.yaml</code>.</li>
-<li>WordPress uses a primary-backup replica group: a single primary and several backups.
-  Only the primary node runs the containerized service.</li>
-</ul>
-<h2 id="performance-baselines-cloudlab-3-way-replication-wordpress-xml-rpc-editpost">Performance Baselines (CloudLab 3-way replication, WordPress XML-RPC editPost)</h2>
-<ul>
-<li><strong>XDN PB</strong>: ~1500 rps peak throughput (~1200 rps at low latency ≤16ms avg)</li>
-<li><strong>OpenEBS</strong>: ~800 rps peak throughput</li>
-<li><strong>MySQL Semi-Sync Replication</strong>: ~500 rps peak throughput</li>
-</ul>
-<h2 id="pb-request-pipeline">PB Request Pipeline</h2>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Client → HTTP frontend (Netty) → writePool dispatch → PBReplicaCoordinator
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  → PBM queue → PBM worker thread → XdnGigapaxosApp.execute(XdnHttpRequestBatch)
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  → forwardHttpRequestBatchToContainerizedService → WordPress container (via FUSE)
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  → doneQueue → capture thread → captureStateDiff → Paxos propose → commit callback
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>  → async response to client
-</span></code></pre></div>
-<h2 id="key-benchmark-scripts">Key Benchmark Scripts</h2>
-<ul>
-<li><code>eval/investigate_wp_bottleneck.py</code> — Per-rate isolation benchmark (forceclear+redeploy between rate points)</li>
-<li><code>eval/investigate_wordpress_pb.py</code> — Base module with cluster management, <code>GP_JVM_ARGS</code> tuning</li>
-<li><code>eval/get_latency_at_rate.go</code> — Go load generator with Poisson arrivals</li>
-<li>Workload: XML-RPC <code>wp.editPost</code> editing 200 pre-seeded posts in round-robin</li>
-</ul>
-<h2 id="pb-throughput-investigation-2026-03-11-resolved">PB Throughput Investigation (2026-03-11) — RESOLVED</h2>
-<p><strong>Goal</strong>: XDN PB must beat OpenEBS (~800 rps) and MySQL semi-sync (~500 rps).</p>
-<p><strong>Result</strong>: XDN PB achieves ~1500 rps (peak) and ~1200 rps at low latency (≤16ms avg), beating OpenEBS by ~2x and semi-sync by ~3x.</p>
-<h3 id="root-cause">Root Cause</h3>
-<p>WordPress Apache sends <code>Connection: close</code> in HTTP responses. XDN's HTTP proxy (<code>HttpActiveReplica</code>) forwarded this header unchanged to the Go load-test client, causing TCP connection teardown after every request. Under sustained load, ephemeral ports accumulated in TIME_WAIT state (~18,608 observed), causing <code>"cannot assign requested address"</code> errors and a hard ~500 rps ceiling. This was not an XDN-internal bottleneck — it affected every code path equally (PBM, DDE, BYPASS_COORDINATOR).</p>
-<h3 id="working-fixes">Working Fixes</h3>
+<h1 id="geo-distributed-demand">Geo-distributed Demand</h1>
+<p>XDN places service replicas close to where requests actually come from. To do
+that, every Active Replica (AR) continuously builds a coarse, anonymous map of
+<em>where</em> its clients are, and rolls those maps up to the control plane. This page
+describes that aggregation at a high level.</p>
+<h2 id="where-a-clients-location-comes-from">Where a client's location comes from</h2>
+<p>For each request, the AR derives one approximate client location, in priority
+order:</p>
 <ol>
-<li>
-<p><strong>Connection header override</strong> (root cause fix) — <code>HttpActiveReplica.java</code> lines 1251-1261:
-   The proxy now overrides the container's <code>Connection</code> header with the client's keep-alive preference. Without this, containers that send <code>Connection: close</code> force the client to tear down TCP connections after every request.
-   <div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isKeepAlive</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">httpResponse</span><span class="p">.</span><span class="na">headers</span><span class="p">().</span><span class="na">set</span><span class="p">(</span><span class="n">HttpHeaderNames</span><span class="p">.</span><span class="na">CONNECTION</span><span class="p">,</span><span class="w"> </span><span class="n">HttpHeaderValues</span><span class="p">.</span><span class="na">KEEP_ALIVE</span><span class="p">);</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="n">httpResponse</span><span class="p">.</span><span class="na">headers</span><span class="p">().</span><span class="na">set</span><span class="p">(</span><span class="n">HttpHeaderNames</span><span class="p">.</span><span class="na">CONNECTION</span><span class="p">,</span><span class="w"> </span><span class="n">HttpHeaderValues</span><span class="p">.</span><span class="na">CLOSE</span><span class="p">);</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">}</span>
-</span></code></pre></div></p>
-</li>
-<li>
-<p><strong>ByteBuf copy() instead of retainedDuplicate()</strong> — <code>XdnGigapaxosApp.java</code> line 2368:
-   <code>retainedDuplicate()</code> shares refCnt with the original ByteBuf. When <code>XdnHttpForwarderClient</code> retries (MAX_RETRIES=1), each <code>executeOnce()</code> consumes net -1 from the shared refCnt, causing <code>IllegalReferenceCountException</code>. Fix: use <code>copy()</code> for independent refCnt.
-   <div class="language-java highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">ByteBuf</span><span class="w"> </span><span class="n">copiedContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">content</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">content</span><span class="p">.</span><span class="na">isReadable</span><span class="p">()</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="o">?</span><span class="w"> </span><span class="n">content</span><span class="p">.</span><span class="na">copy</span><span class="p">()</span><span class="w">       </span><span class="c1">// was: content.retainedDuplicate()</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="p">:</span><span class="w"> </span><span class="n">Unpooled</span><span class="p">.</span><span class="na">EMPTY_BUFFER</span><span class="p">;</span>
-</span></code></pre></div></p>
-</li>
-<li>
-<p><strong>Fully async dispatch</strong> — <code>HttpActiveReplica.java</code>:
-   Replaced blocking <code>future.get()</code> on writePool threads with a fully async pattern. Key components:</p>
-</li>
-<li><code>ResponseContext</code> record (line 412): captures all state needed for async response</li>
-<li><code>timeoutScheduler</code> (line 401): single daemon thread for timeout enforcement</li>
-<li><code>sendAsyncResponse</code> helper (line 451): thread-safe response writing via <code>AtomicBoolean</code> gate (exactly-once semantics)</li>
-<li>Channel close listener: releases ByteBufs if client disconnects before response</li>
-<li>writePool threads now return in microseconds (just dispatch), making thread exhaustion impossible</li>
+<li><strong><code>X-Client-Location</code> header</strong> — a <code>lat,lon</code> the client (or an upstream proxy)
+   declares explicitly.</li>
+<li><strong>Source IP geolocation</strong> — when no header is present, the client's IP
+   (IPv4 or IPv6) is mapped to a city-level location using a local GeoLite2-City
+   database.</li>
 </ol>
-<h3 id="hypotheses-eliminated-no-impact-on-throughput">Hypotheses Eliminated (No Impact on Throughput)</h3>
-<p>All hypotheses below did NOT improve throughput beyond ~500 rps. The ~500 rps ceiling persisted because the real bottleneck was the <code>Connection: close</code> header causing ephemeral port exhaustion (see Root Cause above).</p>
+<p>Addresses that aren't real client locations — loopback, private/RFC1918,
+link-local, multicast, IPv6 ULA, IPv4 CGNAT — are ignored, and any IP that can't
+be resolved simply contributes nothing.</p>
+<p>The geolocation lookup never touches the request hot path: each request only
+enqueues its header or its source IP, and a background worker does the
+(comparatively expensive) database lookup and grid update asynchronously.</p>
+<h2 id="the-demand-grid">The demand grid</h2>
+<p>Each AR keeps demand in a fixed <strong>1000 × 1000 latitude/longitude grid</strong> covering
+the whole Earth — about <strong>0.2° per cell (~20 km)</strong>. A client location increments
+the one cell it falls in. The grid is stored sparsely, so only cells that have
+actually seen traffic cost anything.</p>
+<p>Each cell tracks <strong>reads and writes separately</strong> — a request is classified from
+its declared behavior (<code>READ_ONLY</code> vs <code>WRITE_ONLY</code> / <code>READ_MODIFY_WRITE</code>, the
+latter folding into <em>write</em> since it mutates state). This lets the heatmap and
+analyses distinguish read-heavy from write-heavy regions.</p>
+<p>No IP addresses, identities, or per-request data are retained — only per-cell
+read/write request counts.</p>
+<h2 id="aggregating-across-replicas">Aggregating across replicas</h2>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>client ──▶ AR (local 1000×1000 grid)
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>                  │  every ≥10s: snapshot + reset
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>                  ▼
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>            DemandReport ──▶ Reconfigurator (control plane)
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>                                  │ combine: sum per cell
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>                                  ▼
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>                         global demand map ──▶ placement + dashboard
+</span></code></pre></div>
+<ul>
+<li><strong>Per AR:</strong> roughly every 10 seconds an AR snapshots its grid into a
+  <code>DemandReport</code> and <strong>resets</strong> its local grid, so each report carries only the
+  demand <em>since the last report</em> (a delta). To keep reports small, only the
+  busiest cells (top ~200) are sent, with their read/write counts.</li>
+<li><strong>At the Reconfigurator:</strong> incoming reports are <strong>combined by summing the
+  read/write counts per cell</strong>, producing a cluster-wide view of demand
+  geo-distribution. The retention is governed by the config
+  <code>XDN_DEMAND_WINDOW_MINUTES</code>: <code>-1</code> (default) keeps <strong>cumulative</strong> all-time demand;
+  a positive <code>N</code> keeps only the <strong>last <code>N</code> minutes</strong> (a rolling window, so demand
+  decays), which makes both the heatmap and placement reflect <em>current</em> load.</li>
+</ul>
+<h2 id="what-the-aggregated-demand-is-used-for">What the aggregated demand is used for</h2>
+<ul>
+<li><strong>Replica placement / elasticity</strong> — the control plane compares the demand map
+  against candidate edge locations to decide where a service's replicas should
+  run, moving capacity toward the regions generating load.</li>
+<li><strong>Dashboard heatmap</strong> — the same per-cell counts are exposed as
+  <code>{lat, lon, read, write, count}</code> points (<code>count = read + write</code>) and rendered as
+  the demand heatmap on the XDN dashboard, with a read/write/both selector.</li>
+</ul>
+<h2 id="where-this-lives-in-the-code">Where this lives in the code</h2>
 <table>
 <thead>
 <tr>
-<th>#</th>
-<th>Hypothesis</th>
-<th>Test Method</th>
-<th>Result</th>
+<th>Concern</th>
+<th>Location</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>1</td>
-<td>WordPress/MySQL container is slow</td>
-<td><code>ab</code> direct container test at c=32</td>
-<td>1237 rps through FUSE — NOT bottleneck</td>
+<td>Per-request grid + report/reset/combine</td>
+<td><code>edu.umass.cs.xdn.XdnGeoDemandProfiler</code></td>
 </tr>
 <tr>
-<td>2</td>
-<td>FUSE filesystem overhead</td>
-<td><code>ab</code> test goes through FUSE mount</td>
-<td>Same 1237 rps — NOT bottleneck</td>
+<td>IP → location (GeoLite2-City, caching, local-address guard)</td>
+<td><code>edu.umass.cs.xdn.GeoIpResolver</code></td>
 </tr>
 <tr>
-<td>3</td>
-<td>HTTP forwarder pool size</td>
-<td>Pool is 128 connections (<code>XDN_HTTP_MAX_POOL_SIZE=128</code>)</td>
-<td>NOT bottleneck</td>
+<td>Heatmap cells (<code>{lat, lon, read, write, count}</code>)</td>
+<td><code>XdnGeoDemandProfiler#getDemandGeoCells</code></td>
 </tr>
 <tr>
-<td>4</td>
-<td>Capture thread saturation</td>
-<td><code>doneQueueRemaining</code> avg=0, capacity 859 rps</td>
-<td>NOT bottleneck</td>
+<td>Read/write classification</td>
+<td><code>XdnHttpRequest#getBehaviors</code> (<code>RequestBehaviorType</code>)</td>
 </tr>
 <tr>
-<td>5</td>
-<td>Too few PBM workers</td>
-<td>32 workers × 20ms/req = 1600 rps capacity, only ~10-13 active</td>
-<td>NOT bottleneck</td>
-</tr>
-<tr>
-<td>6</td>
-<td>ForkJoinPool indirection</td>
-<td>Fixed batch-of-1 fast path in <code>forwardHttpRequestBatchToContainerizedService</code></td>
-<td>No improvement</td>
-</tr>
-<tr>
-<td>7</td>
-<td>Excessive INFO logging</td>
-<td>Changed 8 hot-path logs from INFO→FINE (~1875 lines/s saved)</td>
-<td>No improvement</td>
-</tr>
-<tr>
-<td>8</td>
-<td>Frontend HTTP batcher</td>
-<td>Disabled <code>HTTP_AR_FRONTEND_BATCH_ENABLED=false</code></td>
-<td>No improvement</td>
-</tr>
-<tr>
-<td>9</td>
-<td>Apache MaxRequestWorkers limit</td>
-<td>Only 11 active workers at 500 rps (limit=150)</td>
-<td>NOT bottleneck</td>
-</tr>
-<tr>
-<td>10</td>
-<td>Go client connection limits</td>
-<td><code>MaxIdleConnsPerHost=1024</code></td>
-<td>NOT bottleneck</td>
-</tr>
-<tr>
-<td>11</td>
-<td>Paxos consensus overhead</td>
-<td><code>PB_SKIP_REPLICATION=true</code> (bypass captureStateDiff + propose)</td>
-<td><strong>Still 500 rps!</strong></td>
-</tr>
-<tr>
-<td>12</td>
-<td>Virtual thread pinning</td>
-<td>Switched PBM workers from virtual→platform threads</td>
-<td><strong>Still 500 rps!</strong></td>
-</tr>
-<tr>
-<td>13</td>
-<td>PBM coordinator pipeline overhead</td>
-<td><code>PB_BYPASS_COORDINATOR=true</code> (bypass PBM entirely, use async dispatch)</td>
-<td><strong>Still ~489 rps at 1000 rps offered</strong></td>
-</tr>
-<tr>
-<td>14</td>
-<td>FUSELOG recorder overhead</td>
-<td>Switched to RSYNC recorder (no FUSE)</td>
-<td><strong>Still ~500 rps</strong></td>
-</tr>
-<tr>
-<td>15</td>
-<td>DDE bypass as sustained solution</td>
-<td><code>___DDE</code> header appeared to hit ~1000 rps in 15s tests, but sustained 60s runs also cap at ~500 rps</td>
-<td>Same root cause (Connection: close)</td>
+<td>Demand window config (<code>-1</code> cumulative / <code>N</code> minutes)</td>
+<td><code>ReconfigurationConfig.RC.XDN_DEMAND_WINDOW_MINUTES</code></td>
 </tr>
 </tbody>
 </table>
-<h3 id="why-dde-appeared-to-work-but-didnt-on-sustained-load">Why DDE Appeared to Work (But Didn't on Sustained Load)</h3>
-<p>The <code>___DDE</code> debug header bypasses PBReplicaCoordinator entirely. In short-duration tests (15s), it appeared to achieve ~1000 rps because TIME_WAIT port accumulation hadn't saturated ephemeral ports yet. On sustained 60s tests, DDE also capped at ~500 rps — confirming the bottleneck was TCP connection management, not any XDN internal pipeline.</p>
-<h3 id="debug-flags">Debug Flags</h3>
-<ul>
-<li><code>-DPB_SKIP_REPLICATION=true</code> — Capture thread skips captureStateDiff + Paxos propose, fires callbacks immediately</li>
-<li><code>-DPB_N_PARALLEL_WORKERS=32</code> — Number of PBM worker threads</li>
-<li><code>-DPB_CAPTURE_ACCUMULATION_MS=1</code> — Capture thread accumulation window</li>
-<li><code>-DPB_BYPASS_COORDINATOR=true</code> — Bypasses PBM pipeline entirely, dispatches to app directly via async path</li>
-<li><code>___DDE</code> HTTP header — Bypasses coordinator entirely, direct execute (legacy debug path)</li>
-</ul>
-<h3 id="code-changes-made-during-investigation">Code Changes Made During Investigation</h3>
-<ul>
-<li><code>HttpActiveReplica.java</code>: Connection header override (root cause fix); fully async dispatch (ResponseContext, sendAsyncResponse, timeoutScheduler); BYPASS_COORDINATOR debug flag</li>
-<li><code>XdnGigapaxosApp.java</code>: ByteBuf <code>copy()</code> fix; fast-path for single-request batches (skip FJP)</li>
-<li><code>PrimaryBackupManager.java</code>: <code>PB_SKIP_REPLICATION</code> bypass flag; changed 7 INFO logs to FINE; workers virtual→platform threads</li>
-<li><code>FuselogStateDiffRecorder.java</code>: Changed "receiving stateDiff" log to FINE</li>
-</ul>
 
 
 
@@ -1552,7 +1312,7 @@ complete log (hypotheses eliminated, working fixes, and code changes).</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../paxos-compaction/" class="md-footer__link md-footer__link--prev" aria-label="Previous: GigaPaxos — log compaction">
+          <a href="../service-name-inference/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Service name inference">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1562,20 +1322,20 @@ complete log (hypotheses eliminated, working fixes, and code changes).</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                GigaPaxos — log compaction
+                Service name inference
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../dashboard/" class="md-footer__link md-footer__link--next" aria-label="Next: Dashboard">
+          <a href="../developer/" class="md-footer__link md-footer__link--next" aria-label="Next: Developer guide">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Dashboard
+                Developer guide
               </div>
             </div>
             <div class="md-footer__button md-icon">
