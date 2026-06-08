@@ -18,7 +18,7 @@
         <link rel="prev" href="../flexible-consistency/">
       
       
-        <link rel="next" href="../become-operator/">
+        <link rel="next" href="../how-xdn-work/">
       
       
         
@@ -259,25 +259,6 @@
     
   
   Service Properties
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../become-operator/" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Deployment
 
       </a>
     </li>
@@ -626,6 +607,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#the-properties-you-declare" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The properties you declare
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#determinism" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -637,6 +629,40 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#state-on-disk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        State on disk
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operation-behaviors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operation behaviors
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operation behaviors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#read-only-vs-write-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Read-only vs. write operations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#nil-external-operations" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -646,19 +672,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#commutative-operations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Commutative operations
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#monotonic-operations" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -668,38 +683,27 @@
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#commutative-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Commutative operations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
     </ul>
   
 </nav>
       
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../become-operator/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Deployment
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -749,10 +753,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
             
   
   
@@ -770,8 +774,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1094,6 +1098,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#the-properties-you-declare" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The properties you declare
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#determinism" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1105,6 +1120,40 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#state-on-disk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        State on disk
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operation-behaviors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operation behaviors
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operation behaviors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#read-only-vs-write-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Read-only vs. write operations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#nil-external-operations" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1114,8 +1163,19 @@
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#monotonic-operations" class="md-nav__link">
+    <span class="md-ellipsis">
       
-        <li class="md-nav__item">
+        Monotonic operations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#commutative-operations" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1125,15 +1185,9 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#monotonic-operations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Monotonic operations
-      
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1159,16 +1213,157 @@
 
 <h1 id="declaring-service-properties-for-xdn">Declaring service properties for XDN</h1>
 <div class="admonition tip">
-<p class="admonition-title">Declarative Replication</p>
-<p>XDN embraces declarative replication, relieving the app developers to know in detail <strong>how</strong> the replication happen.
-Developers only need to declare the <strong>what</strong>, specifically the service and its operations properties: whether it is
-deterministic or not, set of commutative operations, nil-external operations, read-only operations etc; and the 
-intended consistency model.</p>
+<p class="admonition-title">Declarative replication</p>
+<p>XDN embraces <strong>declarative</strong> replication: you declare <em>what</em> the service is
+and what guarantee you want — not <em>how</em> the replication happens. XDN uses
+those declarations to pick and run the right replication protocol.</p>
 </div>
+<p>You declare properties at launch with <code>xdn launch</code> flags or a <code>--file</code> YAML/JSON
+spec (the same fields are also accepted by the control-plane HTTP API when
+creating a service). For example:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>xdn<span class="w"> </span>launch<span class="w"> </span>bookcatalog<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">   </span>--image<span class="o">=</span>fadhilkurnia/xdn-bookcatalog<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">   </span>--port<span class="o">=</span><span class="m">80</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">   </span>--consistency<span class="o">=</span>linearizable<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">   </span>--deterministic<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">   </span>--state<span class="o">=</span>/app/data/
+</span></code></pre></div>
+<h2 id="the-properties-you-declare">The properties you declare</h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Flag / field</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td><code>&lt;name&gt;</code></td>
+<td>Service name; becomes its DNS label (<code>name.&lt;domain&gt;</code>).</td>
+</tr>
+<tr>
+<td>Image</td>
+<td><code>--image</code> / <code>image</code> (or <code>components</code> for multi-container)</td>
+<td>The Docker image(s) of your blackbox service.</td>
+</tr>
+<tr>
+<td>Port</td>
+<td><code>--port</code> / <code>port</code></td>
+<td>Port the container listens on for HTTP (default <code>80</code>).</td>
+</tr>
+<tr>
+<td>State directory</td>
+<td><code>--state</code> / <code>state</code></td>
+<td>Absolute path (ending <code>/</code>) where the service persists state on disk.</td>
+</tr>
+<tr>
+<td>Determinism</td>
+<td><code>--deterministic</code> / <code>deterministic</code></td>
+<td>Whether identical inputs yield identical results (default <code>false</code>).</td>
+</tr>
+<tr>
+<td>Consistency</td>
+<td><code>--consistency</code> / <code>consistency</code></td>
+<td>The <a href="../flexible-consistency/">consistency model</a> (CLI default <code>linearizability</code>).</td>
+</tr>
+<tr>
+<td>Operation behaviors</td>
+<td><code>requests</code> matchers</td>
+<td>Per-request classification (read-only, write-only, …); defaults inferred from HTTP method.</td>
+</tr>
+<tr>
+<td>Replication factor</td>
+<td><code>--num-replicas</code>, <code>--min-replicas</code>, <code>--max-replicas</code></td>
+<td>Size constraints for the replica group.</td>
+</tr>
+<tr>
+<td>Environment</td>
+<td><code>--env KEY=VALUE</code> / <code>environments</code></td>
+<td>Environment variables passed to the container.</td>
+</tr>
+</tbody>
+</table>
+<p>The three properties that most affect <em>how</em> a service is replicated are
+<strong>determinism</strong>, <strong>state location</strong>, and <strong>operation behaviors</strong> (together with
+the <a href="../flexible-consistency/">consistency model</a>).</p>
 <h2 id="determinism">Determinism</h2>
-<h2 id="nil-external-operations">Nil-external operations</h2>
-<h2 id="commutative-operations">Commutative operations</h2>
-<h2 id="monotonic-operations">Monotonic operations</h2>
+<p><code>--deterministic</code> (default <code>false</code>) is the master switch for protocol selection:</p>
+<ul>
+<li><strong>Deterministic</strong> services can be replicated by re-executing the same ordered
+  request stream on every replica, so XDN can use the protocol that matches your
+  chosen <a href="../flexible-consistency/">consistency model</a> (Paxos, client-centric,
+  causal, …).</li>
+<li><strong>Non-deterministic</strong> services are always replicated with <strong>primary-backup</strong>:
+  one replica executes, and XDN ships the resulting on-disk state change to the
+  others. This is the only coordinator that tolerates non-determinism, so the
+  <code>--consistency</code> flag has no effect on a non-deterministic service.</li>
+</ul>
+<h2 id="state-on-disk">State on disk</h2>
+<p><code>--state</code> declares the absolute directory where your service writes its
+persistent state (e.g. <code>/app/data/</code>, or <code>database:/var/lib/mysql/</code> for a named
+component in a multi-container service). XDN treats the service as a blackbox and
+<strong>captures changes to that directory transparently</strong> — by default via a FUSE
+filesystem mounted under the state path — so it can replicate writes and move a
+replica's state to a new location without the service's cooperation. See the
+<a href="../how-xdn-work/">architecture page</a> for how the state diff is recorded and
+applied.</p>
+<h2 id="operation-behaviors">Operation behaviors</h2>
+<p>XDN classifies each incoming request by <strong>behavior</strong>, which lets it serve reads
+cheaply and reason about which consistency protocols are safe. By default,
+behaviors are inferred from the HTTP method:</p>
+<table>
+<thead>
+<tr>
+<th>HTTP method</th>
+<th>Default behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET</code>, <code>HEAD</code>, <code>OPTIONS</code>, <code>TRACE</code></td>
+<td>read-only</td>
+</tr>
+<tr>
+<td><code>PUT</code>, <code>DELETE</code></td>
+<td>write-only</td>
+</tr>
+<tr>
+<td><code>POST</code>, <code>PATCH</code></td>
+<td>read-modify-write</td>
+</tr>
+</tbody>
+</table>
+<p>You can override these by declaring <code>requests</code> matchers (path prefix + methods +
+behavior). The behaviors XDN understands are <code>READ_ONLY</code>, <code>WRITE_ONLY</code>,
+<code>READ_MODIFY_WRITE</code>, plus the optional hints below.</p>
+<h3 id="read-only-vs-write-operations">Read-only vs. write operations</h3>
+<p>Separating <strong>read-only</strong> from write operations is what lets <code>SEQUENTIAL</code> (and
+several other models) serve reads from the local replica while ordering writes
+through consensus. A request marked read-only must not modify state.</p>
+<h3 id="nil-external-operations">Nil-external operations</h3>
+<p>A <strong>nil-external</strong> operation produces no externally visible effect beyond its own
+response (no side effects other observers depend on). XDN treats nil-external
+requests as compatible with the weaker, reconciliation-free protocols (causal,
+PRAM), so declaring them keeps those models eligible instead of forcing a
+fallback to sequential.</p>
+<h3 id="monotonic-operations">Monotonic operations</h3>
+<p>A <strong>monotonic</strong> operation only moves the state "forward" (e.g. set unions,
+counters that only grow), so replicas converge without conflict resolution.
+Declaring operations monotonic is what makes the <code>EVENTUAL</code> (lazy) protocol
+eligible; otherwise XDN falls back to sequential consistency.</p>
+<h3 id="commutative-operations">Commutative operations</h3>
+<p>A <strong>commutative</strong> operation can be reordered with others without changing the
+result. The property is declarable (<code>COMMUTATIVE</code>, and a per-key variant
+<code>KEY_COMMUTATIVE</code>) and is intended to unlock order-relaxed coordination.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Determinism, state location, read/write classification, nil-external and
+monotonic hints are used today to select and constrain the replication
+protocol. The commutativity hints are declarable but not yet exploited for
+coordination — they are reserved for future optimizations.</p>
+</div>
 
 
 
@@ -1221,13 +1416,13 @@ intended consistency model.</p>
         
         
           
-          <a href="../become-operator/" class="md-footer__link md-footer__link--next" aria-label="Next: Deployment">
+          <a href="../how-xdn-work/" class="md-footer__link md-footer__link--next" aria-label="Next: Architecture">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Deployment
+                Architecture
               </div>
             </div>
             <div class="md-footer__button md-icon">
