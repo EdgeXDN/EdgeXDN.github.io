@@ -1382,8 +1382,20 @@ describes that aggregation at a high level.</p>
 order:</p>
 <ol>
 <li><strong><code>X-Client-Location</code> header</strong> — a <code>lat,lon</code> the client (or an upstream proxy)
-   declares explicitly.</li>
-<li><strong>Source IP geolocation</strong> — when no header is present, the client's IP
+   declares explicitly. Ideal for server-to-server callers, load-test tools, and
+   the eval latency proxy, where it costs nothing.</li>
+<li><strong><code>_xdnloc</code> query parameter</strong> — a URL-based equivalent of the header, e.g.
+   <code>…/path?_xdnsvc=&lt;name&gt;&amp;_xdnloc=42.36,-71.06</code>, used when the header is absent.
+   This exists for <strong>browsers</strong>. A custom request header makes a cross-origin call
+   "non-simple", so the browser must first send a CORS <strong>preflight</strong> (<code>OPTIONS</code>)
+   that the data-plane AR frontend would have to explicitly allow (e.g.
+   <code>Access-Control-Allow-Headers: X-Client-Location</code>). Putting the location in the
+   URL instead keeps the request <strong>CORS-simple</strong> — a plain GET/POST with no custom
+   header, hence no preflight — so an in-browser client such as the dashboard's
+   <em>Emulate clients</em> panel can declare a (synthetic) client location and fire
+   high-rate traffic directly cross-origin. Both forms feed the same parser and
+   produce the same <code>Geolocation</code>.</li>
+<li><strong>Source IP geolocation</strong> — when neither is present, the client's IP
    (IPv4 or IPv6) is mapped to a city-level location using a local GeoLite2-City
    database.</li>
 </ol>
@@ -1391,8 +1403,9 @@ order:</p>
 link-local, multicast, IPv6 ULA, IPv4 CGNAT — are ignored, and any IP that can't
 be resolved simply contributes nothing.</p>
 <p>The geolocation lookup never touches the request hot path: each request only
-enqueues its header or its source IP, and a background worker does the
-(comparatively expensive) database lookup and grid update asynchronously.</p>
+enqueues its declared location (header or <code>_xdnloc</code>) or its source IP, and a
+background worker does the (comparatively expensive) database lookup and grid
+update asynchronously.</p>
 <h2 id="the-demand-grid">The demand grid</h2>
 <p>Each AR keeps demand in a fixed <strong>1000 × 1000 latitude/longitude grid</strong> covering
 the whole Earth — about <strong>0.2° per cell (~20 km)</strong>. A client location increments
