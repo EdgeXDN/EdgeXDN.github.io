@@ -1389,7 +1389,8 @@ of <span class="arithmatex">\(w_1\)</span>). The order in which a source execute
 <em>source order</em>.</p>
 <p><strong>Apply order.</strong> Writes propagate between replicas asynchronously. Each
 replica <span class="arithmatex">\(r\)</span> applies writes, its own and those it receives, in a local total
-order: its <em>apply order</em>. Different replicas may apply the same writes in
+order: its <em>apply order</em>. A replica applies a write by re-executing it or by
+applying its statediff. Different replicas may apply the same writes in
 different orders (replicas 1 and 2 in the figure), and a replica may not yet
 have received some writes at all (replica 3).</p>
 <p><strong>Reads.</strong> A read served by replica <span class="arithmatex">\(r\)</span> returns the state produced by the
