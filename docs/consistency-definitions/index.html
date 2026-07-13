@@ -12,13 +12,13 @@
         <meta name="author" content="Fadhil I. Kurnia">
       
       
-        <link rel="canonical" href="https://xdn.cs.umass.edu/service-properties/">
+        <link rel="canonical" href="https://xdn.cs.umass.edu/consistency-definitions/">
       
       
-        <link rel="prev" href="../consistency-definitions/">
+        <link rel="prev" href="../flexible-consistency/">
       
       
-        <link rel="next" href="../become-operator/">
+        <link rel="next" href="../service-properties/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>Service Properties - XDN</title>
+        <title>Formal definitions - XDN</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#declaring-service-properties-for-xdn" class="md-skip">
+        <a href="#consistency-models-formal-definitions" class="md-skip">
           Skip to content
         </a>
       
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Service Properties
+              Formal definitions
             
           </span>
         </div>
@@ -229,10 +229,12 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../flexible-consistency/" class="md-tabs__link">
           
   
@@ -249,11 +251,9 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="./" class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../service-properties/" class="md-tabs__link">
         
   
   
@@ -537,24 +537,29 @@
       
   
   
+    
   
   
+  
     
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   
@@ -572,7 +577,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -615,41 +620,6 @@
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../consistency-definitions/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Formal definitions
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
     
   
   
@@ -669,7 +639,7 @@
   <span class="md-ellipsis">
     
   
-    Service Properties
+    Formal definitions
   
 
     
@@ -687,7 +657,7 @@
   <span class="md-ellipsis">
     
   
-    Service Properties
+    Formal definitions
   
 
     
@@ -713,10 +683,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#determinism" class="md-nav__link">
+  <a href="#the-setup" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Determinism
+        The setup
       
     </span>
   </a>
@@ -724,10 +694,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#nil-external-operations" class="md-nav__link">
+  <a href="#linearizability" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Nil-external operations
+        Linearizability
       
     </span>
   </a>
@@ -735,10 +705,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#commutative-operations" class="md-nav__link">
+  <a href="#sequential-consistency" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Commutative operations
+        Sequential consistency
       
     </span>
   </a>
@@ -746,10 +716,65 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#monotonic-operations" class="md-nav__link">
+  <a href="#causal-consistency" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Monotonic operations
+        Causal consistency
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pram-fifo-consistency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PRAM (FIFO) consistency
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eventual-consistency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Eventual consistency
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#session-guarantees-client-centric" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Session guarantees (client-centric)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-the-models-relate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How the models relate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
       
     </span>
   </a>
@@ -760,6 +785,41 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../service-properties/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Service Properties
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1181,10 +1241,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#determinism" class="md-nav__link">
+  <a href="#the-setup" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Determinism
+        The setup
       
     </span>
   </a>
@@ -1192,10 +1252,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#nil-external-operations" class="md-nav__link">
+  <a href="#linearizability" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Nil-external operations
+        Linearizability
       
     </span>
   </a>
@@ -1203,10 +1263,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#commutative-operations" class="md-nav__link">
+  <a href="#sequential-consistency" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Commutative operations
+        Sequential consistency
       
     </span>
   </a>
@@ -1214,10 +1274,65 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#monotonic-operations" class="md-nav__link">
+  <a href="#causal-consistency" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Monotonic operations
+        Causal consistency
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pram-fifo-consistency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PRAM (FIFO) consistency
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eventual-consistency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Eventual consistency
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#session-guarantees-client-centric" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Session guarantees (client-centric)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-the-models-relate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How the models relate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
       
     </span>
   </a>
@@ -1244,18 +1359,262 @@
   
 
 
-<h1 id="declaring-service-properties-for-xdn">Declaring service properties for XDN</h1>
-<div class="admonition tip">
-<p class="admonition-title">Declarative Replication</p>
-<p>XDN embraces declarative replication, relieving the app developers to know in detail <strong>how</strong> the replication happen.
-Developers only need to declare the <strong>what</strong>, specifically the service and its operations properties: whether it is
-deterministic or not, set of commutative operations, nil-external operations, read-only operations etc; and the 
-intended consistency model.</p>
+<h1 id="consistency-models-formal-definitions">Consistency Models: Formal Definitions</h1>
+<p>XDN lets a developer pick the consistency model a replicated service provides.
+This page defines precisely what each model means, so that "causal" or "PRAM"
+on this site always refers to one exact guarantee. The same names are used with
+subtly different meanings across the literature; where definitions differ, we
+state the one XDN enforces and quote the original formulation for comparison.</p>
+<div class="admonition note">
+<p class="admonition-title">Naming</p>
+<p>The literature also calls these <em>consistency properties</em>, <em>consistency
+semantics</em>, or <em>consistency levels</em>. This site uses <strong>consistency model</strong>.</p>
 </div>
-<h2 id="determinism">Determinism</h2>
-<h2 id="nil-external-operations">Nil-external operations</h2>
-<h2 id="commutative-operations">Commutative operations</h2>
-<h2 id="monotonic-operations">Monotonic operations</h2>
+<h2 id="the-setup">The setup</h2>
+<p>A replicated service consists of a few kinds of components. The figure shows
+them all in one deployment:</p>
+<p><img alt="Setup: clients, sessions, requests, replicas, apply orders, and propagation" src="../images/consistency-setup.svg" /></p>
+<p><strong>Replicas.</strong> A set of servers <span class="arithmatex">\(r_1, r_2, \ldots, r_n\)</span>, each holding a full
+copy of the service state.</p>
+<p><strong>Clients and requests.</strong> Clients issue <em>requests</em>: <strong>writes</strong> mutate service
+state and <strong>reads</strong> observe it. A request is <em>invoked</em> by the client and
+completes when its <em>response</em> returns.</p>
+<p><strong>Sessions.</strong> The ordered sequence of requests issued by one client is its
+<em>session</em>. A session is <em>sticky</em> while all its requests go to one replica; it
+<em>migrates</em> when a later request is served by a different replica (Client B in
+the figure).</p>
+<p><strong>Sources and source order.</strong> Each write is first executed at exactly one
+replica, called that write's <em>source</em> (in the figure, replica 1 is the source
+of <span class="arithmatex">\(w_1\)</span>). The order in which a source executes its own writes is its
+<em>source order</em>.</p>
+<p><strong>Apply order.</strong> Writes propagate between replicas asynchronously. Each
+replica <span class="arithmatex">\(r\)</span> applies writes, its own and those it receives, in a local total
+order: its <em>apply order</em>. Different replicas may apply the same writes in
+different orders (replicas 1 and 2 in the figure), and a replica may not yet
+have received some writes at all (replica 3).</p>
+<p><strong>Reads.</strong> A read served by replica <span class="arithmatex">\(r\)</span> returns the state produced by the
+set of writes <span class="arithmatex">\(r\)</span> has applied so far, its <em>applied set</em>.</p>
+<p><strong>Real-time order.</strong> Operation <span class="arithmatex">\(o_1\)</span> precedes <span class="arithmatex">\(o_2\)</span> <em>in real time</em> if
+<span class="arithmatex">\(o_1\)</span>'s response returned before <span class="arithmatex">\(o_2\)</span> was invoked.</p>
+<div class="admonition info">
+<p class="admonition-title">Two families of models, plus convergence</p>
+<p><strong>Server-centric</strong> models (also called <em>data-centric</em>) constrain replicas'
+apply orders. Their classic definitions speak of "processes" or
+"processors," which map to replicas here; they have no notion of a client.
+<strong>Client-centric</strong> models constrain what one client session observes as it
+possibly moves across replicas. <strong>Convergence</strong>, whether replicas that
+stop receiving writes reach the same state, is a separate liveness
+concern, and is part of the definition only for eventual consistency.
+This taxonomy follows Tanenbaum &amp; van Steen and Viotti &amp; Vukolić.</p>
+</div>
+<p>The models below are ordered strongest to weakest, with the client-centric
+session guarantees last.</p>
+<hr />
+<h2 id="linearizability">Linearizability</h2>
+<p><strong>Definition (as enforced by XDN).</strong> An execution is <em>linearizable</em> iff there
+is a single total order <span class="arithmatex">\(T\)</span> over all writes such that:</p>
+<ol>
+<li><span class="arithmatex">\(T\)</span> is consistent with every source order;</li>
+<li><span class="arithmatex">\(T\)</span> is consistent with real time: if <span class="arithmatex">\(w\)</span> was acknowledged before
+   <span class="arithmatex">\(w'\)</span> was invoked, then <span class="arithmatex">\(w\)</span> precedes <span class="arithmatex">\(w'\)</span> in <span class="arithmatex">\(T\)</span>;</li>
+<li>every replica's apply order is consistent with <span class="arithmatex">\(T\)</span>; and</li>
+<li>every read reflects at least all writes acknowledged before the read was
+   invoked.</li>
+</ol>
+<details class="quote">
+<summary>Original definition — Herlihy &amp; Wing, 1990</summary>
+<p>"Linearizability provides the illusion that each operation applied by
+concurrent processes takes effect instantaneously at some point between
+its invocation and its response, implying that the meaning of a concurrent
+object's operations can be given by pre- and post-conditions."</p>
+<p>Formally: "A history H is linearizable if it can be extended (by appending
+zero or more response events) to some history H′ such that: <strong>L1:</strong>
+complete(H′) is equivalent to some legal sequential history S, and
+<strong>L2:</strong> &lt;_H ⊆ &lt;_S." Here &lt;_H "captures the 'real-time' precedence
+ordering of operations in H."</p>
+<p>— M. Herlihy and J. Wing. <em>Linearizability: A Correctness Condition for
+Concurrent Objects.</em> ACM TOPLAS 12(3), 1990.</p>
+</details>
+<h2 id="sequential-consistency">Sequential consistency</h2>
+<p><strong>Definition (as enforced by XDN).</strong> An execution is <em>sequentially
+consistent</em> iff there is a single total order <span class="arithmatex">\(T\)</span> over all writes,
+consistent with every source order, such that every replica's apply order is
+consistent with <span class="arithmatex">\(T\)</span>.</p>
+<p>This is exactly linearizability <strong>without the real-time clauses</strong>: all
+replicas agree on one write order, but a read may observe a stale prefix of
+it. What a <em>client</em> observes when its session migrates across replicas is a
+client-centric question; see the session guarantees below.</p>
+<details class="quote">
+<summary>Original definition — Lamport, 1979</summary>
+<p>A multiprocessor is sequentially consistent if "the result of any
+execution is the same as if the operations of all the processors were
+executed in some sequential order, and the operations of each individual
+processor appear in this sequence in the order specified by its program."</p>
+<p>— L. Lamport. <em>How to Make a Multiprocessor Computer That Correctly
+Executes Multiprocess Programs.</em> IEEE Trans. Computers C-28(9), 1979.</p>
+</details>
+<h2 id="causal-consistency">Causal consistency</h2>
+<p><strong>Definition (as enforced by XDN).</strong> Let <em>happens-before</em> (<span class="arithmatex">\(\rightarrow\)</span>)
+be the smallest transitive relation such that:</p>
+<ol>
+<li><span class="arithmatex">\(w \rightarrow w'\)</span> if both writes have the same source and <span class="arithmatex">\(w\)</span>
+   precedes <span class="arithmatex">\(w'\)</span> in source order; and</li>
+<li><span class="arithmatex">\(w \rightarrow w'\)</span> if the source of <span class="arithmatex">\(w'\)</span> had applied <span class="arithmatex">\(w\)</span> before it
+   executed <span class="arithmatex">\(w'\)</span>.</li>
+</ol>
+<p>An execution is <em>causal</em> iff every replica's apply order is consistent with
+<span class="arithmatex">\(\rightarrow\)</span>. Writes unordered by <span class="arithmatex">\(\rightarrow\)</span> (<em>concurrent</em> writes)
+may be applied in different orders at different replicas.</p>
+<p>Clause 2 is the <em>potential causality</em> reading: since a service may read any
+part of its state while executing a request, every write the executing
+replica had already applied is conservatively treated as a potential cause.
+Enforcing this larger relation also enforces causality in the original
+read-based sense.</p>
+<details class="quote">
+<summary>Original definition — Ahamad et al., 1995 (and common phrasings)</summary>
+<p>The original formal definition is due to Ahamad, Neiger, Burns, Kohli,
+and Hutto, <em>Causal memory: definitions, implementation, and programming</em>,
+Distributed Computing 9(1), 1995. It defines a <em>writes-into</em> order (a
+write writes-into the reads that return its value), a <em>causality order</em>
+(the transitive closure of per-process program order and writes-into),
+and requires for each process a serialization of its operations plus all
+writes that respects the causality order.</p>
+<p>A common summary (Jepsen): "Causally-related operations should appear in
+the same order on all processes—though processes may disagree about the
+order of causally independent operations."</p>
+<p>On the potential-causality reading (Bailis et al., <em>Bolt-on Causal
+Consistency</em>, SIGMOD 2013): "Under potential causality, all writes that
+could have influenced a write must be visible before the write is made
+visible."</p>
+</details>
+<h2 id="pram-fifo-consistency">PRAM (FIFO) consistency</h2>
+<p><strong>Definition (as enforced by XDN).</strong> An execution is <em>PRAM-consistent</em> iff
+every replica applies the writes of each single source in that source's
+order. Writes of different sources may be applied in different relative
+orders at different replicas.</p>
+<details class="quote">
+<summary>Original definition — Lipton &amp; Sandberg, 1988</summary>
+<p>The original technical report defines PRAM operationally (TR p.4, §3):</p>
+<p>"Let P₁, P₂, ..., P_k be processors that share a memory with locations
+0,1,...,m−1. Assume that each processor has a local memory M_i ... The
+memory M_i is the i-th processor's view of the current state of the
+shared memory. Each processor executes read and write commands:
+(1) read(i). Processor P_j executes this operation by performing a normal
+read from location i from its own local memory M_j.
+(2) write(i,v). Processor P_j executes this operation by performing a
+local action and initializing a global action. Locally, it does a normal
+write to its memory M_j at location i with value v. Globally, it sends a
+message ⟨i,v⟩ to all the other processors. No acknowledgement of
+successful message transmission is expected nor is one ever received.
+As these messages ⟨i,v⟩ arrive at a processor they are automatically
+executed."</p>
+<p>— R. Lipton and J. Sandberg. <em>PRAM: A Scalable Shared Memory.</em> Princeton
+TR CS-TR-180-88, 1988.</p>
+<p>Note: the widely quoted abstract form, "writes done by a single process
+are seen by all other processes in the order in which they were issued,"
+is the literature's later formulation (e.g., Mosberger 1993); the
+original defines PRAM by the pipelined mechanism above. Jepsen's
+phrasing: "Any pair of writes executed by a single process are observed
+(everywhere) in the order the process executed them; however, writes from
+different processes may be observed in different orders."</p>
+</details>
+<h2 id="eventual-consistency">Eventual consistency</h2>
+<p><strong>Definition (as enforced by XDN).</strong> An execution is <em>eventually consistent</em>
+iff, once no new write is executed at any replica, every replica eventually
+applies the same set of writes, and replicas that have applied the same set
+of writes are in the same state.</p>
+<p>The second half is <em>convergent conflict handling</em>: concurrent writes must be
+resolved identically everywhere. Eventual consistency constrains no read in
+the meantime, and it is the only model on this page that <em>requires</em>
+propagation and convergence.</p>
+<details class="quote">
+<summary>Original definitions — Vogels 2009; Bailis &amp; Ghodsi 2013; COPS 2011</summary>
+<p>Vogels: "Eventual consistency. This is a specific form of weak
+consistency; the storage system guarantees that if no new updates are
+made to the object, eventually all accesses will return the last updated
+value." — W. Vogels. <em>Eventually Consistent.</em> CACM 52(1), 2009.</p>
+<p>Bailis &amp; Ghodsi: "...if no additional updates are made to a given data
+item, all reads to that item will eventually return the same value." —
+<em>Eventual Consistency Today.</em> ACM Queue 11(3), 2013.</p>
+<p>Convergent conflict handling (COPS): "Convergent conflict handling
+requires that all conflicting puts be handled in the same manner at all
+replicas, using a handler function h. This handler function h must be
+associative and commutative..." — Lloyd et al. <em>Don't Settle for
+Eventual.</em> SOSP 2011.</p>
+</details>
+<h2 id="session-guarantees-client-centric">Session guarantees (client-centric)</h2>
+<p>For a session <span class="arithmatex">\(s\)</span> whose read <span class="arithmatex">\(R\)</span> is served by a replica with applied
+write set <span class="arithmatex">\(D(R)\)</span>:</p>
+<p><strong>Read-your-writes (RYW)</strong> holds iff every write <span class="arithmatex">\(s\)</span> issued before <span class="arithmatex">\(R\)</span>
+is in <span class="arithmatex">\(D(R)\)</span>.</p>
+<p><strong>Monotonic reads (MR)</strong> holds iff for successive reads <span class="arithmatex">\(R_1, R_2\)</span> of
+<span class="arithmatex">\(s\)</span>, <span class="arithmatex">\(D(R_1) \subseteq D(R_2)\)</span>.</p>
+<p><strong>Monotonic writes (MW)</strong> holds iff every replica applies <span class="arithmatex">\(s\)</span>'s writes in
+<span class="arithmatex">\(s\)</span>'s issue order.</p>
+<p><strong>Writes-follow-reads (WFR)</strong> holds iff for every write <span class="arithmatex">\(w'\)</span> that <span class="arithmatex">\(s\)</span>
+issues after a read <span class="arithmatex">\(R\)</span>, every replica that applies <span class="arithmatex">\(w'\)</span> first applies
+the writes in <span class="arithmatex">\(D(R)\)</span>.</p>
+<p>Each is a per-session guarantee; none constrains how replicas order writes of
+different sessions.</p>
+<details class="quote">
+<summary>Original definitions — Terry et al., 1994</summary>
+<p>With DB(S,t) the writes received by server S by time t,
+RelevantWrites(S,t,R) the writes relevant to read R, and
+WriteOrder(W1,W2) meaning W1 is ordered before W2 at every server holding
+both:</p>
+<p>"RYW-guarantee: If Read R follows Write W in a session and R is performed
+at server S at time t, then W is included in DB(S,t)."</p>
+<p>"MR-guarantee: If Read R1 occurs before R2 in a session and R1 accesses
+server S1 at time t1 and R2 accesses server S2 at time t2, then
+RelevantWrites(S1,t1,R1) is a subset of DB(S2,t2)."</p>
+<p>"WFR-guarantee: If Read R1 precedes Write W2 in a session and R1 is
+performed at server S1 at time t1, then, for any server S2, if W2 is in
+DB(S2) then any W1 in RelevantWrites(S1,t1,R1) is also in DB(S2) and
+WriteOrder(W1,W2)."</p>
+<p>"MW-guarantee: If Write W1 precedes Write W2 in a session, then, for any
+server S2, if W2 in DB(S2) then W1 is also in DB(S2) and
+WriteOrder(W1,W2)."</p>
+<p>— D. Terry, A. Demers, K. Petersen, M. Spreitzer, M. Theimer, B. Welch.
+<em>Session Guarantees for Weakly Consistent Replicated Data.</em> PDIS 1994.</p>
+<p>Vogels's informal one-liners (2009): read-your-writes: "process A, after
+it has updated a data item, always accesses the updated value and will
+never see an older value." Monotonic reads: "If a process has seen a
+particular value for the object, any subsequent accesses will never
+return any previous values." Monotonic writes: "the system guarantees to
+serialize the writes by the same process."</p>
+</details>
+<hr />
+<h2 id="how-the-models-relate">How the models relate</h2>
+<p>Ordered by strength over the server-centric family:</p>
+<div class="arithmatex">\[
+\text{linearizable} \supset \text{sequential} \supset \text{causal} \supset \text{PRAM}
+\]</div>
+<p>with eventual consistency on the orthogonal convergence axis, and the session
+guarantees constraining single sessions rather than replicas (all four
+together, for all sessions, characterize causal consistency). See Viotti &amp;
+Vukolić for a comprehensive survey.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>M. Herlihy, J. Wing. Linearizability: A Correctness Condition for
+  Concurrent Objects. ACM TOPLAS 12(3), 1990.</li>
+<li>L. Lamport. How to Make a Multiprocessor Computer That Correctly Executes
+  Multiprocess Programs. IEEE ToC C-28(9), 1979.</li>
+<li>M. Ahamad, G. Neiger, J. Burns, P. Kohli, P. Hutto. Causal Memory:
+  Definitions, Implementation, and Programming. Distributed Computing 9(1),
+  1995.</li>
+<li>R. Lipton, J. Sandberg. PRAM: A Scalable Shared Memory. Princeton
+  CS-TR-180-88, 1988.</li>
+<li>W. Vogels. Eventually Consistent. CACM 52(1), 2009.</li>
+<li>P. Bailis, A. Ghodsi. Eventual Consistency Today. ACM Queue 11(3), 2013.</li>
+<li>W. Lloyd, M. Freedman, M. Kaminsky, D. Andersen. Don't Settle for Eventual
+  (COPS). SOSP 2011.</li>
+<li>D. Terry et al. Session Guarantees for Weakly Consistent Replicated Data.
+  PDIS 1994.</li>
+<li>P. Viotti, M. Vukolić. Consistency in Non-Transactional Distributed Storage
+  Systems. ACM CSUR 49(1), 2016.</li>
+<li>J. Brzeziński, C. Sobaniec, D. Wawrzyniak. From Session Causality to Causal
+  Consistency. PDP 2004.</li>
+</ul>
 
 
 
@@ -1291,7 +1650,7 @@ intended consistency model.</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../consistency-definitions/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Formal definitions">
+          <a href="../flexible-consistency/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1301,20 +1660,20 @@ intended consistency model.</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                Formal definitions
+                Overview
               </div>
             </div>
           </a>
         
         
           
-          <a href="../become-operator/" class="md-footer__link md-footer__link--next" aria-label="Next: Deployment">
+          <a href="../service-properties/" class="md-footer__link md-footer__link--next" aria-label="Next: Service Properties">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Deployment
+                Service Properties
               </div>
             </div>
             <div class="md-footer__button md-icon">

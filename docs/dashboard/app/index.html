@@ -40,7 +40,7 @@
 
       <!-- Inspect a service by name + deploy/destroy -->
       <section class="card">
-        <h2>Replicated stateful service</h2>
+        <h2>Replicated Stateful Service</h2>
       <div class="row">
         <input id="svc-name" type="text" placeholder="service name" spellcheck="false" />
         <button id="inspect-btn">Inspect</button>
@@ -53,8 +53,7 @@
         <form id="deploy-form" class="grid">
           <label>Name <input name="name" required pattern="[a-zA-Z0-9_-]{1,64}" /></label>
           <label>Docker image
-            <input name="image" list="xdn-images" required value="fadhilkurnia/xdn-bookcatalog"
-                   placeholder="fadhilkurnia/xdn-bookcatalog" />
+            <input name="image" list="xdn-images" required placeholder="fadhilkurnia/xdn-bookcatalog" />
           </label>
           <datalist id="xdn-images">
             <option value="fadhilkurnia/xdn-bookcatalog">Book catalog — deterministic</option>
@@ -63,9 +62,9 @@
             <option value="fadhilkurnia/xdn-webkv">Web key-value store</option>
             <option value="fadhilkurnia/xdn-tpcc">TPC-C benchmark</option>
           </datalist>
-          <label>HTTP Port <input name="port" type="number" value="80" min="1" max="65535" /></label>
-          <label>State directory <input name="state" value="/app/data/" /></label>
-          <label>Consistency model
+          <label>Port <input name="port" type="number" value="80" min="1" max="65535" /></label>
+          <label>State dir <input name="state" value="/app/data/" /></label>
+          <label>Consistency
             <select name="consistency">
               <option value="linearizable">Linearizable</option>
               <option value="sequential" selected>Sequential</option>
@@ -88,7 +87,7 @@
       </section>
     </div>
 
-    <!-- Right column: the cluster map, with the client emulator below it. -->
+    <!-- Right column: the cluster map. -->
     <div class="col">
       <!-- Placement view: replica table + map for the selected service -->
       <section class="card">
@@ -108,8 +107,6 @@
       <p class="hint" id="topo-legend">
         <span class="legend-dot candidate"></span> edge location
         &nbsp;&nbsp;<span class="legend-dot active"></span> service replica
-        &nbsp;&nbsp;<span class="legend-dot read"></span> read demand
-        &nbsp;&nbsp;<span class="legend-dot write"></span> write demand
         <span id="topo-count" class="muted"></span>
       </p>
       <div id="map"></div>
@@ -120,32 +117,6 @@
         <tbody></tbody>
       </table>
       <p id="placement-note" class="hint"></p>
-      </section>
-
-      <!-- Emulate clients: generate geo-located traffic to drive demand-based
-           reconfiguration. Each request carries ?_xdnloc=<lat>,<lon> so the AR
-           records demand as if it came from that place. Sits below the map so the
-           heatmap/replica markers it drives are visible right above it. -->
-      <section class="card" id="emulator-card">
-        <h2>Emulate clients <span id="emu-svc" class="muted"></span></h2>
-        <p class="hint">
-          Add client sources — tick <b>click map to add</b> and click the map, or
-          pick a city below — then <b>Start</b>. Each request is tagged with that
-          location (<code>_xdnloc</code>), so XDN's demand-driven placement moves
-          replicas closer. Watch the heatmap and replica markers update live.
-        </p>
-        <div class="row emu-cities" id="emu-cities"></div>
-        <ul id="emu-list" class="emu-list"></ul>
-        <div class="emu-controls">
-          <label class="check"><input type="checkbox" id="emu-add" /> click map to add</label>
-          <label>rate <input id="emu-rate" type="range" min="1" max="20" value="6" />
-            <span id="emu-rate-val" class="mono">6/s</span></label>
-          <label>writes <input id="emu-write" type="range" min="0" max="100" value="0" step="10" />
-            <span id="emu-write-val" class="mono">0%</span></label>
-          <button id="emu-toggle" disabled>Start</button>
-          <span id="emu-status" class="status"></span>
-        </div>
-        <p class="hint" id="emu-hint">Inspect a service first, then add client locations.</p>
       </section>
     </div>
   </main>
