@@ -12,13 +12,11 @@
         <meta name="author" content="Fadhil I. Kurnia">
       
       
-        <link rel="canonical" href="https://xdn.cs.umass.edu/how-xdn-work/">
+        <link rel="canonical" href="https://xdn.cs.umass.edu/performance/">
       
       
-        <link rel="prev" href="../become-operator/">
+        <link rel="prev" href="../dashboard/">
       
-      
-        <link rel="next" href="../reference/HTTP-API/">
       
       
         
@@ -29,7 +27,7 @@
     
     
       
-        <title>Architecture - XDN</title>
+        <title>Performance - XDN</title>
       
     
     
@@ -78,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#the-architecture-of-xdn" class="md-skip">
+        <a href="#performance" class="md-skip">
           Skip to content
         </a>
       
@@ -113,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Architecture
+              Performance
             
           </span>
         </div>
@@ -287,11 +285,9 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="./" class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../how-xdn-work/" class="md-tabs__link">
         
   
   
@@ -347,9 +343,11 @@
   
   
   
+    
   
-    <li class="md-tabs__item">
-      <a href="../performance/" class="md-tabs__link">
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
         
   
   
@@ -379,7 +377,9 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -723,19 +723,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../how-xdn-work/" class="md-nav__link">
         
   
   
@@ -751,7 +742,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -1096,10 +1086,19 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../performance/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1115,6 +1114,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -1127,7 +1127,9 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -1151,13 +1153,34 @@
               <article class="md-content__inner md-typeset">
                 
                   
+  
+
 
 
   
   
 
 
-<h1 id="the-architecture-of-xdn">The architecture of XDN</h1>
+<h1 id="performance">Performance</h1>
+<p>Nightly performance measurements of XDN: low-load latency and max throughput
+for Paxos active replication and primary-backup replication, with a per-stage
+latency breakdown of the request flow. Measured by the
+<a href="https://github.com/fadhilkurnia/xdn/actions/workflows/nightly-perf.yml">nightly-perf workflow</a>
+as an interleaved A/B of each night's HEAD against the last measured commit.</p>
+<style>
+  /* Embed the perf trend page full-width under the site's header/footer/tabs,
+     same treatment as the dashboard SPA. */
+  .xdn-perf-frame {
+    width: 100%;
+    height: calc(100vh - 11rem);
+    min-height: 720px;
+    border: 1px solid var(--md-default-fg-color--lightest);
+    border-radius: 6px;
+  }
+</style>
+
+<iframe class="xdn-perf-frame" src="app/" title="XDN nightly performance"
+        loading="lazy" referrerpolicy="no-referrer"></iframe>
 
 
 
@@ -1165,8 +1188,13 @@
 
 
 
+  
+  
 
 
+
+
+  
 
 
 
@@ -1190,10 +1218,12 @@
   
     
       
+        
+      
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../become-operator/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Deployment">
+          <a href="../dashboard/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Dashboard">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1203,27 +1233,11 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Deployment
+                Dashboard
               </div>
             </div>
           </a>
         
-        
-          
-          <a href="../reference/HTTP-API/" class="md-footer__link md-footer__link--next" aria-label="Next: Control-plane API">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                Control-plane API
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
         
       </nav>
     
