@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../images/icons8-octopus-100.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -331,6 +331,25 @@
     
   
   Dashboard
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="https://xdn.cs.umass.edu/perf/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Performance
 
       </a>
     </li>
@@ -1057,6 +1076,33 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://xdn.cs.umass.edu/perf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Performance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -1279,8 +1325,8 @@ running a <strong>lighter reconfigurator (RC) on small machines</strong>.</p>
 <p>Recommended config for a small-footprint RC:</p>
 <div class="language-properties highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="na">SQL_TYPE</span><span class="o">=</span><span class="s">EMBEDDED_SQLITE</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="na">CONNECTION_POOLING</span><span class="o">=</span><span class="s">false</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># DB_MAX_CONNECTIONS must stay 0 (unbounded). See &quot;Single-writer: why a hard</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># connection cap does NOT work&quot; below — gigapaxos re-enters the logger while</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># DB_MAX_CONNECTIONS must stay 0 (unbounded). See "Single-writer: why a hard</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># connection cap does NOT work" below — gigapaxos re-enters the logger while</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1"># holding a connection, so any finite cap self-deadlocks.</span>
 </span></code></pre></div>
 <p>Versus the default (Embedded Derby + C3P0 pool), measured on this codebase:</p>
@@ -1561,8 +1607,8 @@ sees (the real suite saw single-digit BUSY events per run). Takeaways:</p>
 <p>Run the reconfiguration integration suite against SQLite (single-writer). Note
 the harness configures nodes programmatically and forbids a <code>gigapaxosConfig</code>
 file, so config overrides are injected via <code>ConfiguredTestRunner</code>:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nv">CP</span><span class="o">=</span><span class="s2">&quot;build/classes:build/test/classes:</span><span class="k">$(</span>ls<span class="w"> </span>lib/*.jar<span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span><span class="s1">&#39;\n&#39;</span><span class="w"> </span><span class="s1">&#39;:&#39;</span><span class="k">)</span><span class="s2">&quot;</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>java<span class="w"> </span>-ea<span class="w"> </span>-cp<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CP</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nv">CP</span><span class="o">=</span><span class="s2">"build/classes:build/test/classes:</span><span class="k">$(</span>ls<span class="w"> </span>lib/*.jar<span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span><span class="s1">'\n'</span><span class="w"> </span><span class="s1">':'</span><span class="k">)</span><span class="s2">"</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>java<span class="w"> </span>-ea<span class="w"> </span>-cp<span class="w"> </span><span class="s2">"</span><span class="nv">$CP</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span>-Djavax.net.ssl.trustStore<span class="o">=</span>conf/keyStore/node100.jks<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span>-Djavax.net.ssl.trustStorePassword<span class="o">=</span>qwerty<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span>-Djavax.net.ssl.keyStore<span class="o">=</span>conf/keyStore/node100.jks<span class="w"> </span><span class="se">\</span>
@@ -1572,10 +1618,10 @@ file, so config overrides are injected via <code>ConfiguredTestRunner</code>:</p
 </span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">  </span><span class="nv">SQL_TYPE</span><span class="o">=</span>EMBEDDED_SQLITE<span class="w"> </span><span class="nv">CONNECTION_POOLING</span><span class="o">=</span><span class="nb">false</span>
 </span></code></pre></div>
 <p>Run the DB write-latency benchmark:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nv">CP</span><span class="o">=</span><span class="s2">&quot;build/classes:</span><span class="k">$(</span>ls<span class="w"> </span>lib/*.jar<span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span><span class="s1">&#39;\n&#39;</span><span class="w"> </span><span class="s1">&#39;:&#39;</span><span class="k">)</span><span class="s2">&quot;</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nv">CP</span><span class="o">=</span><span class="s2">"build/classes:</span><span class="k">$(</span>ls<span class="w"> </span>lib/*.jar<span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span><span class="s1">'\n'</span><span class="w"> </span><span class="s1">':'</span><span class="k">)</span><span class="s2">"</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1"># mode in: derby-c3p0 derby-simple sqlite-pool sqlite-immediate sqlite-single</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1">#          (+ &quot;-full&quot; suffix on sqlite modes for synchronous=FULL)</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>java<span class="w"> </span>-cp<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CP</span><span class="s2">&quot;</span><span class="w"> </span>edu.umass.cs.gigapaxos.paxosutil.DBLatencyBench<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1">#          (+ "-full" suffix on sqlite modes for synchronous=FULL)</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>java<span class="w"> </span>-cp<span class="w"> </span><span class="s2">"</span><span class="nv">$CP</span><span class="s2">"</span><span class="w"> </span>edu.umass.cs.gigapaxos.paxosutil.DBLatencyBench<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span>sqlite-single<span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">2000</span><span class="w"> </span><span class="m">200</span><span class="w"> </span><span class="m">1024</span><span class="w">   </span><span class="c1"># mode threads opsPerThread rows payloadBytes</span>
 </span></code></pre></div>
 <h2 id="known-limitations-future-work">Known limitations / future work</h2>
@@ -1658,7 +1704,7 @@ file, so config overrides are injected via <code>ConfiguredTestRunner</code>:</p
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.footer", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../../javascripts/mathjax.js"></script>
       
